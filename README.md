@@ -282,8 +282,15 @@ Outras:
 * [Mobile First - ZURB](https://zurb.com/word/mobile-first)
 * [Mobile First Is NOT Mobile Only - Nielsen Norman
   Group](https://www.nngroup.com/articles/mobile-first-not-mobile-only/)
+* [Criando uma SPA com Javascript](https://www.youtube.com/watch?v=hf8x3A1e57Y)
+* [Firebase Hosting do Zero](https://www.youtube.com/watch?v=0R2Ur0xKNz4&t=11s)
+* [Firebase Hosting em Detalhes](https://www.youtube.com/watch?v=fFlukPB0RLU)
+* [Firebase Firestore do Zero](https://www.youtube.com/watch?v=y-p8G3hPrMI)
+* [Anatomia de um teste em Javascript](https://gabrieluizramos.com.br/anatomia-de-um-teste-em-javascript)
+* [Entendendo async em Javascript](https://www.youtube.com/watch?v=6YunRmg9orI)
 * [Flexbox - CSS
   Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [Flexbox - Vídeo Juliana A](https://www.youtube.com/watch?v=XvwCsQGjNy0&feature=youtu.be)
 * [Módulos:
   Export](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/export)
 * [Módulos:
