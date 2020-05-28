@@ -1,0 +1,46 @@
+* {padding: 0;margin: 0;border: none;font-size:100%;outline:none;font-weight:300 ;box-sizing: border-box;
+}
+body{
+    background-color: white;
+}
+.menu{
+    width: 100%;
+   padding: 3% 4%;
+   text-align: center;
+}
+.logo{
+    background: url(bar.jpg)center/100% no-repeat; 
+    width: 100%;
+    height: 200px;
+    float: initial;
+}
+.name{
+    width: 100%;
+    padding: 3% 4%;
+}
+.margin{
+    padding: 3% 4%;
+    margin: 3%;
+
+   
+}
+footer{
+    background-color:#ffdc53;
+}
+.text{
+    color: #8C5818;
+}
+.input, .login{
+    border-radius: 10px;
+    border:2px solid #ffdc53;
+    text-align: center;
+    padding:2% ;
+    /* border-color:#ffdc53 ; */
+}
+.login{
+    background-color: #8C5818;
+    background-image: linear-gradient(3deg, #ffdc53, transparent);
+    width: 100px;
+    padding: 1%;
+    color: white;
+}
