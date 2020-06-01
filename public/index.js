@@ -7,7 +7,7 @@ const main = document.querySelector('#root');
 
 const init =() => {
     window.addEventListener("hashchange", () => {
-        main.innerHTML=" "
+        main.innerHTML= " ";
         switch(window.location.hash){
             case " ":
               main.appendChild(routs["login"]);
