@@ -1,30 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>StayHomeBar</title>
-</head>
-<body>
-  <header class="menu">
-    <h1 class="logo"></h1>
-    <h1 class="name text">Stay Home Bar</h1>
-    <h2 class="text">Bem vindos!</h2>
-    <div class="margin">
-    <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
-    <input class="input margin" type="password" id="password" placeholder="Password"> 
-    <button id="login input margin" class="login">Login</button> 
-  </div>
-  </header>
-  <footer class="menu text">
-    <h3>Ou conecte-se com</h3>
-    <p>Facebook e google</p>
-    <h4>Você ainda não é cadastrado?Cadastre-se <a href="index.html"target="_blank">aqui!</a></h4>
 
-  </footer>
-  <div id="root"></div>
-  <script type="module" src="index.js"></script>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>StayHomeBar</title>
+</head>
+
+<body>
+	<!-- mudei o header para o logo pois é o cabeçalho -->
+	<header>
+		<div class="logo"></div>
+	</header>
+	<!-- coloquei o main pq é o conteudo principal da página -->
+	<main>
+		<div class="align">
+			<input class="input margin" type="email" id="e-mail" placeholder="Email">
+			<input class="input margin" type="password" id="password" placeholder="Password">
+		</div>
+		<div class="align">
+			<button id="login input margin" class="login"><a href="/#login">Login</button>
+		</div>
+	<div class="align">
+		<h2>Ou conecte-se com</h3>
+			<!-- coloquei a tag nav pois será um link que direciona para outra tela -->
+			Facebook e google
+			<h3>Você ainda não é cadastrado? Cadastre-se <a href="/#signup">aqui!</a></h4>
+	</div>
+	
+	</main>
+
+
+	<main id="root">
+	</main>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyD88WfIcGzw5b9_IsPK1sHUStZNZc5OO1M",
+			authDomain: "social-network-lab1.firebaseapp.com",
+			databaseURL: "https://social-network-lab1.firebaseio.com",
+			projectId: "social-network-lab1",
+			storageBucket: "social-network-lab1.appspot.com",
+			messagingSenderId: "393204902059",
+			appId: "1:393204902059:web:3ec3540f32d2297b42afee",
+			measurementId: "G-W0GQR66GF0"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
+	<script src="main.js" type="module"></script>
+
 </body>
+
 </html>
