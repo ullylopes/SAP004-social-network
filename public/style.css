@@ -9,10 +9,12 @@ body{
    text-align: center;
 }
 .logo{
-    background: url(bar.jpg)center/100% no-repeat; 
-    width: 100%;
+    background: url(STHB10.png)center/100% no-repeat;
+    width: 70%;
     height: 200px;
     float: initial;
+    margin-left: 49px;
+    margin-top: -45px;
 }
 .name{
     width: 100%;
