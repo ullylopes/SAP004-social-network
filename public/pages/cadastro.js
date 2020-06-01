@@ -1,3 +1,4 @@
+/*VAMO ARRUMAR ESSA BAGAÇA*/
 export default () => {
     const container = document.createElement('div');
  
