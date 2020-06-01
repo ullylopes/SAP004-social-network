@@ -8,23 +8,57 @@
   <title>StayHomeBar</title>
 </head>
 <body>
+ 
   <header class="menu">
+    
     <h1 class="logo"></h1>
     <h1 class="name text">Stay Home Bar</h1>
     <h2 class="text">Bem vindos!</h2>
-    <div class="margin">
+    <nav class="margin">
     <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
     <input class="input margin" type="password" id="password" placeholder="Password"> 
-    <button id="login input margin" class="login">Login</button> 
-  </div>
+    <button id="login input margin" class="login">Login</button>
+    </nav>
   </header>
   <footer class="menu text">
     <h3>Ou conecte-se com</h3>
     <p>Facebook e google</p>
-    <h4>Você ainda não é cadastrado?Cadastre-se <a href="index.html"target="_blank">aqui!</a></h4>
-
+    <h4>Você ainda não é cadastrado?Cadastre-se <a class="cadastro" id="cadastro" href="#cadastro">aqui!</a></h4>
+    <div id="modal" class="modal" >
+      <a href="#fechar" class="fechar"></a>
+      <h1>Cadastrar com seu e-mail</h1>
+      <label for="email" >E-mail:</label>
+      <input id="email" class="input margin" type="email" id="e-mail" placeholder="Email"> 
+      <label for="password" >Password:</label>
+      <input id ="passaword" class="input margin" type="password" id="password" placeholder="Password"> 
+      <button  class="login">Cadastrar</button>
+      </nav>
+      </div>
   </footer>
   <div id="root"></div>
   <script type="module" src="index.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDiNFxAhgiGDt7CN28U8dGlZzNnUY5F39E",
+    authDomain: "rede-social-d353d.firebaseapp.com",
+    databaseURL: "https://rede-social-d353d.firebaseio.com",
+    projectId: "rede-social-d353d",
+    storageBucket: "rede-social-d353d.appspot.com",
+    messagingSenderId: "890835976777",
+    appId: "1:890835976777:web:1f34813b0c046eac95f598",
+    measurementId: "G-1CFRNJ5B9B"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>
