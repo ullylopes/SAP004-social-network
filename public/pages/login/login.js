@@ -1,3 +1,5 @@
+//template da pagina inicial de login
+
 export default () => {
     const container = document.createElement('div');
  
@@ -18,6 +20,7 @@ export default () => {
     </li>
   </footer>`;
  
+  //adiciona o template a div 
     container.innerHTML= template;
     return container;
  }
