@@ -3,20 +3,21 @@ export default () => {
  
     const template = `
     <h1 class="logo"></h1>
-    <h2 class="text">Bem vindos!</h2>
-    <div class="margin">
+  <h2 class="bv">Bem Vindx!</h2>
+    <div class="menu">
       <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
       <input class="input margin" type="password" id="password" placeholder="Password"> 
-      <button id="login input margin" class="login">Login</button> 
+    <a class="login margin" id="login"href="/#home">Login<a/>  
     </div>
-  </header>
-  <footer class="menu text">
+  <div class="color cad">
     <h3>Ou conecte-se com</h3>
-    <p>Facebook e google</p>
-    <li>Você ainda não é cadastrado?Cadastre-se 
-      <a href="/#cadastro">aqui!</a>
-    </li>
-  </footer>`;
+    <img class="image" src="imagens/fa.png"> <img class="image" src="imagens/go.png">
+    <p> Você ainda não é cadastrado? </br>
+    Cadastre-se <a href="/#cadastro">aqui!</a>
+    </p>
+  </div>
+  `
+  ;
  
     container.innerHTML= template;
     return container;
