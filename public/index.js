@@ -1,28 +1,28 @@
-// Este é o ponto de entrada de sua aplicação
-/* import cadastro from './pages/cadastro.js';
-import login from './pages/login.js'; */
-import routs from "./routs.js"
+import routes from "./routes.js";
 
-const main = document.querySelector('#root');
-
-const init =() => {
-    window.addEventListener("hashchange", () => {
-        main.innerHTML= " ";
-        switch(window.location.hash){
-            case " ":
-              main.appendChild(routs["login"]);
-              break;
-            case "#cadastro":
-                main.appendChild(routs["cadastro"]);
-                break;
-            default:
-                main.appendChild(routs["login"]);
-        }
-    })
+const main = document.querySelector("#root");
+// para acompanhar a mudança de rota que acontece na pagina
+const init = () => {
+  //verifica a url da localização p pegar o hash
+  window.addEventListener("hashchange", () => {
+    renderPage();
+  })
 }
+
+//otimização pois o codigo seria usado em duas funções. 
+const renderPage = () => {
+  main.innerHTML = " ";
+  const page = validateHash(window.location.hash);
+  main.appendChild(routes[page]);
+};
+
+// função ternário substituindo if else
+const validateHash = (hash) => (hash === "" ? "login" : hash.replace("#", ""));
+
+/* toda vez que tiver um load do window, vai executar 
+uma função que vai pegar o main do html 
+e adicionar um filho no corpo dele  */
 window.addEventListener("load", () => {
-    main.appendChild(routs["login"]);
-    init();
-
-} )
-
+  renderPage();
+  init();
+});
