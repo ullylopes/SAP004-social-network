@@ -1,13 +1,29 @@
-import routes from "./routes.js";
+import routs from "./routs.js"
 
-const main = document.querySelector("#root");
-// para acompanhar a mudança de rota que acontece na pagina
-const init = () => {
-  //verifica a url da localização p pegar o hash
-  window.addEventListener("hashchange", () => {
-    renderPage();
-  })
+const main = document.querySelector('#root');
+
+const init =() => {
+    window.addEventListener("hashchange", () => {
+        renderpage();
+    })
 }
+const renderpage = ()=>{
+    main.innerHTML= " ";
+    const page = validacao(window.location.hash)
+    main.appendChild(routs[page])   
+}
+
+const validacao = (hash) => {
+    if (hash === "") {
+     return "login";
+    } else {
+        return hash.replace("#","");
+    } 
+}
+
+window.addEventListener("load", () => {
+    renderpage();
+    init();
 
 //otimização pois o codigo seria usado em duas funções. 
 const renderPage = () => {
@@ -26,3 +42,4 @@ window.addEventListener("load", () => {
   renderPage();
   init();
 });
+})

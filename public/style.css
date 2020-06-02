@@ -1,13 +1,12 @@
 * {padding: 0;margin: 0;border: none;font-size:100%;outline:none;font-weight:300 ;box-sizing: border-box;
 }
 body {
-    background-color: white;
+    background-image: url(imagens/Design\ sem\ nome.png);
 }
 
 .logo {
-    background: url(imagens/logo1.png)center/100% no-repeat; 
-    width: 100%;
-    height: 200px;  
+    background: url(imagens/logoversao2.png)center/70% no-repeat; 
+    padding: 40%;  
 }
 
 .align {
@@ -24,8 +23,14 @@ body {
 
    
 }
+.bemvindo{
+    color: #e6ba36;
+    text-align: center;
+    font-size: 143%;
+}
 .text{
     color: #8C5818;
+    text-align: center;
 }
 .input, .login{
     border-radius: 10px;
