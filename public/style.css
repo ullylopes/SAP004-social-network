@@ -29,9 +29,14 @@ body {
     text-align: center;
   
 }
-
+.bemvindo{
+    color: #e6ba36;
+    text-align: center;
+    font-size: 143%;
+}
 .text{
     color: #8C5818;
+    text-align: center;
 }
 .bv{
     color:white;

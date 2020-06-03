@@ -11,7 +11,7 @@ const main = document.querySelector('#root');
             const page = validateHash(window.location.hash);
             main.appendChild(routes[page]);
         }
-        const validateHash = (hash) => hash === "" ? "home" :hash.replace("#","");
+        const validateHash = (hash) => hash === "" ? "login" :hash.replace("#","");
 
         window.addEventListener("load", () => {
             renderPage();

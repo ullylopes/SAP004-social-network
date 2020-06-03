@@ -1,5 +1,5 @@
-import cadastro from './pages/cadastro.js';
-import login from './pages/login.js';
+import cadastro from './pages/cadastro/cadastro.js';
+import login from './pages/login/login.js';
 import login1 from './pages/login1/login1.js';
 /* import home from './pages/home/main.js';  */
 
