@@ -3,13 +3,15 @@ export default () => {
     const container = document.createElement('div');
  
     const template = `
-    <h2 class="text">Cadastre-se!</h2>
-    <div class="margin">
-      <input class="input margin" type="email" id="e-mail-cad" placeholder="Email"> 
+    <a href="/#login">voltar<a/>
+    <h2 class="bv">Cadastre-se!</h2>
+    <div class="menu">
+      <input class="input margin" type="email" id="email-cad" placeholder="Email"> 
       <input class="input margin" type="password" id="password-cad" placeholder="Password"> 
-      <button class="login input margin" id="cadastro">Cadastro</button> 
+      <a class="login margin" id="cadastro"href="/#login1">Cadastro<a/>
     </div>`;
  
     container.innerHTML= template;
     return container;
  }
+

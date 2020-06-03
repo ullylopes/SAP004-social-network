@@ -1,27 +1,33 @@
 * {padding: 0;margin: 0;border: none;font-size:100%;outline:none;font-weight:300 ;box-sizing: border-box;
 }
+
 body {
-    background-image: url(imagens/Design\ sem\ nome.png);
+    background:url(imagens/mad.png)center/ 100% no-repeat;
+    text-align: center;
+    background-attachment: fixed;
+    background-size:cover;  
+    display:block;
 }
 
 .logo {
-    background: url(imagens/logoversao2.png)center/70% no-repeat; 
-    padding: 40%;  
+    background: url(imagens/logo2.png)center/70% no-repeat; 
+    padding: 32%;
+    text-align: center;
 }
 
 .align {
-   text-align: center; 
+    text-align: center; 
 }
 
 .name {
     width: 100%;
     padding: 3% 4%;
 }
-.margin {
-    padding: 3% 4%;
+.menu .margin {
+    padding: 1% 4%;
     margin: 3%;
-
-   
+    text-align: center;
+  
 }
 .bemvindo{
     color: #e6ba36;
@@ -32,17 +38,69 @@ body {
     color: #8C5818;
     text-align: center;
 }
+.bv{
+    color:white;
+    font-size: large;
+    text-align: center;
+    margin-top: 6%;
+}
 .input, .login{
     border-radius: 10px;
     border:2px solid #ffdc53;
-    text-align: center;
-    padding:2% ;
     /* border-color:#ffdc53 ; */
 }
 .login{
     background-color: #8C5818;
     background-image: linear-gradient(3deg, #ffdc53, transparent);
     width: 100px;
-    padding: 1%;
     color: white;
 }
+a:link, a:visited {
+    text-decoration:none;
+    color: white;
+	}
+a:hover , a:active {  
+	color:#000; 
+	background:#ffdc53; 
+    }
+
+.color{
+    /* background-color:#e4b907; */
+    text-align: center;
+    margin: 6%;
+    color: white;
+    font-family:Helvetica;
+   /*  font-size: large; */
+}
+.image{
+    height: 10%;
+    width: 10%;  
+}
+
+/* @media (max-width: 600px) /* and (max-width: 900px) {
+
+.logo{
+    margin-left: -100px;
+    width: min-content;
+    /* height: fit-content; 
+}
+}
+.menu{
+    /* margin-top: unset;
+    padding: 3% 20%;
+    margin-left: auto;
+    text-align: center; 
+    margin-top: -200px;
+    padding: 3% 20%;
+    margin-left: 50%;
+    text-align: center;
+  
+}
+.margin{
+    margin:3%
+}
+.cad{
+    margin-left: 200px;
+    background-color:rgba(0, 0, 0, 0);
+    
+} */

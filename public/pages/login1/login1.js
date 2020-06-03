@@ -3,20 +3,14 @@ export default () => {
  
     const template = `
     <h1 class="logo"></h1>
-  <h2 class="bv">Bem Vindx!</h2>
     <div class="menu">
+    <h1 class="bv">Você se cadastrou com sucesso.</br>
+    Faça seu login para entrar.</h1>
       <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
       <input class="input margin" type="password" id="password" placeholder="Password"> 
-    <a class="login margin" id="login"href="/#home">Login<a/>  
+      <a class="login input margin" id="login"href="/#login1">Login<a/>
     </div>
-  <div class="color cad">
-    <h3>Ou conecte-se com</h3>
-    <img class="image" src="imagens/fa.png"> <img class="image" src="imagens/go.png">
-    <p> Você ainda não é cadastrado? </br>
-    Cadastre-se <a href="/#cadastro">aqui!</a>
-    </p>
-  </div>
-  `
+    `
   ;
  
     container.innerHTML= template;
