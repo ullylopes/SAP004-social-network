@@ -1,5 +1,4 @@
-export const loginAuth = (email,password) => {
-    
+export const authLogin1 = (email,password) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => console.log("deu certo"))
         .catch(function (error) {
@@ -8,6 +7,5 @@ export const loginAuth = (email,password) => {
             var errorMessage = error.message;
             console.log(errorMessage)
             console.log("deu ruim")// ...
-        });       
+        });
 }
-

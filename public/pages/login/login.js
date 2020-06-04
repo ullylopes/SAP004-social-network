@@ -1,4 +1,4 @@
-export default () => {
+export const loginAuth = () => {
     const container = document.createElement('div');
  
     const template = `
@@ -18,7 +18,20 @@ export default () => {
   </div>
   `
   ;
- 
-    container.innerHTML= template;
+  container.innerHTML= template;
+
+    const btnLogin = container.querySelector('#login'); 
+
+    btnLogin.addEventListener('click', () => {
+    const email = container.querySelector('#e-mail').value; 
+    const password = container.querySelector('#password').value; 
+    const loginoAuth = (loginAuth(email,password)); 
+    loginAuth(loginAuth); 
+    });  
+
+
+
+
+
     return container;
  }

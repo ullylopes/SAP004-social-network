@@ -1,11 +1,11 @@
 import {authCad} from './pages/cadastro/cadastro.js';
-import login from './pages/login/login.js';
-import login1 from './pages/login1/login1.js';
-/* import home from './pages/home/main.js';  */
+import {loginAuth} from './pages/login/login.js';
+import {login1Auth} from './pages/login1/login1.js';
+import {home} from './pages/home/main.js';  
 
 export default {
- /*    home:home(), */ 
+    home:home(), 
     cadastro: authCad(),
-    login: login(),
-    login1: login1(),
+    login: loginAuth(),
+    login1:login1Auth(), 
 }
