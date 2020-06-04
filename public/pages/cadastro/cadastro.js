@@ -8,22 +8,37 @@ export const authRegistration = () => {
     <a href="/#login">voltar<a/>
     <h2 class="bv">Cadastre-se!</h2>
     <div class="menu">
-      <input class="input margin" type="email" id="registered-email" placeholder="Email"> 
-      <input class="input margin" type="password" id="registered-password" placeholder="Senha"> 
-      <a class="login margin" id="register" href="/#login1">Cadastrar<a/>
+      <input class="input margin" type="" id="nome-usuario" placeholder="Nome de usuário"> 
+      <input class="input margin" type="email" id="email-cad" placeholder="Email"> 
+      <input class="input margin" type="password" id="password-cad" placeholder="Password">
+      <input class="input margin" type="password" id="password-cad-confirm" placeholder=" Confime o password"> 
+      <button class="login margin" id="cadastro">Cadastro</button>
     </div>`;
- 
+
     container.innerHTML= template;
-   
-  const registerButton = container.querySelector("#register");
 
-  registerButton.addEventListener("click", () => {
-    const registeredEmail = container.querySelector("#registered-email").value;
-    const registeredPassword = container.querySelector("#registered-password").value;
-    const authentication = (firebaseRegistration(registeredEmail, registeredPassword));
-    firebaseRegistration(authentication);
+        const registerButton = container.querySelector('#cadastro')
+        registerButton.addEventListener('click', (event) => {
+          event.preventDefault()
+          const registeredPassword = container.querySelector('#password-cad').value
+          const confirmPassword = container.querySelector('#password-cad-confirm').value
+          if (registeredPassword === confirmPassword){
+            console.log("menina ta igualzinha a senha")
+            const registeredEmail = container.querySelector('#email-cad').value
+            const authentication = (firebaseRegistration(registeredEmail,registeredPassword))
+            firebaseRegistration(authentication)
+/*             const template2 =  `  <a id='aia' href ='#login1'></a>
+                                </div>` */
+            container.innerHTML = template2
+          }else{
+/*             const template2 =  `  <a id='aia' href ='#login1'></a>
+                                </div>`
+            container.innerHTML = template2 */
+            console.log("menina a senha ta diferente")
+           
+      }
+    
+    })
+    return container ;
 
-  });
-
-  return container;
 }
