@@ -7,7 +7,7 @@ export const loginAuth = (email,password) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorMessage)
-            console.log("deu ruim")// ...
+            alert("E-mail ou senha inválidos. Verique o e-mail e senha e tente novamente.")// ...
         });       
 }
 

@@ -8,4 +8,5 @@ export default {
     cadastro: authCad(),
     login: loginAuth(),
     login1:login1Auth(), 
+   
 }
