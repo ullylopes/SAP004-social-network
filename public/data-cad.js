@@ -6,7 +6,7 @@ document.getElementById("cadastro").addEventListener("click",()=>{
   })
   
   firebase.auth().signInWithEmailAndPassword(emailCad, passwordCad)
-  .then(()=>HTMLFormControlsCollection.log("deu certo"))
+  .then(()=> console.log("deu certo"))
   .catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

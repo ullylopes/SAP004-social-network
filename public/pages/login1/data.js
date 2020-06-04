@@ -1,7 +1,6 @@
 
-
-export const firebaseRegistration = (registeredEmail,registeredPassword) =>{
-    firebase.auth().createUserWithEmailAndPassword(registeredEmail, registeredPassword)
+export const authLogin1 = (registeredEmail,registeredPassword) =>{
+    firebase.auth().signInWithEmailAndPassword(registeredEmail, registeredPassword)
     .then(() => console.log("deu certo"))
     .catch(function(error) {
     // Handle Errors here.

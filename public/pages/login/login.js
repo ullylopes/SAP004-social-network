@@ -1,9 +1,10 @@
-export default () => {
+export const loginPage =  () => {
     const container = document.createElement('div');
  
     const template = `
     <h1 class="logo"></h1>
   <h2 class="bv">Bem Vindx!</h2>
+  <h3 id="teste40"><h3>
     <div class="menu">
       <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
       <input class="input margin" type="password" id="password" placeholder="Password"> 
