@@ -1,6 +1,7 @@
-import {authLogin1} from './data.js'
 
-export const login1 = () => {
+ import {authLogin1} from './data.js'
+
+export const login1Auth = () => {
     const container = document.createElement('div');
  
     const template = `
@@ -16,13 +17,14 @@ export const login1 = () => {
   ;
  
     container.innerHTML= template;
-    return container;
+    const btnCadastro = container.querySelector('#login1'); 
 
-const registerButton = container.querySelector('#login1')
-registerButton.addEventListener('click', () => {
-  const registeredEmail = container.querySelector('#e-mail').value
-  const registeredPassword = container.querySelector('#password').value
-  const authentication = (authLogin1(registeredEmail,registeredPassword))
-  authLogin1(authentication)
-}) 
- }
+    btnCadastro.addEventListener('click', () => {
+    const email = container.querySelector('#e-mail').value; 
+    const password = container.querySelector('#password').value; 
+    const login1Auth = (authLogin1(email,password)); 
+    authLogin1(login1Auth); 
+    });  
+
+  return container;
+}

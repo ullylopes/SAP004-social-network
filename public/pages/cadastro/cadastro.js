@@ -1,8 +1,8 @@
 /*VAMO ARRUMAR ESSA BAGAÇA*/
-import {firebaseRegistration} from './data.js'
-/* import {loginPage} from './login/login.js' */
-export const authRegistration=  () => {
-    const container = document.createElement('div');
+import { firebaseRegistration } from "./data.js";
+
+export const authRegistration = () => {
+    const container = document.createElement("div");
  
     const template = `
     <a href="/#login">voltar<a/>

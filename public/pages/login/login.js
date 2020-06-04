@@ -1,7 +1,9 @@
-export const loginPage =  () => {
-    const container = document.createElement('div');
- 
-    const template = `
+import { firebaseLogin } from "./data.js"
+
+export const authLogin = () => {
+  const container = document.createElement("div");
+
+  const template = `
     <h1 class="logo"></h1>
   <h2 class="bv">Bem Vindx!</h2>
   <h3 id="teste40"><h3>
@@ -16,10 +18,18 @@ export const loginPage =  () => {
     <p> Você ainda não é cadastrado? </br>
     Cadastre-se <a href="/#cadastro">aqui!</a>
     </p>
-  </div>
-  `
-  ;
- 
-    container.innerHTML= template;
-    return container;
- }
+  </div>`;
+
+  container.innerHTML = template;
+
+  const loginButton = container.querySelector("#login");
+
+  loginButton.addEventListener("click", () => {
+    const registeredEmail = container.querySelector("#e-mail").value;
+    const registeredPassword = container.querySelector("#password").value;
+    const authentication = firebaseLogin(registeredEmail, registeredPassword);
+    firebaseLogin(authentication);
+  });
+
+  return container;
+};
