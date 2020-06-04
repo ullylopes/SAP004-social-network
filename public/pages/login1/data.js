@@ -1,7 +1,5 @@
-
-
-  export const cadastrando = (emailCad,passwordCad) => {
-    firebase.auth().createUserWithEmailAndPassword(emailCad, passwordCad)
+export const authLogin1 = (email,password) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => console.log("deu certo"))
         .catch(function (error) {
             // Handle Errors here.
