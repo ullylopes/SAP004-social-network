@@ -27,8 +27,8 @@ body {
     padding: 1% 4%;
     margin: 3%;
     text-align: center;
-  
 }
+
 .bemvindo{
     color: #e6ba36;
     text-align: center;
@@ -71,8 +71,8 @@ a:hover , a:active {
     padding: 4%
 }
 .image{
-    height: 10%;
-    width: 10%;  
+    height: 9%;
+    width: 9%;  
 }
 
 footer {
@@ -90,8 +90,8 @@ footer {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
 
-.menu {
-    
+/* .menu {
+     */
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -124,7 +124,7 @@ footer {
 } */
 
 /*  Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
+/* @media (min-width: 992px) and (max-width: 1199.98px) { */
 
 
-}
+}}
