@@ -12,7 +12,7 @@ export const authRegistration = () => {
       <input class="input margin" type="email" id="email-cad" placeholder="Email"> 
       <input class="input margin" type="password" id="password-cad" placeholder="Password">
       <input class="input margin" type="password" id="password-cad-confirm" placeholder=" Confime o password"> 
-      <button class="login margin" id="cadastro">Cadastro</button>
+      <a class="login margin" id="cadastro" href='login1'>Cadastro</a>
     </div>`;
 
     container.innerHTML= template;

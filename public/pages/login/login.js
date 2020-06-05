@@ -1,16 +1,17 @@
-import { firebaseLogin } from "./data.js"
+import { firebaseLogin } from "./data.js";
 
 export const authLogin = () => {
   const container = document.createElement("div");
 
   const template = `
+    <header>
     <h1 class="logo"></h1>
-  <h2 class="bv">Bem Vindx!</h2>
-  <h3 id="teste40"><h3>
+    <h2 class="bv">Bem Vindx!</h2>
+    </header>
     <div class="menu">
       <input class="input margin" type="email" id="e-mail" placeholder="Email"> 
-      <input class="input margin" type="password" id="password" placeholder="Password"> 
-    <a class="login margin" id="login"href="/#home">Login<a/>  
+      <input class="input margin" type="password" id="password" placeholder="Senha"> 
+    <a class="login margin" id="login"href="/#home">Entrar<a/>  
     </div>
   <div class="color cad">
     <h3>Ou conecte-se com</h3>
@@ -18,7 +19,10 @@ export const authLogin = () => {
     <p> Você ainda não é cadastrado? </br>
     Cadastre-se <a href="/#cadastro">aqui!</a>
     </p>
-  </div>`;
+  </div>
+  <footer>
+  <p>©Stay Home Bar</p>  
+  </footer>;`
 
   container.innerHTML = template;
 
