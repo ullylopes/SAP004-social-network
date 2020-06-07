@@ -3,7 +3,7 @@ import { authLogin1 } from './data.js';
 export const login1Auth = () => {
   const container = document.createElement('div');
 
-  const template =`
+  const template = `
     <h1 class='logo'></h1>
     <div class='menu'>
     <h1 class='bv'>Você se cadastrou com sucesso.</br>
@@ -31,16 +31,16 @@ export const login1Auth = () => {
     authLogin1(logAuth);
   });
 
-  let btn = container.querySelector('#olho');
+  const btn = container.querySelector('#olho');
 
-  btn.addEventListener('click', function() {
-      let input = container.querySelector('#password');
+  btn.addEventListener('click', function () {
+    const input = container.querySelector('#password');
 
-      if(input.getAttribute('type') == 'password') {
-          input.setAttribute('type', 'text');
-      } else {
-          input.setAttribute('type', 'password');
-      }
+    if (input.getAttribute('type') === 'password') {
+      input.setAttribute('type', 'text');
+    } else {
+      input.setAttribute('type', 'password');
+    }
   });
 
 

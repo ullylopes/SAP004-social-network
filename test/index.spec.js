@@ -7,3 +7,12 @@ describe('Greeting', () => {
     expect(greeting('Maria')).toEqual(message);
   });
 });
+
+/* import { firebaseLogin } from '../public/pages/login/data.js';
+describe ('FirebaseLogin',() =>{
+  it ('should have the correct structure',() =>{
+    element.innerHTML = firebaseLogin({ title: 'Text', id: 1 });
+
+    expect(element).toMatchSnapshot();
+  });
+}); */

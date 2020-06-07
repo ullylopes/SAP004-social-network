@@ -1,80 +1,95 @@
-* {padding: 0;margin: 0;border: none;font-size:100%;outline:none;font-weight:300 ;box-sizing: border-box;
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 100%;
+    outline: none;
+    font-weight: 300;
+    box-sizing: border-box;
 }
 
 body {
-    background:url(imagens/mad.png)center/ 100% no-repeat;
+    background: url(imagens/mad.png)center/ 100% no-repeat;
     text-align: center;
     background-attachment: fixed;
-    background-size:cover;  
-    display:block;
+    background-size: cover;
+    display: block;
 }
 
 .logo {
-    background: url(imagens/logo2.png)center/70% no-repeat; 
+    background: url(imagens/logo2.png)center/70% no-repeat;
     padding: 32%;
     text-align: center;
 }
 
 .align {
-    text-align: center; 
+    text-align: center;
 }
 
 .name {
     width: 100%;
     padding: 3% 4%;
 }
+
 .menu .margin {
     padding: 1% 4%;
     margin: 3%;
     text-align: center;
 }
 
-.bemvindo{
+.bemvindo {
     color: #e6ba36;
     text-align: center;
     font-size: 143%;
 }
-.text{
+
+.text {
     color: #8C5818;
     text-align: center;
 }
-.bv{
-    color:white;
+
+.bv {
+    color: white;
     font-size: large;
     text-align: center;
     margin-top: 6%;
 }
-.input, .login{
+
+.input, .login {
     border-radius: 10px;
-    border:2px solid #ffdc53;
+    border: 2px solid #ffdc53;
     /* border-color:#ffdc53 ; */
 }
-.login{
+
+.login {
     background-color: #8C5818;
     background-image: linear-gradient(3deg, #ffdc53, transparent);
     width: 100px;
     color: white;
 }
-a:link, a:visited {
-    text-decoration:none;
-    color: white;
-	}
-a:hover , a:active {  
-	color:#000; 
-	background:#ffdc53; 
-    }
 
-.color{
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    color: #000;
+    background: #ffdc53;
+}
+
+.color {
     /* background-color:#e4b907; */
     text-align: center;
     margin: 6%;
     color: white;
-    font-family:Helvetica;
-   /*  font-size: large; */
+    font-family: Helvetica;
+    /*  font-size: large; */
 }
-.image{
+
+.image {
     height: 9%;
-    width: 9%;  
+    width: 9%;
 }
 
 /* @media (max-width: 600px) /* and (max-width: 900px) {
