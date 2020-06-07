@@ -43,6 +43,65 @@ body {
   font-size: larger;
 }
 
+.menu .margin {
+    padding: 1% 4%;
+    margin: 3%;
+    text-align: center;
+}
+
+.bemvindo {
+    color: #e6ba36;
+    text-align: center;
+    font-size: 143%;
+}
+
+.text {
+    color: #8C5818;
+    text-align: center;
+}
+
+.bv {
+    color: white;
+    font-size: large;
+    text-align: center;
+    margin-top: 6%;
+}
+
+.input, .login {
+    border-radius: 10px;
+    border: 2px solid #ffdc53;
+    /* border-color:#ffdc53 ; */
+}
+
+.login {
+    background-color: #8C5818;
+    background-image: linear-gradient(3deg, #ffdc53, transparent);
+    width: 100px;
+    color: white;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, a:active {
+    color: #000;
+    background: #ffdc53;
+}
+
+.color {
+    /* background-color:#e4b907; */
+    text-align: center;
+    margin: 6%;
+    color: white;
+    font-family: Helvetica;
+    /*  font-size: large; */
+}
+
+.image {
+    height: 9%;
+    width: 9%;
 /* .name {
   width: 100%;
   padding: 3% 4%;
