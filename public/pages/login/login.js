@@ -1,67 +1,69 @@
-import { firebaseLogin } from "./data.js";
+import { firebaseLogin } from './data.js';
 
 export const authLogin = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const template = `
     <header>
     <h1 class='logo'></h1>
-    <h2 class='bv'>Bem Vindx!</h2>
     </header>
-    <div class='menu'>
-      <input class='input margin' type='email' id='e-mail' placeholder='Email'> 
-      <input class='input margin' type='password' id='password' placeholder='Senha'> 
-    <a class='login margin' id='login' href='/#home'>Entrar<a/>  
-    </div>
-  <div class='color cad'>
+    <p class='welcome font'>Bem Vindx!</p>
+    <form>
+      <ul>
+      <li>
+      <input type='email' class='input margin font' id='e-mail' placeholder='Email'> 
+      </li>
+      <li>
+      <input type='password' class='input margin font' id='password' placeholder='Senha'> 
+      </li>
+      <li> 
+      <br><a class='login margin font' id='login' href='/#home'>Entrar<a/> </br>
+      </li>
+      </ul>
+      </form>
+    <footer class='font'>
     <h3>Ou conecte-se com</h3>
-
-  <img class='image' id='google' src='imagens/go.png'>
-    <p> Você ainda não é cadastrado? </br>
+    <br><img class='image' id='google' src='imagens/go.png'></br>
+    <br><p> Você ainda não é cadastrado? </br>
     Cadastre-se <a href='/#cadastro'>aqui!</a>
     </p>
-  </div>
-  <footer>
-  <p>©Stay Home Bar</p>  
-  </footer>;`;
+   </footer>;`;
 
   container.innerHTML = template;
 
-  const loginButton = container.querySelector("#login");
+  const loginButton = container.querySelector('#login');
 
-  loginButton.addEventListener("click", () => {
-    const registeredEmail = container.querySelector("#e-mail").value;
-    const registeredPassword = container.querySelector("#password").value;
+  loginButton.addEventListener('click', () => {
+    const registeredEmail = container.querySelector('#e-mail').value;
+    const registeredPassword = container.querySelector('#password').value;
     const authentication = firebaseLogin(registeredEmail, registeredPassword);
     firebaseLogin(authentication);
   });
-  /* 
-    return container; */
-  /*  }; */
 
-  const btnGoogle = container.querySelector("#google");
-  btnGoogle.addEventListener("click", () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
+  /* return container; }; */
+
+  const btnGoogle = container.querySelector('#google');
+  btnGoogle.addEventListener('click', () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
     firebase
       .auth()
       .signInWithRedirect(provider)
       .then(function (result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
+        //  This gives you a Google Access Token. You can use it to access the Google API.
+        const token = result.credential.accessToken;
         // The signed-in user info.
-        var user = result.user;
+        const user = result.user;
         // ...
       })
       .catch(function (error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        const errorCode = error.code;
+        const errorMessage = error.message;
         // The email of the user's account used.
-        var email = error.email;
+        const email = error.email;
         // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
+        const credential = error.credential;
       });
   });
   /* const btnFace = container.querySelector('#facebook');

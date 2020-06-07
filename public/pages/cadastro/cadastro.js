@@ -4,15 +4,26 @@ export const authRegistration = () => {
   const container = document.createElement('div');
 
   const template = `
-    <a href='/#login'>voltar<a/>
-    <h2 class='bv'>Cadastre-se!</h2>
-    <div class='menu'>
-      <input class='input margin' type='' id='nome-usuario' placeholder='Nome de usuário'> 
-      <input class='input margin' type='email' id='email-cad' placeholder='Email'> 
-      <input class='input margin' type='password' id='password-cad' placeholder='Password'>
-      <input class='input margin' type='password' id='password-cad-confirm' placeholder=' Confime o password'> 
-      <a class='login margin' id='cadastro' href='#/login1'>Cadastro</a>
-    </div>`;
+    <nav><a href='/#login'>voltar<a/></nav>
+    <h2 class='welcome font'>Cadastre-se!</h2>
+    <form>
+    <ul>
+    <li>
+      <input class='input margin font' type='' id='nome-usuario' placeholder='Nome do usuário'> 
+    </li>
+    <li>  
+      <input class='input margin font' type='email' id='email-cad' placeholder='Email'> 
+    </li>
+    <li>  
+      <input class='input margin font' type='password' id='password-cad' placeholder='Senha'>
+    </li>
+    <li>
+      <input class='input margin font' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
+    </li>
+    <li>  
+     <br><a class='login margin font' id='cadastro' href='#/login1'>Cadastrar</a></br>
+    </li>
+     </form>`;
 
   container.innerHTML = template;
 
