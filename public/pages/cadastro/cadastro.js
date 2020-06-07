@@ -1,9 +1,8 @@
 import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
-  const container = document.createElement('div');
-
-  const template = `
+    const container = document.createElement('div');
+    const template = `
     <nav><a href='/#login'>voltar<a/></nav>
     <h2 class='welcome font'>Cadastre-se!</h2>
     <form>
@@ -21,34 +20,37 @@ export const authRegistration = () => {
       <input class='input margin font' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
     </li>
     <li>  
-     <br><a class='login margin font' id='cadastro' href='#/login1'>Cadastrar</a></br>
+     <br><a class='login margin font' id='cadastro' href='#/login'>Cadastrar</a></br>
     </li>
-     </form>`;
-
-  container.innerHTML = template;
-
-  const registerButton = container.querySelector('#cadastro')
-  registerButton.addEventListener('click', (event) => {
-    event.preventDefault()
-    const registeredPassword = container.querySelector('#password-cad').value
-    const confirmPassword = container.querySelector('#password-cad-confirm').value
-    if (registeredPassword === confirmPassword) {
-      console.log('menina ta igualzinha a senha')
-      const registeredEmail = container.querySelector('#email-cad').value
-      const authentication = (firebaseRegistration(registeredEmail, registeredPassword))
-      firebaseRegistration(authentication)
-      /*             const template2 =  `  <a id='aia' href ='#login1'></a>
-                                      </div>` */
-      container.innerHTML = template2
-    } else {
-      /*             const template2 =  `  <a id='aia' href ='#login1'></a>
-                                      </div>`
-                  container.innerHTML = template2 */
-      console.log('menina a senha ta diferente')
-
-    }
-
-  })
-  return container;
-
+     </form>
+     <div id='teste13'>
+      </div>`;
+    const template2 =  ` 
+      <div class ='teste1' >
+        <p id='escrita'>Você se cadastrou com sucesso!!</p>
+        <div  id='irParaLogin'>
+          <a href ='/#home'>Entre!</a>
+        </div>
+      </div>
+      </div>`;
+    container.innerHTML= template;
+        const registerButton = container.querySelector('#cadastro')
+        registerButton.addEventListener('click', (event) => {
+          event.preventDefault()
+          const registeredEmail = container.querySelector('#email-cad').value
+          const registeredPassword = container.querySelector('#password-cad').value
+          const confirmPassword = container.querySelector('#password-cad-confirm').value
+            if (registeredPassword === confirmPassword  && registeredPassword != ''){
+              const authentication = (firebaseRegistration(registeredEmail,registeredPassword))
+              container.innerHTML = template2
+              firebaseRegistration(authentication)
+            }else{     
+              container.querySelector('#teste13').innerHTML=     `
+                <div id=''>
+                  <p id = 'teste10'> Ops! Algo deu errado. <br> tente novamente</p>
+                </div>`;
+        }
+          })
+      
+      return container;
 }

@@ -112,7 +112,25 @@ footer {
   margin-top: 3%;
   padding: 5%;
 }
-
+.teste1 {
+    background: url(imagens/logo4.png)center/110% no-repeat;
+    padding: 40%;
+    text-align: center;
+    height: 59px;
+    width: 100px;
+    margin-left: 44px;
+    margin-top: 20px;
+}
+#teste10{
+    text-decoration: none;
+    color: #271b1b;
+    width: 100px;
+    background-color: #c19b2c;
+    height: 170px;
+    margin-top: 11px;
+    margin-left: 130px;
+    border-radius: 14px;
+}
 /* Small devices (landscape phones, 511px and up) */
 /* @media (min-width: 511px) and (max-width: 767.98px) {
 
@@ -158,6 +176,44 @@ footer {
     background-color:rgba(0, 0, 0, 0);
     
 } */
+.teste1 {
+    background: url(imagens/logo4.png)center/110% no-repeat;
+    padding: 40%;
+    text-align: center;
+    height: 59px;
+    width: 100px;
+    margin-left: 44px;
+    margin-top: 20px;
+
+}
+#escrita{
+    color: black;
+    font-size: larger;
+    margin-left: -78px;
+    margin-top: -48px;
+    width: 156px;
+    padding: 20px;
+}
+#irParaLogin{
+    text-decoration: none;
+    color: #271b1b;
+    width: 88px;
+    background-color: #c19b2c;
+    height: 17px;
+    margin-top: 11px;
+    margin-left: -28px;
+    border-radius: 14px;
+}
+#teste10{
+    text-decoration: none;
+    color: #271b1b;
+    width: 100px;
+    background-color: #c19b2c;
+    height: 170px;
+    margin-top: 11px;
+    margin-left: 130px;
+    border-radius: 14px;
+}
 
   /* Extra large devices (large desktops, 1200px and up) */
   @media (min-width: 1024px) {
@@ -181,4 +237,3 @@ footer {
       padding-top: 0px; */
     }
   }
-} 
