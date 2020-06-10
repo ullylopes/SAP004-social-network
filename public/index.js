@@ -1,20 +1,22 @@
-import routes from './routes.js'
+import routes from './routes.js';
+
 const main = document.querySelector('#root');
 
-    const init =() => {
-        window.addEventListener('hashchange', () => {
-        renderPage();    
-        })
-        }
-        const renderPage =() => {
-            main.innerHTML= ' ';
-            const page = validateHash(window.location.hash);
-            main.appendChild(routes[page]);
-        }
-        const validateHash = (hash) => hash === "" ? "login" :hash.replace("#","");
+const validateHash = hash => (hash === '' ? 'login' : hash.replace('#', ''));
 
-        window.addEventListener('load', () => {
-            renderPage();
-            init();
-        })
- 
+const renderPage = () => {
+  main.innerHTML = ' ';
+  const page = validateHash(window.location.hash);
+  main.appendChild(routes[page]);
+};
+
+const init = () => {
+  window.addEventListener('hashchange', () => {
+    renderPage();
+  });
+};
+
+window.addEventListener('load', () => {
+  renderPage();
+  init();
+});

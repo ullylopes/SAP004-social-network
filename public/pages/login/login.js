@@ -4,6 +4,7 @@ export const authLogin = () => {
   const container = document.createElement('div');
 
   const template = `
+  <div >
     <header>
     <h1 class='logo'></h1>
     </header>
@@ -27,7 +28,9 @@ export const authLogin = () => {
     <br><p> Você ainda não é cadastrado? </br>
     Cadastre-se <a href='/#cadastro'>aqui!</a>
     </p>
-   </footer>;`;
+   </footer>
+   </div>
+  `;
 
   container.innerHTML = template;
 
@@ -40,38 +43,24 @@ export const authLogin = () => {
     firebaseLogin(authentication);
   });
 
-  /* return container; }; */
 
   const btnGoogle = container.querySelector('#google');
   btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase
       .auth()
       .signInWithRedirect(provider)
-      .then(function (result) {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-        const token = result.credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // ...
+      .then((/* result */) => {
+        //  const token = result.credential.accessToken;
+        //  const user = result.user;
       })
-      .catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
+      .catch((/* error */) => {
+        //  const errorCode = error.code;
+        //  const errorMessage = error.message;
+        //  const email = error.email;
+        //  const credential = error.credential;
       });
   });
-  /* const btnFace = container.querySelector('#facebook');
-        btnFace.addEventListener('click',()=>{
-        implementation ='com.google.firebase:firebase-auth:19.1.0'
-        https://social-network-lab1.firebaseapp.com/__/auth/handler */
-
   return container;
 };
-
-//<img class='image' id='facebook'  src='imagens/fa.png'>
