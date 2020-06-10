@@ -23,7 +23,7 @@ body {
   font-family: "Archivo Narrow", sans-serif;
 }
 
-.page.login {
+/* .page-login {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -31,8 +31,8 @@ body {
   height: 80vh;
   width: 100%;
   max-height: 100vh;
-  text-align: center;
-}
+  text-align: center; 
+}*/
 
 .logo {
   display: flex;
@@ -142,7 +142,7 @@ a:active {
   width: 95%;
 }
 
-.text-area {;
+.text-area {
   width: 89%;
   border-radius: 3%;
   /* margin: 5px 10px; */
@@ -161,8 +161,9 @@ a:active {
   border-radius: 8%;
 } */
 
-@media only screen and (min-width: 576px) {
-  .page.login {
+@media only screen and (min-height: 768px) {
+  
+  .page-login {
     display: flex;
     box-sizing: border-box;
   }
