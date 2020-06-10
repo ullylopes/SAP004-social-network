@@ -5,10 +5,14 @@ export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `
-    <form>
-      <input id='name' type='text'>
-      <button id='greeting-btn'>Dizer Oi</button>
+    <div class ='post-area-container'>
+    <form class='post-area'>
+      <input class='text-area' id='name' type='text'>
+      <div class='post-bttn-area'><button class='input post-bttn' id='greeting-btn'>Postar</button></div>
+    </div>
     </form>
+    
+    
     <div id='greeting-message'></div>
   `;
 
