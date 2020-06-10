@@ -1,28 +1,32 @@
 import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
-  const container = document.createElement('div');
-  const template = `
-  <div>
-    <nav><a href='/#login'>voltar<a/></nav>
-    <h2 class='welcome font'>Cadastre-se!</h2>
+    const container = document.createElement('div');
+    const template = `
+    <h2 class='welcome'>Cadastre-se!</h2>
     <form>
     <ul>
     <li>
-      <input class='input margin font' type='' id='nome-usuario' placeholder='Nome do usuário'> 
+      <input class='input' type='' id='nome-usuario' placeholder='Nome do usuário'> 
     </li>
     <li>  
-      <input class='input margin font' type='email' id='email-cad' placeholder='Email'> 
+      <input class='input ' type='email' id='email-cad' placeholder='Email'> 
     </li>
     <li>  
-      <input class='input margin font' type='password' id='password-cad' placeholder='Senha'>
+      <input class='input' type='password' id='password-cad' placeholder='Senha'>
     </li>
     <li>
-      <input class='input margin font' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
+      <input class='input' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
     </li>
+    <div class='register-page-bttns' >
     <li>  
-     <br><a class='login margin font' id='cadastro' href='#/login'>Cadastrar</a></br>
+     <br><a class='login input register-bttn' id='cadastro' href='#/login'>Cadastrar</a></br>
     </li>
+    <li>
+   <a class='input return-bttn' href='/#login'>Voltar<a/>
+    </li>
+    </div>
+    </ul>
      </form>
      <div id='teste13'>
       </div>`;
@@ -50,7 +54,7 @@ export const authRegistration = () => {
     } else {
       container.querySelector('#teste13').innerHTML = `
                 <div id=''>
-                  <p id = 'teste10'> Ops! Algo deu errado. <br> tente novamente</p>
+                  <p id ='teste10' class='register-error'> Ops! Algo deu errado. <br> Tente novamente.</p>
                 </div>`;
     }
   });

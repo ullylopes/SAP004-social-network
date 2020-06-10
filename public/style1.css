@@ -1,6 +1,8 @@
 /*.body-home{
 	background:rgba(192, 97, 8, 0.438);
 	background-size: cover;
+	height: 100vh;
+	width: 100vw;
 }*/
 .flex{
 	justify-content: space-between;

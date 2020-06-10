@@ -6,7 +6,7 @@ export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `
-  <div class='body-home container'>
+ <div class ='body '>
   <header class='flex'>
   <div class='menu'>
   <input type ='checkbox' id ='check'>
@@ -27,12 +27,16 @@ export const home = () => {
 <div id='nome1'> 
 <p class='text-home'>Nome que está no banco de dados</p>
 </div>
-<div>
+<div class ='post-area-container'>
+<form class='post-area'>
 <input id='comentario' type='text'> </input>
-<button id='btn-comentar'>Publicar</button>
+<div class='post-bttn-area'id='btn-comentar'><button class='input post-bttn' id='greeting-btn'>Postar</button></div>
+</form>
 </div>
 <h1 id='comentarios'></h1>
     </div>
+    
+  
   `;
   const post = container.querySelector('#comentario');
   const btnPost = container.querySelector('#btn-comentar');
