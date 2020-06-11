@@ -4,11 +4,7 @@
 	height: 100vh;
 	width: 100vw;
 }*/
-.flex{
-	justify-content: space-between;
-	flex-direction: column;
-	padding: 1cm;
-}
+
 nav{
 	justify-content: space-between;
 	align-items: center;
@@ -24,25 +20,26 @@ nav{
 }*/
 
 .menu{
-	width:88px;
-	height: 88px;
-	margin: 100px auto;
-	position: relative;
+	justify-content: flex-start;
 	
 }
+
 #check{
-	position: absolute;
+	/*position: absolute;*/
 	z-index: 1;
 	display:none;
 }
 
 #icone{
 	cursor:pointer;
-	padding:15px;
-	position: absolute;
-	z-index: 1;
-	margin-left: -160px;
-	margin-top: -100px;
+	/*padding:15px;
+	position: absolute;*/
+/*	z-index: 1;*/
+/*	margin-left: -160px;
+	margin-top: -100px;*/
+    justify-content: flex-start;
+	
+
 }
 
 .barra{
@@ -50,7 +47,9 @@ nav{
 	position: absolute;
 	transition: .2s linear;
 	margin-left: -350px;
-    margin-top: -90px;
+
+	justify-content: flex-start;
+    display: flex;
 }
 
 nav a{

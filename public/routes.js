@@ -5,7 +5,7 @@ import { mesas } from './pages/mesas/mesas.js';
 import { pub } from './pages/bares/bares.js';
 
 export default {
-  home: home(), 
+  home: home(),
   cadastro: authRegistration(),
   login: authLogin(),
   mesas: mesas(),
