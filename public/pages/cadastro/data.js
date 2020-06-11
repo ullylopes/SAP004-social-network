@@ -4,3 +4,4 @@ export const firebaseRegistration = (registeredEmail, registeredPassword, certo,
     .then(() => certo())
     .catch(() => errado());
 };
+//AAAAA MANO Q ISSO 
