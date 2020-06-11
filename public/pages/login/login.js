@@ -1,7 +1,7 @@
-import { firebaseLogin } from "./data.js";
+import { firebaseLogin } from './data.js';
 
 export const authLogin = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const template = `
     <section class='page-login body'>
@@ -30,25 +30,25 @@ export const authLogin = () => {
 
   container.innerHTML = template;
 
-  const loginButton = container.querySelector("#login");
+  const loginButton = container.querySelector('#login');
 
-  loginButton.addEventListener("click", () => {
-    const registeredEmail = container.querySelector("#e-mail").value;
-    const registeredPassword = container.querySelector("#password").value;
+  loginButton.addEventListener('click', () => {
+    const registeredEmail = container.querySelector('#e-mail').value;
+    const registeredPassword = container.querySelector('#password').value;
     const authentication = firebaseLogin(registeredEmail, registeredPassword);
     firebaseLogin(authentication);
   });
 
 
-  const btnGoogle = container.querySelector("#google");
-  btnGoogle.addEventListener("click", () => {
+  const btnGoogle = container.querySelector('#google');
+  btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase
       .auth()
       .signInWithRedirect(provider)
-      .then(function (result) {
-        /* This gives you a Google Access Token. You can use it to access the Google API.*/
+      .then((result) => {
+        /* This gives you a Google Access Token. You can use it to access the Google API. */
         const token = result.credential.accessToken;
         // The signed-in user info.
         const user = result.user;
@@ -63,7 +63,3 @@ export const authLogin = () => {
   });
   return container;
 };
-
-{
-  /* <img class='image' id='facebook'  src='imagens/fa.png'></img> */
-}

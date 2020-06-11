@@ -6,9 +6,7 @@ export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `
- <div class ='body '>
-  <header class='flex'>
-  <div class='menu'>
+  <header class='menu'>
   <input type ='checkbox' id ='check'>
   <label for ='check' id='icone'><img src = './imagens/icone.png'></label>
   <span></span>
@@ -21,22 +19,26 @@ export const home = () => {
     <a href='/#login'><div class='link'>Sair</div></a>
     </nav>
     </div>
+  
+    </header>
     <h1>Stay Home Bar</h1>
-  </header>
- 
 <div id='nome1'> 
 <p class='text-home'>Nome que está no banco de dados</p>
 </div>
 <div class ='post-area-container'>
 <form class='post-area'>
-<input id='comentario' type='text'> </input>
-<div class='post-bttn-area'id='btn-comentar'><button class='input post-bttn' id='greeting-btn'>Postar</button></div>
+<textarea id='comentario' type='text'> </textarea>
+<div class='post-bttn-area'id='btn-comentar'>
+<button class='input post-bttn' id='greeting-btn'>Postar</button>
+</div>
 </form>
 </div>
-<h1 id='comentarios'></h1>
-    </div>
-    
-  
+<div class ='post-area-container'>
+<form class='post-area'>
+<textarea type="text" id='comentarios'></textarea>
+</form>
+</div>
+
   `;
   const post = container.querySelector('#comentario');
   const btnPost = container.querySelector('#btn-comentar');
@@ -50,38 +52,3 @@ export const home = () => {
 
   return container;
 };
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /*const name = container.querySelector('#name');
-  const greetingBtn = container.querySelector('#greeting-btn');
-  const greetingMessage = container.querySelector('#greeting-message');
-
-  greetingBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    greetingMessage.innerHTML = greeting(name.value);
-  });*/
-
-/*  <div id='comentarios'></div>
-      <input id='name' type='text'>
-      <button id='greeting-btn'>Dizer Oi</button>
-      <div id='greeting-message'></div>*/
-
-/*  const nome = authRegistration().querySelector('#nome-usuario');
-  console.log(nome);
-  const nome11 = container.querySelector('#nome1');
-  nome11.innerHTML = identificacao(nome.value);
-  console.log(nome.value);*/
-
-
-  
-
-

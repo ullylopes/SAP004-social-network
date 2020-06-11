@@ -1,8 +1,8 @@
 import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
-    const container = document.createElement('div');
-    const template = `
+  const container = document.createElement('div');
+  const template = `
     <h2 class='welcome'>Cadastre-se!</h2>
     <form>
     <ul>
@@ -46,7 +46,7 @@ export const authRegistration = () => {
     event.preventDefault();
     const registeredEmail = container.querySelector('#email-cad').value;
     const registeredPassword = container.querySelector('#password-cad').value;
-    const confirmPassword = container.querySelector('#password-cad-confirm').value
+    const confirmPassword = container.querySelector('#password-cad-confirm').value;
     if (registeredPassword === confirmPassword && registeredPassword != '') {
       const authentication = (firebaseRegistration(registeredEmail, registeredPassword));
       container.innerHTML = template2;
