@@ -1,6 +1,6 @@
-export const firebaseRegistration = (registeredEmail, registeredPassword) => {
+
+export const firebaseRegistration = (registeredEmail, registeredPassword, certo, errado) => {
   firebase.auth().createUserWithEmailAndPassword(registeredEmail, registeredPassword)
-    .then(() => {})
-    .catch(() => {
-    });
+    .then(() => certo())
+    .catch(() => errado());
 };
