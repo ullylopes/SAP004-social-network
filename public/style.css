@@ -121,16 +121,17 @@ footer {
     margin-left: 44px;
     margin-top: 20px;
 }
-#teste10{
+#teste10 {
     text-decoration: none;
     color: #271b1b;
-    width: 100px;
+    width: 245px;
     background-color: #c19b2c;
-    height: 170px;
-    margin-top: 11px;
-    margin-left: 130px;
+    height: 86px;
+    margin-top: 45px;
+    margin-left: 62px;
     border-radius: 14px;
 }
+
 /* Small devices (landscape phones, 511px and up) */
 /* @media (min-width: 511px) and (max-width: 767.98px) {
 
@@ -204,14 +205,14 @@ footer {
     margin-left: -28px;
     border-radius: 14px;
 }
-#teste10{
+#teste10 {
     text-decoration: none;
     color: #271b1b;
-    width: 100px;
+    width: 173px;
     background-color: #c19b2c;
-    height: 170px;
-    margin-top: 11px;
-    margin-left: 130px;
+    height: 70px;
+    margin-top: 45px;
+    margin-left: 97px;
     border-radius: 14px;
 }
 
