@@ -9,11 +9,16 @@
   box-sizing: border-box;
  } */
 
-body {
+/*.body {
   background: url(imagens/mad.png) center/ 100% no-repeat;
-  text-align: center;
   background-attachment: fixed;
   background-size: cover;
+  height: 100vh;
+  width: 100vw;
+
+}*/
+body {
+  text-align: center;
   display: flex;
   position: fixed;
   width: 100%;
@@ -21,9 +26,12 @@ body {
   overflow: hidden;
   color: white;
   font-family: "Archivo Narrow", sans-serif;
+  background: url(imagens/mad.png) center/ 100% no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-/* .page-login {
+/*.page-login {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -31,22 +39,24 @@ body {
   height: 80vh;
   width: 100%;
   max-height: 100vh;
-  text-align: center; 
+  text-align: center;
 }*/
 
 .logo {
   display: flex;
   background: url(imagens/logo2.png) center/70% no-repeat;
   padding: 30%;
-  max-width: 70%;
+  /* max-width: 70%; */
   margin: 0 6px 23px;
+  padding-top: 40%;
 }
 
 .welcome {
   font-size: larger;
 }
 
-.content-login {
+.content-login,
+.register-container {
   padding: 1em;
   flex-grow: 1;
   display: flex;
@@ -81,6 +91,11 @@ input {
   padding: 2%;
 }
 
+main {
+  width: 100vw;
+  display: flex;
+}
+
 .return-bttn {
   display: flex;
   width: max-content;
@@ -88,7 +103,9 @@ input {
 }
 
 .register-page-bttns {
+display: flex;
 }
+
 
 a:link,
 a:visited {
@@ -107,7 +124,7 @@ a:active {
   width: 9%;
 }
 
-.teste1 {
+/* .teste1 {
   background: url(imagens/logo4.png) center/110% no-repeat;
   padding: 40%;
   text-align: center;
@@ -115,7 +132,9 @@ a:active {
   width: 100px;
   margin-left: 44px;
   margin-top: 20px;
-}
+} */
+
+
 .register-error {
   text-decoration: none;
   color: #271b1b;
@@ -162,7 +181,6 @@ a:active {
 } */
 
 @media only screen and (min-height: 768px) {
-  
   .page-login {
     display: flex;
     box-sizing: border-box;

@@ -4,7 +4,7 @@ export const authLogin = () => {
   const container = document.createElement("div");
 
   const template = `
-    <section class='page-login'>
+    <section class='page-login body'>
     <header><h1 class='logo'></h1></header>
     <form class='content-login'>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
@@ -39,12 +39,11 @@ export const authLogin = () => {
     firebaseLogin(authentication);
   });
 
-  /* return container; }; */
 
   const btnGoogle = container.querySelector("#google");
   btnGoogle.addEventListener("click", () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase
       .auth()
       .signInWithRedirect(provider)
@@ -55,21 +54,13 @@ export const authLogin = () => {
         const user = result.user;
         // ...
       })
-      .catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
+      .catch((/* error */) => {
+        //  const errorCode = error.code;
+        //  const errorMessage = error.message;
+        //  const email = error.email;
+        //  const credential = error.credential;
       });
   });
-  /* const btnFace = container.querySelector('#facebook');
-        btnFace.addEventListener('click',()=>{
-        implementation ='com.google.firebase:firebase-auth:19.1.0'
-        https://social-network-lab1.firebaseapp.com/__/auth/handler */
-
   return container;
 };
 
