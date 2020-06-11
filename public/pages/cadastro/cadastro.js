@@ -19,7 +19,7 @@ export const authRegistration = () => {
     <li>
       <input class='input' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
     </li>
-    <div class='register-page-bttns' >
+    // <div class='register-page-bttns' >
     <li>  
      <br><a class='login input register-bttn' id='cadastro' href='#/login'>Cadastrar</a></br>
     </li>
@@ -39,43 +39,25 @@ export const authRegistration = () => {
           <a href ='/#home'>Entre!</a>
         </div>
       </div>
-      </div>`;
-  const template3 = `
-      <div id='teste10'>
-      <p> Ops! </p>
-        <p id=''> Algo deu errado.<br><br> 
-         </p>
-      </div>`;
-  const template4 = `        
-      <div id='teste10'>
-      <p> Ops! </p>
-        <p id=''> Algo deu errado, <br>verifique se as senhas conferem.<br> 
-         </p>
-      </div>`;
-
+      </div>
+      </div>
+      `;
   container.innerHTML = template;
-
   const registerButton = container.querySelector('#cadastro');
-
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
-    const registerEmail = container.querySelector('#email-cad').value;
-    const registerPassword = container.querySelector('#password-cad').value;
+    const registeredEmail = container.querySelector('#email-cad').value;
+    const registeredPassword = container.querySelector('#password-cad').value;
     const confirmPassword = container.querySelector('#password-cad-confirm').value;
-    const userName = container.querySelector('#nome-usuario').value;
-
-    const sucess = () => {
+    if (registeredPassword === confirmPassword && registeredPassword !== '') {
+      const authentication = (firebaseRegistration(registeredEmail, registeredPassword));
       container.innerHTML = template2;
-    };
-    const fail = () => {
-      container.querySelector('#teste13').innerHTML = template3;
-    };
-
-    if (registerPassword === confirmPassword && confirmPassword !== '' && userName !== '') {
-      const authentication = (firebaseRegistration(registerEmail, registerPassword, sucess, fail));
       firebaseRegistration(authentication);
     } else {
-      container.querySelector('#teste13').innerHTML = template4;
+      container.querySelector('#teste13').innerHTML = `
+                <div id=''>
+                  <p id ='teste10' class='register-error'> Ops! Algo deu errado. <br> Tente novamente.</p>
+                </div>`;
     }
   });
   return container;
