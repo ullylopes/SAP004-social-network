@@ -80,4 +80,5 @@ likeBtn.addEventListener('click', (event) => {
 }); */
 
   return container;
-}
+};
+

@@ -100,6 +100,7 @@ main {
   display: flex;
   width: max-content;
   padding: 4%;
+
 }
 
 .register-page-bttns {
@@ -172,6 +173,11 @@ a:active {
   padding-top: 5px;
   font-size: 15px;
   resize: none;
+}
+main { 
+  display:flex; 
+  width:100vw;
+  
 }
 
 /* .post-bttn-area {
