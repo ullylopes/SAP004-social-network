@@ -16,7 +16,7 @@ export const home = () => {
     <a href='/#perfil'><div class='link'>Perfil</div></a>
     <a href='/#bares'><div class='link'>Bares</div></a>
     <a href='/#mesas'><div class='link'>Mesas</div></a>
-    <a href='/#login'><div class='link'>Sair</div></a>
+    <a id='sair'><div  class='link'>Sair</div></a>
     </nav>
     </div>
   
@@ -36,19 +36,49 @@ export const home = () => {
 <div class ='post-area-container'>
 <form class='post-area'>
 <textarea type="text" id='comentarios'></textarea>
+<button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
+<h1  id='like'></h1>
 </form>
 </div>
 
   `;
   const post = container.querySelector('#comentario');
   const btnPost = container.querySelector('#btn-comentar');
-  // const postMessage = container.querySelector('#comentarios');
+  const postMessage = container.querySelector('#comentarios');
+  const btnSair = container.querySelector('#sair');
+;
+  const postTemplate = (array) => {
+    postMessage.innerHTML = array.map(post => `${post.text}`).join('');
+  };
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-    // postMessage.innerHTML = mensagem(post.value);
+    postMessage.innerHTML = '';
+    readPosts(postTemplate);
   });
+btnSair.addEventListener('click', (event)=>{
+  event.preventDefault();
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    window.location.href = '/#login';
+    window.location.reload(true);
+    console.log('deu bom sair');
+  }).catch(function(error) {
+    // An error happened.
+    console.log('deu ruimmm');
+  });
+})
+
+/* const likeBtn = container.querySelector('#like-btn');
+const like = container.querySelector('#like');
+
+likeBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  createLike( );
+  like.innerHTML = 0 + 1;
+}); */
 
   return container;
 };
+

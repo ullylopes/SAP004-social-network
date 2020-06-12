@@ -54,7 +54,7 @@ export const authLogin = () => {
     firebaseLogin(authentication);
   });
 
-  
+
   const btnGoogle = container.querySelector('#google');
   btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
