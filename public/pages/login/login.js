@@ -1,7 +1,7 @@
-import { firebaseLogin } from "./data.js";
+import { firebaseLogin } from './data.js';
 
 export const authLogin = () => {
-  const container = document.createElement("div");
+  const container = document.createElement('div');
 
   const template = `
     <section class='page-login body'>
@@ -17,9 +17,11 @@ export const authLogin = () => {
       
       </li>
       <li> 
-      <a class='login-bttn' id='login' href='/#home'>Entrar<a/> 
+      <a class='login-bttn' id='login'>Entrar<a/> 
       </li>
-      </ul>    
+      </ul> 
+      <p class='login-error' id='login-error'>
+      </p>   
    <br><h3>Ou conecte-se com</h3></br>
     <img class='icons' id='google' src='imagens/go.png'>
     <p> Você ainda não é cadastrado?
@@ -30,25 +32,38 @@ export const authLogin = () => {
 
   container.innerHTML = template;
 
-  const loginButton = container.querySelector("#login");
+  const loginButton = container.querySelector('#login');
+  const registeredEmail = container.querySelector('#e-mail');
+  const registeredPassword = container.querySelector('#password');
 
-  loginButton.addEventListener("click", () => {
-    const registeredEmail = container.querySelector("#e-mail").value;
-    const registeredPassword = container.querySelector("#password").value;
-    const authentication = firebaseLogin(registeredEmail, registeredPassword);
+  const route = () => {
+    window.location.href='/#home';
+  };
+
+  const printError = (error) => {
+    document.getElementById('login-error').innerHTML = `${error}`;
+    // if (errorCode === 'auth/user-not-found') {
+    //   document.getElementById('login-error').innerHTML = 'Usuário não cadastrado.';
+    // } else if (errorCode === 'auth/wrong-password') {
+    //   document.getElementById('login-error').innerHTML = 'Senha incorreta';
+    // }
+  }
+
+  loginButton.addEventListener('click', () => {
+    const authentication = firebaseLogin(registeredEmail.value, registeredPassword.value, route, printError);
     firebaseLogin(authentication);
   });
 
-
-  const btnGoogle = container.querySelector("#google");
-  btnGoogle.addEventListener("click", () => {
+  
+  const btnGoogle = container.querySelector('#google');
+  btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase
       .auth()
       .signInWithRedirect(provider)
-      .then(function (result) {
-        /* This gives you a Google Access Token. You can use it to access the Google API.*/
+      .then((result) => {
+        /* This gives you a Google Access Token. You can use it to access the Google API. */
         const token = result.credential.accessToken;
         // The signed-in user info.
         const user = result.user;
@@ -63,7 +78,3 @@ export const authLogin = () => {
   });
   return container;
 };
-
-{
-  /* <img class='image' id='facebook'  src='imagens/fa.png'></img> */
-}

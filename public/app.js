@@ -20,7 +20,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.initializeApp({
   apiKey: '### FIREBASE API KEY ###',
   authDomain: '### FIREBASE AUTH DOMAIN ###',
-  projectId: '### CLOUD FIRESTORE PROJECT ID ###'
+  projectId: '### CLOUD FIRESTORE PROJECT ID ###',
 });
 
 const db = firebase.firestore();

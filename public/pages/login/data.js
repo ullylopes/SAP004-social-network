@@ -1,11 +1,15 @@
 
-export const firebaseLogin = (registeredEmail, registeredPassword) => {
-  firebase.auth().signInWithEmailAndPassword(registeredEmail, registeredPassword)
-    .then(() => { /* console.log('deu certo') */ })
-    .catch((/* error */) => {
-      // Handle Errors here.
-      // let errorCode = error.code;
-      // let errorMessage = error.message;
-      // console.log('deu ruim');
-    });
-};
+
+export const firebaseLogin = (registeredEmail, registeredPassword, route, printError) => {
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  .then(() => { 
+   firebase.auth().signInWithEmailAndPassword(registeredEmail, registeredPassword)
+   .then(() => {
+    route();
+    })
+  .catch((error) => {
+     const errorCode = error.code;
+    printError(errorCode);
+  });
+});
+}
