@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost } from './data.js';
+import { createPost, readPosts } from './data.js';
 // import { authRegistration } from '../cadastro/cadastro.js';
 
 export const home = () => {
