@@ -7,8 +7,8 @@
 export const createPost = (text) => {
   firebase.firestore().collection('post').add({
     text: text,
-    nome: 'Adélia',
-	})
+	nome: 'Adélia',
+  })
     .then(function(docRef) {
 		console.log("Document written with ID: ", docRef.id);
 	})

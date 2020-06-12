@@ -31,17 +31,18 @@ export const authLogin = () => {
   container.innerHTML = template;
 
   const loginButton = container.querySelector("#login");
-
-  loginButton.addEventListener("click", () => {
-    const registeredEmail = container.querySelector("#e-mail").value;
-    const registeredPassword = container.querySelector("#password").value;
-    const authentication = firebaseLogin(registeredEmail, registeredPassword);
+  const registeredEmail = container.querySelector("#e-mail");
+  const registeredPassword = container.querySelector("#password");
+  loginButton.addEventListener('click', () => {
+    const authentication = firebaseLogin(registeredEmail.value, registeredPassword.value);
+    container.querySelector('#e-mail').value = '';
+    container.querySelector('#password').value = '';
     firebaseLogin(authentication);
   });
 
 
-  const btnGoogle = container.querySelector("#google");
-  btnGoogle.addEventListener("click", () => {
+  const btnGoogle = container.querySelector('#google');
+  btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase
