@@ -43,22 +43,38 @@ export const authLogin = () => {
   const btnGoogle = container.querySelector('#google');
   btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase
-      .auth()
-      .signInWithRedirect(provider)
+    // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    firebase.auth().signInWithRedirect(provider)
       .then((result) => {
-        /* This gives you a Google Access Token. You can use it to access the Google API. */
         const token = result.credential.accessToken;
-        // The signed-in user info.
         const user = result.user;
-        // ...
       })
-      .catch((/* error */) => {
-        //  const errorCode = error.code;
-        //  const errorMessage = error.message;
-        //  const email = error.email;
-        //  const credential = error.credential;
+      .catch(( error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = error.credential;
+      });
+      // firebase.auth().signInWithRedirect(provider);
+      firebase.auth().getRedirectResult(provider)
+      .then(function(result) {
+        if (result.credential) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // ...
+        }
+        // The signed-in user info.
+        var user = result.user;
+        window.location.hash = 'home';
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
       });
   });
   return container;
