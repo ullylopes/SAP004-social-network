@@ -70,14 +70,6 @@ btnSair.addEventListener('click', (event)=>{
   });
 })
 
-/* const likeBtn = container.querySelector('#like-btn');
-const like = container.querySelector('#like');
-
-likeBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-  createLike( );
-  like.innerHTML = 0 + 1;
-}); */
 
   return container;
 };

@@ -37,7 +37,7 @@ export const authLogin = () => {
   const registeredPassword = container.querySelector('#password');
 
   const route = () => {
-    window.location.href='/#home';
+    window.location.href = '/#home';
   };
 
   const printError = (error) => {
@@ -45,9 +45,11 @@ export const authLogin = () => {
     // if (errorCode === 'auth/user-not-found') {
     //   document.getElementById('login-error').innerHTML = 'Usuário não cadastrado.';
     // } else if (errorCode === 'auth/wrong-password') {
-    //   document.getElementById('login-error').innerHTML = 'Senha incorreta';
+    //   document.getElementById('login-error').innerHTML = 'Senha incorreta.';
+    // } else if ( errorCode === 'auth/argument-error'){
+    //   document.getElementById('login-error').innerHTML = 'Preencha os campos para entrar.';
     // }
-  }
+  };
 
   loginButton.addEventListener('click', () => {
     const authentication = firebaseLogin(registeredEmail.value, registeredPassword.value, route, printError);
