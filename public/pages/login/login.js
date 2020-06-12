@@ -17,9 +17,11 @@ export const authLogin = () => {
       
       </li>
       <li> 
-      <a class='login-bttn' id='login' href='/#home'>Entrar<a/> 
+      <a class='login-bttn' id='login'>Entrar<a/> 
       </li>
-      </ul>    
+      </ul> 
+      <p class='login-error' id='login-error'>
+      </p>   
    <br><h3>Ou conecte-se com</h3></br>
     <img class='icons' id='google' src='imagens/go.png'>
     <p> Você ainda não é cadastrado?
@@ -31,11 +33,24 @@ export const authLogin = () => {
   container.innerHTML = template;
 
   const loginButton = container.querySelector('#login');
+  const registeredEmail = container.querySelector('#e-mail');
+  const registeredPassword = container.querySelector('#password');
+
+  const route = () => {
+    window.location.href='/#home';
+  };
+
+  const printError = (error) => {
+    document.getElementById('login-error').innerHTML = `${error}`;
+    // if (errorCode === 'auth/user-not-found') {
+    //   document.getElementById('login-error').innerHTML = 'Usuário não cadastrado.';
+    // } else if (errorCode === 'auth/wrong-password') {
+    //   document.getElementById('login-error').innerHTML = 'Senha incorreta';
+    // }
+  }
 
   loginButton.addEventListener('click', () => {
-    const registeredEmail = container.querySelector('#e-mail').value;
-    const registeredPassword = container.querySelector('#password').value;
-    const authentication = firebaseLogin(registeredEmail, registeredPassword);
+    const authentication = firebaseLogin(registeredEmail.value, registeredPassword.value, route, printError);
     firebaseLogin(authentication);
   });
 

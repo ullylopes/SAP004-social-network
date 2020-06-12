@@ -1,6 +1,10 @@
-
-export const firebaseRegistration = (registeredEmail, registeredPassword, certo, errado) => {
+export const firebaseRegistration = (registeredEmail, registeredPassword, route, printError) => {
   firebase.auth().createUserWithEmailAndPassword(registeredEmail, registeredPassword)
-    .then(() => certo())
-    .catch(() => errado());
+    .then(() => {
+      route();
+    })
+    .catch((error) => {
+      const errorCode = error.message;
+      printError(errorCode);
+    });
 };

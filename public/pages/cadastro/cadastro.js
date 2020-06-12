@@ -32,7 +32,7 @@ export const authRegistration = () => {
      <div id='teste13'>
       </div>
       </section>`;
-  const template2 = ` 
+  const templateSucess = ` 
       <div class ='teste1' >
         <p id='escrita'>Você se cadastrou com sucesso!!</p>
         <div  id='irParaLogin'>
@@ -40,42 +40,30 @@ export const authRegistration = () => {
         </div>
       </div>
       </div>`;
-  const template3 = `
+  const templateFail = `        
       <div id='teste10'>
       <p> Ops! </p>
-        <p id=''> Algo deu errado.<br><br> 
-         </p>
-      </div>`;
-  const template4 = `        
-      <div id='teste10'>
-      <p> Ops! </p>
-        <p id=''> Algo deu errado, <br>verifique se as senhas conferem.<br> 
+        <p id=''> Algo deu errado, <br>verifique se os campos estão preenchidos corretamente.<br>
          </p>
       </div>`;
 
   container.innerHTML = template;
 
   const registerButton = container.querySelector('#cadastro');
+  const registerEmail = container.querySelector('#email-cad');
+  const registerPassword = container.querySelector('#password-cad');
+  const confirmPassword = container.querySelector('#password-cad-confirm');
+  const userName = container.querySelector('#nome-usuario');
 
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
-    const registerEmail = container.querySelector('#email-cad').value;
-    const registerPassword = container.querySelector('#password-cad').value;
-    const confirmPassword = container.querySelector('#password-cad-confirm').value;
-    const userName = container.querySelector('#nome-usuario').value;
-
-    const sucess = () => {
-      container.innerHTML = template2;
-    };
-    const fail = () => {
-      container.querySelector('#teste13').innerHTML = template3;
-    };
-
-    if (registerPassword === confirmPassword && confirmPassword !== '' && userName !== '') {
-      const authentication = (firebaseRegistration(registerEmail, registerPassword, sucess, fail));
+    const sucess = () => { container.innerHTML = templateSucess; };
+    const fail = (errorFirebase) => { container.querySelector('#teste13').innerHTML = errorFirebase; };
+    if (registerPassword.value === confirmPassword.value && confirmPassword.value !== '' && userName.value !== '') {
+      const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail));
       firebaseRegistration(authentication);
     } else {
-      container.querySelector('#teste13').innerHTML = template4;
+      container.querySelector('#teste13').innerHTML = templateFail;
     }
   });
   return container;

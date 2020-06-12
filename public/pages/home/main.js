@@ -58,9 +58,11 @@ export const home = () => {
     readPosts(postTemplate);
   });
 btnSair.addEventListener('click', (event)=>{
+  event.preventDefault();
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
     window.location.href = '/#login';
+    window.location.reload(true);
     console.log('deu bom sair');
   }).catch(function(error) {
     // An error happened.
@@ -79,3 +81,4 @@ likeBtn.addEventListener('click', (event) => {
 
   return container;
 };
+
