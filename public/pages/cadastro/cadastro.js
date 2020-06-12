@@ -2,6 +2,7 @@ import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
   const container = document.createElement('div');
+  container.className='container-div';
   const template = `
   <section class='register-container'>
     <h2 class='welcome'>Cadastre-se!</h2>
@@ -19,19 +20,29 @@ export const authRegistration = () => {
     <li>
       <input class='input' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
     </li>
-    <div class='register-page-bttns' >
+    </ul>
+    </form>
+    <section>
+
+    <section class='register-page-bttns'>
+    <form>
+    <ul>
     <li>  
-     <br><a class='login input register-bttn' id='cadastro' href='#/login'>Cadastrar</a></br>
+    <a class='login input register-bttn' id='cadastro' href='#/login'>Cadastrar</a>
     </li>
     <li>
-   <a class='input return-bttn' href='/#login'>Voltar<a/>
+    <a class='input return-bttn' href='/#login'>Voltar<a/>
     </li>
-    </div>
     </ul>
-     </form>
+    </form>
+    </section>
+    
+
+    </ul>
+    <section>
      <div id='teste13'>
       </div>
-      </section>`;
+    </section>`;
   const templateSucess = ` 
       <div class ='teste1' >
         <p id='escrita'>Você se cadastrou com sucesso!!</p>

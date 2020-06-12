@@ -17,6 +17,10 @@
   width: 100vw;
 
 }*/
+main {
+  width: 100vw;
+  display: flex;
+}
 body {
   text-align: center;
   display: flex;
@@ -29,6 +33,7 @@ body {
   background: url(imagens/mad.png) center/ 100% no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  
 }
 
 /*.page-login {
@@ -47,7 +52,7 @@ body {
   background: url(imagens/logo2.png) center/70% no-repeat;
   padding: 30%;
   /* max-width: 70%; */
-  margin: 0 6px 23px;
+  margin: 0 6px -17px;
   padding-top: 40%;
 }
 
@@ -55,8 +60,8 @@ body {
   font-size: larger;
 }
 
-.content-login,
-.register-container {
+.content-login
+{
   padding: 1em;
   flex-grow: 1;
   display: flex;
@@ -67,9 +72,24 @@ body {
   flex-flow: column;
   justify-content: center;
 }
+.register-container{
+display: flex;
+width: 100vw;
+justify-content: center;
+flex-direction: column;
 
-.content-login,
-input {
+
+}
+.register-page-bttns{
+  display: flex;
+  flex-direction: row;
+}
+.container-div{
+  width: 100vw;
+  display: flex;
+}
+
+.content-login,.input {
   padding: 0.5em;
   margin: 1em 0;
 }
@@ -88,24 +108,19 @@ input {
   background-color: #8c5818;
   background-image: linear-gradient(3deg, #ffdc53, transparent);
   border-radius: 10px;
-  padding: 2%;
+ /* padding: 2%;*/
 }
 
-main {
-  width: 100vw;
-  display: flex;
-}
+
 
 .return-bttn {
-  display: flex;
+ /* display: flex;
   width: max-content;
-  padding: 4%;
+  padding: 4%;*/
 
 }
 
-.register-page-bttns {
-display: flex;
-}
+
 
 
 a:link,
@@ -174,10 +189,8 @@ a:active {
   font-size: 15px;
   resize: none;
 }
-main { 
-  display:flex; 
-  width:100vw;
-  
+.login-error{
+  margin-top:8%;
 }
 
 /* .post-bttn-area {
