@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+[debug] [2020-06-15T20:30:37.656Z] ----------------------------------------------------------------------
+[debug] [2020-06-15T20:30:37.663Z] Command:       /usr/local/bin/node /home/sabrina/.npm-global/bin/firebase init
+[debug] [2020-06-15T20:30:37.664Z] CLI Version:   8.4.2
+[debug] [2020-06-15T20:30:37.664Z] Platform:      linux
+[debug] [2020-06-15T20:30:37.665Z] Node Version:  v12.16.1
+[debug] [2020-06-15T20:30:38.036Z] Time:          Mon Jun 15 2020 17:30:37 GMT-0300 (GMT-03:00)
+[debug] [2020-06-15T20:30:38.037Z] ----------------------------------------------------------------------
+[debug] [2020-06-15T20:30:38.037Z] 
+[debug] [2020-06-15T20:30:38.333Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-06-15T20:30:38.334Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/sabrina/Documentos/LABORATORIA/SAP004-social-network
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+=======
 [debug] [2020-06-15T18:48:48.240Z] ----------------------------------------------------------------------
 [debug] [2020-06-15T18:48:48.243Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
 [debug] [2020-06-15T18:48:48.243Z] CLI Version:   8.4.2
@@ -63,3 +90,4 @@
 [info] i  hosting: 127.0.0.1 - - [15/Jun/2020:20:53:35 +0000] "GET /?post= HTTP/1.1" 200 1354 "http://localhost:5000/?post=ygyggygy" "Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jun/2020:20:53:35 +0000] \"GET /?post= HTTP/1.1\" 200 1354 \"http://localhost:5000/?post=ygyggygy\" \"Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [15/Jun/2020:20:55:46 +0000] "GET /?post= HTTP/1.1" 200 1354 "http://localhost:5000/?post=ygyggygy" "Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jun/2020:20:55:46 +0000] \"GET /?post= HTTP/1.1\" 200 1354 \"http://localhost:5000/?post=ygyggygy\" \"Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [15/Jun/2020:20:55:46 +0000] "GET /style.css HTTP/1.1" 200 3554 "http://localhost:5000/?post=" "Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [15/Jun/2020:20:55:46 +0000] \"GET /style.css HTTP/1.1\" 200 3554 \"http://localhost:5000/?post=\" \"Mozilla/5.0 (Linux; Android 6.0.1; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Mobile Safari/537.36\""}}
+>>>>>>> 4eb9e3f9f953d6b3bf7a0b324a6ed145a60ed449
