@@ -6,10 +6,11 @@ export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `
-  <header class='menu'>
+  <div class='feed-container cor-menu'>
+  <header class= 'menu-inicial'>
+  <div class='menu>
   <input type ='checkbox' id ='check'>
   <label for ='check' id='icone'><img src = './imagens/icone.png'></label>
-  <span></span>
   <div class='barra'>
     <nav>
     <a href='/#home'><div class='link'>Home</div></a>
@@ -19,30 +20,43 @@ export const home = () => {
     <a id='sair'><div  class='link'>Sair</div></a>
     </nav>
     </div>
-  
-    </header>
-    <h1>Stay Home Bar</h1>
-<div id='nome1'> 
-<p class='text-home'>Nome que está no banco de dados</p>
-</div>
-<div class ='post-area-container'>
-<form class='post-area'>
-<textarea id='comentario' type='text'> </textarea>
-<div class='post-bttn-area'id='btn-comentar'>
-<button class='input post-bttn' id='greeting-btn'>Postar</button>
-</div>
-</form>
-</div>
-<div class ='post-area-container'>
-<form class='post-area'>
-<textarea type="text" id='comentarios'></textarea>
-<button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
-<h1  id='like'></h1>
-</form>
+  </div>
+  </header>
+  <div class='title'>
+  <h1>Stay Home Bar</h1>
+  </div>
+  </div>
+
+ <div class='perfil-container'>
+  <section class='perfil-style'>
+  <img class="foto-style" src="./imagens/fotodeperfil.jpg">
+  </section>
+  <section class="bio-infos">
+  <h1 class="text-style">Ana maria</h1>
+  <p class="text-style">Sou muito feliz!</p>
+</section>
 </div>
 
+<div class='post-container'>
+  <form class='post-area'>
+  <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
+  placeholder="Escreva uma mensagem."></textarea>
+  <div class="post-btn-area" id='bttn-post>
+  <button class='btn-style'><img src='imagens/foto.png'></button>
+  <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>
+  </form>
+  </div>
+  </div>
+
+  <section class='print-post-container'>
+  <div>
+  <p class='comentarios'></p>
+  </div>
+  </section>
+  </div>
+  </div>
   `;
-  const post = container.querySelector('#comentario');
+  const post = container.querySelector('#post-text');
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
@@ -51,12 +65,12 @@ export const home = () => {
     postMessage.innerHTML = array.map(post => `${post.text}`).join('');
   };
 
-  btnPost.addEventListener('click', (event) => {
+ /* btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
     postMessage.innerHTML = '';
     readPosts(postTemplate);
-  });
+  });*/
 btnSair.addEventListener('click', (event)=>{
   event.preventDefault();
   firebase.auth().signOut().then(function() {

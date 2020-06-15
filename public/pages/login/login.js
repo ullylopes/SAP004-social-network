@@ -4,7 +4,7 @@ export const authLogin = () => {
   const container = document.createElement('div');
 
   const template = `
-    <section class='page-login body'>
+    <section class='page-login'>
     <header><h1 class='logo'></h1></header>
     <form class='content-login'>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
@@ -17,11 +17,11 @@ export const authLogin = () => {
       
       </li>
       <li> 
-      <a class='login-bttn' id='login'>Entrar<a/> 
+      <a class='login-bttn input' id='login'>Entrar<a/> 
       </li>
       </ul> 
       <p class='login-error' id='login-error'>
-      </p>   
+      </p> 
    <br><h3>Ou conecte-se com</h3></br>
     <img class='icons' id='google' src='imagens/go.png'>
     <p> Você ainda não é cadastrado?
@@ -39,16 +39,14 @@ export const authLogin = () => {
   const route = () => {
     window.location.href = '/#home';
   };
+const errorMessages = {
+  'auth/user-not-found': 'Usuário não cadastrado.',
+  'auth/wrong-password':'Senha incorreta',
+  'auth/invalid-email': 'E-mail inválido',
 
+}
   const printError = (error) => {
-    document.getElementById('login-error').innerHTML = `${error}`;
-    // if (errorCode === 'auth/user-not-found') {
-    //   document.getElementById('login-error').innerHTML = 'Usuário não cadastrado.';
-    // } else if (errorCode === 'auth/wrong-password') {
-    //   document.getElementById('login-error').innerHTML = 'Senha incorreta.';
-    // } else if ( errorCode === 'auth/argument-error'){
-    //   document.getElementById('login-error').innerHTML = 'Preencha os campos para entrar.';
-    // }
+    document.getElementById('login-error').innerHTML = `${errorMessages[error]}`;
   };
 
   loginButton.addEventListener('click', () => {
@@ -56,13 +54,14 @@ export const authLogin = () => {
     firebaseLogin(authentication);
   });
 
-
   const btnGoogle = container.querySelector('#google');
   btnGoogle.addEventListener('click', () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase.auth().signInWithRedirect(provider)
+    firebase.auth().signInWithPopup(provider)
       .then((result) => {
+        console.log('deu certo');
+        window.location.href ='/#home';
         const token = result.credential.accessToken;
         const user = result.user;
       })
@@ -71,28 +70,9 @@ export const authLogin = () => {
         const errorMessage = error.message;
         const email = error.email;
         const credential = error.credential;
-      });
-      // firebase.auth().signInWithRedirect(provider);
-      firebase.auth().getRedirectResult(provider)
-      .then(function(result) {
-        if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
-          // ...
-        }
-        // The signed-in user info.
-        var user = result.user;
-        window.location.hash = 'home';
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
+        console.log(errorMessage);
       });
   });
+
   return container;
 };

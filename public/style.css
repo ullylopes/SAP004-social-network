@@ -17,6 +17,10 @@
   width: 100vw;
 
 }*/
+main {
+  width: 100vw;
+  display: flex;
+}
 body {
   text-align: center;
   display: flex;
@@ -47,7 +51,7 @@ body {
   background: url(imagens/logo2.png) center/70% no-repeat;
   padding: 30%;
   /* max-width: 70%; */
-  margin: 0 6px 23px;
+  margin: 0 6px -17px;
   padding-top: 40%;
 }
 
@@ -55,8 +59,7 @@ body {
   font-size: larger;
 }
 
-.content-login,
-.register-container {
+.content-login {
   padding: 1em;
   flex-grow: 1;
   display: flex;
@@ -67,9 +70,23 @@ body {
   flex-flow: column;
   justify-content: center;
 }
+.register-container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  flex-direction: column;
+}
+.register-page-bttns {
+  display: flex;
+  flex-direction: row;
+}
+.container-div {
+  width: 100vw;
+  display: flex;
+}
 
 .content-login,
-input {
+.input {
   padding: 0.5em;
   margin: 1em 0;
 }
@@ -88,25 +105,14 @@ input {
   background-color: #8c5818;
   background-image: linear-gradient(3deg, #ffdc53, transparent);
   border-radius: 10px;
-  padding: 2%;
-}
-
-main {
-  width: 100vw;
-  display: flex;
+  /* padding: 2%;*/
 }
 
 .return-bttn {
-  display: flex;
+  /* display: flex;
   width: max-content;
-  padding: 4%;
-
+  padding: 4%;*/
 }
-
-.register-page-bttns {
-display: flex;
-}
-
 
 a:link,
 a:visited {
@@ -135,7 +141,6 @@ a:active {
   margin-top: 20px;
 } */
 
-
 .register-error {
   text-decoration: none;
   color: #271b1b;
@@ -149,11 +154,11 @@ a:active {
   align-items: center;
 }
 
-.post-area-container {
+/* .post-container {
   width: 100vw;
   display: flex;
   justify-content: center;
-}
+} */
 
 .post-area {
   margin-top: 20px;
@@ -162,10 +167,10 @@ a:active {
   width: 95%;
 }
 
-.text-area {
-  width: 89%;
+.textarea-style {
+  width: 85%;
   border-radius: 3%;
-  /* margin: 5px 10px; */
+  margin: 5px 10px;
   height: 60px;
   border: 1px solid #ffffff;
   border-bottom: 1px solid #4c3313;
@@ -174,10 +179,25 @@ a:active {
   font-size: 15px;
   resize: none;
 }
-main { 
-  display:flex; 
-  width:100vw;
+
+.post-btn-area {
+  display: flex;
+  width: 100%;
+  background: turquoise;
+  align-items: center;
+  height: 40%;
+  justify-content: space-between;
+  /* align-items: center;
+  justify-content: space-between; */
+}
+
+.btn-style {
   
+  background-color: tomato;
+}
+
+.login-error {
+  margin-top: 8%;
 }
 
 /* .post-bttn-area {

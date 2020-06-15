@@ -3,10 +3,12 @@
 export const mesas = () => {
   const container = document.createElement('div');
   const template = `
-<header>
-<h1>Página em construção</h1>
-</header>
-<nav><a href='/#home'>Voltar<a/></nav>`;
+  <div>
+  <header >
+  <h1>Página em construção</h1>
+  </header>
+  <nav><a href='/#home'>voltar<a/></nav>
+  </div>`;
 
   container.innerHTML = template;
 
