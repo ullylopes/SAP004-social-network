@@ -17,7 +17,7 @@ export const authLogin = () => {
       
       </li>
       <li> 
-      <a class='login-bttn' id='login'>Entrar<a/> 
+      <a class='login-bttn input' id='login'>Entrar<a/> 
       </li>
       </ul> 
       <p class='login-error' id='login-error'>
@@ -37,7 +37,7 @@ export const authLogin = () => {
   const registeredPassword = container.querySelector('#password');
 
   const route = () => {
-    window.location.href ='/#home';
+    window.location.href = '/#home';
   };
 const errorMessages = {
   'auth/user-not-found': 'Usuário não cadastrado.',

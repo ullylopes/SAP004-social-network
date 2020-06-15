@@ -38,17 +38,19 @@ export const home = () => {
 </div>
 
 <section class='post-container'>
-  <div class='post-box'>
   <form class='post-area'>
   <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
-  <button type="submit" id = 'btn-comentar' class="btn-style nput post-bttn">Postar</button>
-  </form>
+  <div class="post-btn-area" id='bttn-post>   
+  <button class='btn-style'><img src='imagens/foto.png'></button>   
+  <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>  
   </div>
+  </form>
   </section>
 
+
   <section class='newpost-container'>
-  <form class='post-box'>
+  <form >
   <ul>
   <li id='comentarios'></li>
   </ul>
@@ -64,9 +66,8 @@ export const home = () => {
 */
 
  const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `<div class='post-area' >${post.text}
-    
-    <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
+    postMessage.innerHTML = array.map(post => `<div class='post-box' >${post.text}</div>
+   <div class="post-btn-area"> <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
     </button> <button id='deletar'>Deletar</button>
     <button id='editar'>Editar</button></div>`).join('');
   };

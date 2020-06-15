@@ -12,10 +12,9 @@
 .post-container, .newpost-container{
 	display:flex;
 	justify-content: center;
-	flex-direction: row;
-	align-content: flex-start;
-	align-items: flex-start;
-}
+	width: 100vw;
+} 
+
 .perfil-container{
 	display:flex;
 	justify-content: flex-start;
@@ -25,10 +24,31 @@
 }
 .post-box{
 	align-self: center;	
+	padding: 2%;
+	border-radius: 2%;
+	background: #ffde59;
+	width: 95%;
+	color: black;
 }
+
 .post-area{
+	margin-top: 20px;
+	border-radius: 2%;
+	background: #ffde59;
+	width: 95%;
+}
+.post-textarea{
 	padding: 2%;
 	color: black;
+}
+.post-btn-area {  
+	display: flex;   
+	width: 100%;   
+	background: turquoise;   
+	align-items: center;   height: 40%;   
+	justify-content: space-between;  
+	/* align-items: center;   
+	  justify-content: space-between; */
 }
 .title{
     align-items: center;

@@ -65,6 +65,9 @@ export const authRegistration = () => {
   const registerPassword = container.querySelector('#password-cad');
   const confirmPassword = container.querySelector('#password-cad-confirm');
   const userName = container.querySelector('#nome-usuario');
+  
+
+  
 
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
