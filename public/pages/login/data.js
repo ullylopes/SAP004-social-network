@@ -8,6 +8,7 @@ export const firebaseLogin = (registeredEmail, registeredPassword, route, printE
         .catch((error) => {
           const errorCode = error.code;
           printError(errorCode);
+          console.log(errorCode);
         });
     });
 };
