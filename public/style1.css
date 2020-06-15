@@ -1,6 +1,7 @@
 /*.root{
 	margin:auto block;
 }*/
+
 .feed-container{
 	display:flex;
 	justify-content: space-between;
@@ -8,9 +9,9 @@
 	align-content: flex-start;
 	align-items: center;
 }
-.post-container{
+.post-container, .newpost-container{
 	display:flex;
-	justify-content: flex-start;
+	justify-content: center;
 	flex-direction: row;
 	align-content: flex-start;
 	align-items: flex-start;
@@ -24,6 +25,10 @@
 }
 .post-box{
 	align-self: center;	
+}
+.post-area{
+	padding: 2%;
+	color: black;
 }
 .title{
     align-items: center;
@@ -39,22 +44,44 @@
 	padding: 1%;
 	margin: 2%;
 }
-/*.menu{
-	width: 10%;
-    padding: 4%;
-}*/
 
-.barra{
-	align-self: flex-start;
+input[type ='checkbox']{
+	display: none;
+}
+.like{
+  width: 10%;
+  height: 10%;
+}
+.link{
+	display: block;
+	padding: 20px, 5px;
+}
+.link:hover{
+	background-color: rgba(195, 152, 33, 0.753);
+}
+label{
 	position: absolute;
-	transition: .2s linear;
-	
+	z-index: 1;
+	cursor:pointer;
 }
 nav{
-	
-	width: 50%;
-	position: relative;
-	top:3px;
+	height: 100%;
+	width: 300px;
+    position: absolute;
+	top: 3px;
+	transition: all .5s;
+	background-color: rgba(16, 16, 16, 0.74);
+}
+input[type='checkbox']:checked ~ .barra{
+	transform: translateX(300px);
+}
+#check:checked ~ .barra{
+transform: translateX(300px);
+}
+.barra{
+	top:70px;
+	position: absolute;
+	width: 100%;
 }
 .perfil-style{
 	align-self: auto;
@@ -77,13 +104,6 @@ nav{
 	width: 100vw;
 }*/
 
-/*nav{
-	justify-content: space-between;
-	align-items: center;
-	width: 50%;
-	position: relative;
-	top:3px;
-}*/
 /*.container{
 	display:flex;
 	flex-direction: column;
@@ -102,31 +122,8 @@ nav{
 	display:none;
 }
 
-#icone{
-	cursor:pointer;*/
-	/*padding:15px;
-	position: absolute;*/
-/*	z-index: 1;*/
-/*	margin-left: -160px;
-	margin-top: -100px;*/
-   /* justify-content: flex-start;
-	
 
-}
 
-.barra{
-	width: 200px;
-	position: absolute;
-	transition: .2s linear;
-	margin-left: -350px;
-
-	justify-content: flex-start;
-    display: flex;
-}
-
-nav a{
-	text-decoration: none;
-}
 .link{
 	background-color: #494950;
 	padding: 10px;

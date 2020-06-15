@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts } from './data.js';
+import { createPost, readPosts/*, deletePost,editPost*/} from './data.js';
 // import { authRegistration } from '../cadastro/cadastro.js';
 
 export const home = () => {
@@ -37,63 +37,67 @@ export const home = () => {
 </section>
 </div>
 
-<div class='post-container'>
-  <section class='post-box'>
+<section class='post-container'>
+  <div class='post-box'>
   <form class='post-area'>
   <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
-  <div class="post-btn-area" id='bttn-post>
-  <button class="btn-style "><i class="fas fa-camera-retro fa-2x"></i></button>
   <button type="submit" id = 'btn-comentar' class="btn-style nput post-bttn">Postar</button>
   </form>
   </div>
   </section>
-  </div>
-  <section>
-  <div>
-  <p class='comentarios'></p>
-  </div>
+
+  <section class='newpost-container'>
+  <form class='post-box'>
+  <ul>
+  <li id='comentarios'></li>
+  </ul>
+  </form>
   </section>
-  </div>
-  </div>
   `;
   const post = container.querySelector('#post-text');
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-;
-  const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `${post.text}`).join('');
+ /* const btnDel = container.querySelector('#deletar');
+  const btnEdit = container.querySelector('#editar');
+*/
+
+ const postTemplate = (array) => {
+    postMessage.innerHTML = array.map(post => `<div class='post-area' >${post.text}
+    
+    <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
+    </button> <button id='deletar'>Deletar</button>
+    <button id='editar'>Editar</button></div>`).join('');
   };
 
- /* btnPost.addEventListener('click', (event) => {
+
+  btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-    postMessage.innerHTML = '';
+    //postMessage.innerHTML = '';
     readPosts(postTemplate);
-  });*/
-btnSair.addEventListener('click', (event)=>{
-  event.preventDefault();
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-    window.location.href = '/#login';
-    window.location.reload(true);
-    console.log('deu bom sair');
-  }).catch(function(error) {
-    // An error happened.
-    console.log('deu ruimmm');
+});
+
+/*  btnDel.addEventListener('click', (event) => {
+    event.preventDefault();
+    deletePost(post.value);
+});
+  btnEdit.addEventListener('click', (event) => {
+    event.preventDefault();
+    editPost(post.value);
+});
+*/
+
+  btnSair.addEventListener('click', (event) => {
+    event.preventDefault();
+    firebase.auth().signOut().then(() => {
+      window.location.href = '/#login';
+      window.location.reload(true);
+    }).catch(() => {
+    });
   });
-})
 
-/* const likeBtn = container.querySelector('#like-btn');
-const like = container.querySelector('#like');
-
-likeBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-  createLike( );
-  like.innerHTML = 0 + 1;
-}); */
 
   return container;
 };
-
