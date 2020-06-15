@@ -1,6 +1,6 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
 import { createPost, readPosts } from './data.js';
-// import { authRegistration } from '../cadastro/cadastro.js';
+/* import { authRegistration } from '../cadastro/cadastro.js'; */
 
 export const home = () => {
   const container = document.createElement('div');
@@ -50,25 +50,27 @@ export const home = () => {
   const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `${post.text}`).join('');
   };
-
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
-    createPost(post.value);
+    const user = firebase.auth().currentUser.uid;
+    createPost(post.value, user);
     postMessage.innerHTML = '';
     readPosts(postTemplate);
   });
-btnSair.addEventListener('click', (event)=>{
-  event.preventDefault();
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-    window.location.href = '/#login';
-    window.location.reload(true);
-    console.log('deu bom sair');
-  }).catch(function(error) {
-    // An error happened.
-    console.log('deu ruimmm');
-  });
-})
+
+
+  btnSair.addEventListener('click', (event) => {
+    event.preventDefault();
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+      window.location.href = '/#login';
+      window.location.reload(true);
+      console.log('deu bom sair');
+    }).catch(function(error) {
+      // An error happened.
+      console.log('deu ruimmm');
+    });
+  })
 
 /* const likeBtn = container.querySelector('#like-btn');
 const like = container.querySelector('#like');

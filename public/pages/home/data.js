@@ -4,18 +4,19 @@
 // export const identificacao = nome => `${nome}`;
 // export const mensagem = post => ` ${post}`;
 
-export const createPost = (text) => {
+export const createPost = (text, userid) => {
   firebase.firestore().collection('post').add({
     text: text,
-    nome: 'Adélia',
+    user: userid, 
   })
     .then((docRef) => {
-	console.log(' Document written with ID: ', docRef.id);
+      console.log(' Document written with ID: ', docRef.id);
+      console.log('user');
     })
-	.catch(function(error) {
-	console.error('Error adding document: ', error);
-	}); 
-  }
+	  .catch(function(error) {
+      console.error('Error adding document: ', error);
+    }); 
+} ;
 
   export const readPosts = (callback) => {
     firebase.firestore().collection('post')

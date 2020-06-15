@@ -1,4 +1,4 @@
-import { firebaseRegistration } from './data.js';
+import { firebaseRegistration, mudar} from './data.js';
 
 export const authRegistration = () => {
   const container = document.createElement('div');
@@ -54,6 +54,7 @@ export const authRegistration = () => {
   const registerPassword = container.querySelector('#password-cad');
   const confirmPassword = container.querySelector('#password-cad-confirm');
   const userName = container.querySelector('#nome-usuario');
+ /*  let user = firebase.auth().currentUser.displayName; */
 
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -62,6 +63,7 @@ export const authRegistration = () => {
     if (registerPassword.value === confirmPassword.value && confirmPassword.value !== '' && userName.value !== '') {
       const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail));
       firebaseRegistration(authentication);
+      mudar(userName.value);
     } else {
       container.querySelector('#teste13').innerHTML = templateFail;
     }
