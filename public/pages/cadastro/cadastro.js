@@ -2,7 +2,7 @@ import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
   const container = document.createElement('div');
-  container.className='container-div';
+  container.className = 'container-div';
   const template = `
   <section class='register-container'>
     <h2 class='welcome'>Cadastre-se!</h2>
@@ -71,9 +71,8 @@ export const authRegistration = () => {
     const sucess = () => { container.innerHTML = templateSucess; };
     const fail = (errorFirebase) => { container.querySelector('#teste13').innerHTML = errorFirebase; };
     if (registerPassword.value === confirmPassword.value && confirmPassword.value !== '' && userName.value !== '') {
-      const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail));
+      const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail, userName.value));
       firebaseRegistration(authentication);
-      mudar(userName.value);
     } else {
       container.querySelector('#teste13').innerHTML = templateFail;
     }
