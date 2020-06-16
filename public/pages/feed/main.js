@@ -62,10 +62,10 @@ export const home = () => {
 */
 
  const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `<div class='post-box' >${post.text}</div>
-   <div > <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
+    postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
+   <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
     </button> <button id='deletar'>Deletar</button>
-    <button id='editar'>Editar</button></div>`).join('');
+    <button id='editar'>Editar</button></div><br>`).join('');
   };
 
 

@@ -1,4 +1,4 @@
-import { firebaseRegistration, mudar } from './data.js';
+import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
   const container = document.createElement('div');
