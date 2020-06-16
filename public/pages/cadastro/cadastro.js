@@ -62,7 +62,7 @@ export const authRegistration = () => {
     const sucess = () => { container.innerHTML = templateSucess; };
     const fail = (errorFirebase) => { container.querySelector('#teste13').innerHTML = errorFirebase; };
     if (registerPassword.value === confirmPassword.value && confirmPassword.value !== '' && userName.value !== '') {
-      const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail));
+      const authentication = (firebaseRegistration(registerEmail.value, registerPassword.value, sucess, fail, userName.value));
       firebaseRegistration(authentication);
     } else {
       container.querySelector('#teste13').innerHTML = templateFail;
