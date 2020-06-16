@@ -2,32 +2,40 @@ import { firebaseLogin } from './data.js';
 
 export const authLogin = () => {
   const container = document.createElement('div');
+  container.className ='container-log';
 
   const template = `
-    <section class='page-login'>
-    <header><h1 class='logo'></h1></header>
-    <form class='content-login'>
+    <section class='logo'> 
+    <img class='img-logo'src='./imagens/logo2.png' />
+    </section>
+    <section class='container-form'>
+    <div class='form'>
+    <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
       <ul>
       <li>
-      <input type='email' class='input' id='e-mail' placeholder='Email'>
+      <input type='email' class='input-log' id='e-mail' placeholder='Email'>
       </li>
       <li>
-      <input type='password' class='input' id='password' placeholder='Senha'>
-      
+      <input type='password' class='input-log' id='password' placeholder='Senha'>
       </li>
       <li> 
-      <a class='login-bttn input' id='login'>Entrar<a/> 
+      <a class='login-bttn input-log' id='login'>Entrar<a/> 
       </li>
       </ul> 
+      </form>
+      <div class='messagem'>
       <p class='login-error' id='login-error'>
       </p> 
-   <br><h3>Ou conecte-se com</h3></br>
+      </div>
+      <div class='login-cad'>
+    <h3>Ou conecte-se com</h3></br>
     <img class='icons' id='google' src='imagens/go.png'>
     <p> Você ainda não é cadastrado?
     Cadastre-se <a href='/#cadastro'>aqui!</a>
     </p>
-    </form>
+</div>
+</div>
     </section>`;
 
   container.innerHTML = template;

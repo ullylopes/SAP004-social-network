@@ -2,44 +2,35 @@ import { firebaseRegistration } from './data.js';
 
 export const authRegistration = () => {
   const container = document.createElement('div');
-  container.className = 'container-div';
+  container.className ='container-div';
   const template = `
+  <section class='logo-cad'>
+  <img src='./imagens/logo2.png' />
+  </section>
   <section class='register-container'>
     <h2 class='welcome'>Cadastre-se!</h2>
     <form>
     <ul>
-    <li>
+    <li class='input-li'>
       <input class='input' type='' id='nome-usuario' placeholder='Nome do usuário'> 
     </li>
-    <li>  
+    <li class='input-li'>  
       <input class='input ' type='email' id='email-cad' placeholder='Email'> 
-    </li>
-    <li>  
+    </li class='input-li'>
+    <li class='input-li'>
       <input class='input' type='password' id='password-cad' placeholder='Senha'>
-    </li>
-    <li>
+      <label for ='password-cad'><img id='viewPassword' class='olho'src = './imagens/olho.png'></label>
+      </li>
+      <li class='input-li'>
       <input class='input' type='password' id='password-cad-confirm' placeholder='Confirme sua senha'> 
-    </li>
-    </ul>
+      <label for ='password-cad-confirm'><img id='viewPassword1' class='olho'src = './imagens/olho.png'></label>
+      </li>
+      </ul>
     </form>
-    <section>
-
-    <section class='register-page-bttns'>
-    <form>
-    <ul>
-    <li>  
-    <a class='login input register-bttn' id='cadastro' href='#/login'>Cadastrar</a>
-    </li>
-    <li>
-    <a class='input return-bttn' href='/#login'>Voltar<a/>
-    </li>
-    </ul>
-    </form>
-    </section>
-    
-
-    </ul>
-    <section>
+    <div class='register-page-bttns'></br>
+    <a class='margin input register-bttn' id='cadastro' href='#/login'>Cadastrar</a>
+    <a class='input return-bttn' href='/#login'>Voltar</a>
+    </div>
      <div id='teste13'>
       </div>
     </section>`;
@@ -77,5 +68,30 @@ export const authRegistration = () => {
       container.querySelector('#teste13').innerHTML = templateFail;
     }
   });
+  const bntView = container.querySelector('#viewPassword');
+  const bntView1 = container.querySelector('#viewPassword1');
+
+  bntView.addEventListener('click', (event) => {
+    event.preventDefault();
+      let senha = container.querySelector('#password-cad');
+    if (senha.type =='password'){
+      senha.type='text';
+    }else {
+      senha.type='password'
+    }
+    });
+   
+    bntView1.addEventListener('click', (event) => {
+      event.preventDefault();
+      let senha1 = container.querySelector('#password-cad-confirm');
+      if (senha1.type =='password'){
+        senha1.type ='text';
+      }else {
+        senha1.type ='password'
+      }
+      
+  });
+  
   return container;
+  
 };
