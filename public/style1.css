@@ -1,6 +1,5 @@
 a{
 	text-decoration: none;
-	color: black;
 }
 input[type ='checkbox']{
 	display: none;
@@ -107,4 +106,15 @@ input[type='checkbox']:checked ~ .nav{
 .bio-infos{
 	align-self: stretch;
 }
-
+.olho{
+	height: 30px;
+	width: 30px;
+}
+.container{
+	width: 100vw;
+	display: flex;
+}
+.carregando{
+	align-self: center;
+	
+}
