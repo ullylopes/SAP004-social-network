@@ -1,7 +1,36 @@
-/*.root{
-	margin:auto block;
-}*/
-
+a{
+	text-decoration: none;
+	color: black;
+}
+input[type ='checkbox']{
+	display: none;
+}
+.nav{
+	background-color: rgba(16, 16, 16, 0.74);
+	width: 300px;
+	height: 100%;
+	left: -300px;
+	position: absolute;
+	/*top: 3px;*/
+	transition: all .5s;
+}
+input[type='checkbox']:checked ~ .nav{
+	transform: translateX(300px);
+}
+.link{
+	display: block;
+	padding: 20px 5px;
+	color: white;
+}
+.link:hover{
+	background-color: rgba(195, 152, 33, 0.753);
+	color:black
+}
+.icone{
+	position: absolute;
+	z-index: 1;
+	/*cursor:pointer;*/
+}
 .feed-container{
 	display:flex;
 	justify-content: space-between;
@@ -47,8 +76,6 @@
 	background: turquoise;   
 	align-items: center;   height: 40%;   
 	justify-content: space-between;  
-	/* align-items: center;   
-	  justify-content: space-between; */
 }
 .title{
     align-items: center;
@@ -58,50 +85,14 @@
 	background-color: orangered;
 	align-self: stretch;
 	width: 100vw;
-
 }
 .menu-inicial{
 	padding: 1%;
 	margin: 2%;
 }
-
-input[type ='checkbox']{
-	display: none;
-}
 .like{
-  width: 10%;
-  height: 10%;
-}
-.link{
-	display: block;
-	padding: 20px, 5px;
-}
-.link:hover{
-	background-color: rgba(195, 152, 33, 0.753);
-}
-label{
-	position: absolute;
-	z-index: 1;
-	cursor:pointer;
-}
-nav{
-	height: 100%;
-	width: 300px;
-    position: absolute;
-	top: 3px;
-	transition: all .5s;
-	background-color: rgba(16, 16, 16, 0.74);
-}
-input[type='checkbox']:checked ~ .barra{
-	transform: translateX(300px);
-}
-#check:checked ~ .barra{
-transform: translateX(300px);
-}
-.barra{
-	top:70px;
-	position: absolute;
-	width: 100%;
+	width: 10%;
+	height: 10%;
 }
 .perfil-style{
 	align-self: auto;
@@ -117,63 +108,3 @@ transform: translateX(300px);
 	align-self: stretch;
 }
 
-/*.body-home{
-	background:rgba(192, 97, 8, 0.438);
-	background-size: cover;
-	height: 100vh;
-	width: 100vw;
-}*/
-
-/*.container{
-	display:flex;
-	flex-direction: column;
-	justify-content: center;
-	align-content: space-around;
-}*/
-
-/*.menu{
-	justify-content: flex-start;
-	
-}
-
-#check{
-	/*position: absolute;*/
-	/*z-index: 1;
-	display:none;
-}
-
-
-
-.link{
-	background-color: #494950;
-	padding: 10px;
-	font-family: Arial;
-	font-size: 12px;
-	transition: all .2s linear;
-	color:white;
-	border-bottom: 2px solid #222;
-	opacity: 0;
-	margin-top: 100px;
-}
-.link:houver{
-	background-color: #050542;
-}
-#check:checked ~ .barra{
-transform: translateX(300px);
-}
-#check:checked ~ .barra nav a .link{
-	opacity: 1;
-	margin-top: 0;
-	transition-delay: 0.2s;
-	}
-.text-home{
-	color: white;
-	font-family: Arial;
-	font-weight: bold;
-}
-h1{
-	color: white;
-	padding: 15px;
-}
-
-*/

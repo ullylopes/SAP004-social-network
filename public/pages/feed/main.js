@@ -6,26 +6,22 @@ export const home = () => {
   const container = document.createElement('div');
 
   container.innerHTML = `
-  <div class='feed-container cor-menu'>
-  <header class= 'menu-inicial'>
-  <div class='menu>
+  <section class='feed-container cor-menu'>
+  <div class= 'menu-inicial'>
   <input type ='checkbox' id ='check'>
-  <label for ='check' id='icone'><img src = './imagens/icone.png'></label>
-  <div class='barra'>
-    <nav>
+  <label for ='check' class='icone'><img src = './imagens/icone.png'></label>
+    <nav class='nav'>
     <a href='/#home'><div class='link'>Home</div></a>
     <a href='/#perfil'><div class='link'>Perfil</div></a>
     <a href='/#bares'><div class='link'>Bares</div></a>
     <a href='/#mesas'><div class='link'>Mesas</div></a>
-    <a id='sair'><div  class='link'>Sair</div></a>
+    <a id='sair'><div class='link'>Sair</div></a>
     </nav>
-    </div>
   </div>
-  </header>
   <div class='title'>
   <h1>Stay Home Bar</h1>
   </div>
-  </div>
+  </section>
 
  <div class='perfil-container'>
   <section class='perfil-style'>
@@ -67,7 +63,7 @@ export const home = () => {
 
  const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `<div class='post-box' >${post.text}</div>
-   <div class="post-btn-area"> <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
+   <div > <button id='like-btn'><img src = './imagens/brinde.jpg' width='50' height='50'></button>
     </button> <button id='deletar'>Deletar</button>
     <button id='editar'>Editar</button></div>`).join('');
   };
