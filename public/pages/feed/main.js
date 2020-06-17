@@ -4,6 +4,7 @@ import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
+  container.className ='container-feed';
 
   container.innerHTML = `
   <section class='feed-container cor-menu'>
@@ -23,6 +24,7 @@ export const home = () => {
   </div>
   </section>
 
+  
  <div class='perfil-container'>
   <section class='perfil-style'>
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
@@ -33,6 +35,7 @@ export const home = () => {
 </section>
 </div>
 
+<div class= 'post-and-coment'>
 <section class='post-container'>
   <form class='post-area'>
   <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
@@ -45,7 +48,6 @@ export const home = () => {
   </form>
   </section>
 
-
   <section class='newpost-container'>
   <form >
   <ul>
@@ -54,7 +56,9 @@ export const home = () => {
   </ul>
   </form>
   </section>
+  </div>
   `;
+
   const post = container.querySelector('#post-text');
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
@@ -66,8 +70,8 @@ export const home = () => {
   const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
    <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
-    </button> <button id='deletar'>Deletar</button>
-    <button id='editar'>Editar</button></div><br>`).join('');
+    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
+    <button class='btn-style input post-bttn' id='editar'>Editar</button></div><br>`).join('');
   };
   readPosts(postTemplate);
 
