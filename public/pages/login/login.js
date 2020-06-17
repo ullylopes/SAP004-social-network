@@ -13,22 +13,22 @@ export const authLogin = () => {
     <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
       <ul>
-      <li class='input-li'>
+      <li class = 'input-li'>
       <input type='email' class='input' id='e-mail' placeholder='Email'>
       </li>
-      <li class='input-li'>
-      <input type='password' class='input' id='password' placeholder='Senha'>
-      <label for ='password'>
-      <img id='viewPassword' class='olho'src = './imagens/olho.png'>
+      <li class= 'input-li'>
+      <input type='password' class= 'input' id='password' placeholder='Senha'>
+      <label for= 'password'>
+      <img id= 'view-password' class= 'olho' src= './imagens/olho.png'>
       </label>
       </li>
       <li> 
-      <a class='login-bttn input-log' id='login'>Entrar<a/> 
+      <a class ='login-bttn bttn-style' id='login'>Entrar<a/> 
       </li>
       </ul> 
       </form>
-      <div class='messagem'>
-      <p class='login-error' id='login-error'>
+      <div class ='message'>
+      <p class ='login-error' id ='login-error'>
       </p> 
       </div>
       <div class='login-cad'>
@@ -77,7 +77,7 @@ const errorMessages = {
         const token = result.credential.accessToken;
         const user = result.user;
       })
-      .catch(( error) => {
+      .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.email;
@@ -85,7 +85,7 @@ const errorMessages = {
         console.log(errorMessage);
       });
   });
-  const bntView = container.querySelector('#viewPassword');
+  const bntView = container.querySelector('#view-password');
   bntView.addEventListener('click', (event) => {
     event.preventDefault();
     const senha = container.querySelector('#password');

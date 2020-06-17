@@ -1,101 +1,5 @@
-a{
-	text-decoration: none;
-}
-input[type ='checkbox']{
-	display: none;
-}
-.nav{
-	background-color: rgba(16, 16, 16, 0.74);
-	width: 300px;
-	height: 100%;
-	left: -300px;
-	position: absolute;
-	/*top: 3px;*/
-	transition: all .5s;
-}
-input[type='checkbox']:checked ~ .nav{
-	transform: translateX(300px);
-}
-.link{
-	display: block;
-	padding: 20px 5px;
-	color: white;
-}
-.link:hover{
-	background-color: rgba(195, 152, 33, 0.753);
-	color:black
-}
-.icone{
-	position: absolute;
-	z-index: 1;
-	/*cursor:pointer;*/
-}
-.feed-container{
-	display:flex;
-	justify-content: space-between;
-	flex-direction: row;
-	align-content: flex-start;
-	align-items: center;
-}
-.post-container, .newpost-container{
-	display:flex;
-	justify-content: center;
-	width: 100vw;
-} 
-
-.perfil-container{
-	display:flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-content: flex-start;
-	align-items: flex-start;
-}
-.post-box{
-	align-self: center;	
-	padding: 2%;
-	border-radius: 2%;
-	background: #ffde59;
-	width: 95%;
-	color: black;
-}
-
-.post-area{
-	margin-top: 20px;
-	border-radius: 2%;
-	background: #ffde59;
-	width: 95%;
-}
-.post-textarea{
-	padding: 2%;
-	color: black;
-}
-.post-btn-area {  
-	display: flex;   
-	width: 100%;   
-	background: turquoise;   
-	align-items: center;   height: 40%;   
-	justify-content: space-between;  
-}
-.title{
-    align-items: center;
-	margin: 2%;
-}
-.cor-menu{
-	background-color: orangered;
-	align-self: stretch;
-	width: 100vw;
-}
-.menu-inicial{
-	padding: 1%;
-	margin: 2%;
-}
-.like{
-	width: 10%;
-	height: 10%;
-}
-.perfil-style{
-	align-self: auto;
-	margin: 2%;
+a {
+  text-decoration: none;
 }
 
 input[type="checkbox"] {
@@ -104,17 +8,41 @@ input[type="checkbox"] {
 
 .nav {
   background-color: rgba(16, 16, 16, 0.74);
-  width: 50%;
-  height: -2%;
+  width: 300px;
+  height: 100%;
   left: -300px;
   position: absolute;
-  top: 1%;
+  /*top: 3px;*/
   transition: all 0.5s;
 }
 
 input[type="checkbox"]:checked ~ .nav {
   transform: translateX(300px);
 }
+
+.feed-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.menu-inicial {
+  padding: 1%;
+  margin: 2%;
+}
+
+.cor-menu {
+  background-color: orangered;
+  align-self: stretch;
+  width: 100vw;
+}
+
+.title {
+	align-items: center;
+	margin: 2%;
+  }
 
 .link {
   display: block;
@@ -126,29 +54,11 @@ input[type="checkbox"]:checked ~ .nav {
   background-color: rgba(195, 152, 33, 0.753);
   color: black;
 }
+
 .icone {
   position: absolute;
   z-index: 1;
   /*cursor:pointer;*/
-}
-
-.feed-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-content: flex-start;
-  align-items: center;
-}
-
-.title {
-  align-items: center;
-  margin: 2%;
-}
-
-.cor-menu {
-  background-color: orangered;
-  align-self: stretch;
-  width: 100vw;
 }
 
 .perfil-container {
@@ -174,43 +84,25 @@ input[type="checkbox"]:checked ~ .nav {
   align-self: stretch;
 }
 
-.post-container {
+.post-container,
+.newpost-container {
   display: flex;
   justify-content: center;
   width: 100vw;
 }
 
-.newpost-container {
-  list-style-type: none;
-  padding: 2%;
-  display: flex;
-  /* width: 100vw; */
-  justify-content: center;
-}
+
+
 
 .post-area {
   margin-top: 20px;
   border-radius: 2%;
   background: #ffde59;
-  width: 95%;
-}
-
-.post-box {
-  align-self: center;
-  padding: 2%;
-  border-radius: 2%;
-  background: #ffde59;
-  width: 95%;
-  color: black;
-}
-
-.post-textarea {
-  padding: 2%;
-  color: black;
+  width: 92%;
 }
 
 .textarea-style {
-  width: 85%;
+  width: 250px;
   border-radius: 3%;
   margin: 5px 10px;
   height: 60px;
@@ -222,25 +114,51 @@ input[type="checkbox"]:checked ~ .nav {
   resize: none;
 }
 
-.post-btn-area,
-.btn-area-posted {
+.post-btn-area {
   display: flex;
   width: 100%;
   background: turquoise;
   align-items: center;
   justify-content: space-around;
   /* align-items: center;
-	justify-content: space-between; */
+		justify-content: space-between; */
 }
-.olho{
-	height: 30px;
-	width: 30px;
-}
-.container{
-	width: 100vw;
+
+.btn-area-posted {
 	display: flex;
+	width: 20px;
+	background: turquoise;
 }
-.carregando{
+
+.btn-style {
+  background-color: tomato;
+}
+
+.post-box {
 	align-self: center;
-	
+	padding: 2%;
+	border-radius: 2%;
+	background: #ffde59;
+	width: 95%;
+	color: black;
+  }
+
+  .newpost-container {
+	list-style-type: none;
+	padding: 2%;
+	display: flex;
+	/* width: 100vw; */
+	justify-content: center;
+  }
+
+/* .carregando {
+  align-self: center;
+} */
+
+@media only screen and (min-width: 768px) {
+
+.post-container {
+		display: flex;
+		justify-content: flex-end;
+		width: 45%;
 }

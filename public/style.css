@@ -2,6 +2,7 @@ main {
   width: 100vw;
   display: flex;
 }
+
 body {
   text-align: center;
   display: flex;
@@ -15,47 +16,77 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
-.logo{
+
+/* logo */
+.img-logo {
+  width: 206px;
+}
+
+/* container do login com inputs e botões */
+.container-form {
   display: flex;
   justify-content: center;
 }
-.container-form{
-  display: flex;
-  justify-content: center;
-}
+
 .welcome {
   font-size: larger;
 }
-.messagem , .login-cad{
+
+/* inputs da página login */
+.input-log {
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid #e6b908;
+  font-size: 15px;
+  text-align: center;
+  margin: 20px;
+  padding: 9px;
+}
+
+/* espaço da mensagem de erro da pagina login */
+.login-error {
+  margin-top: 8%;
+} 
+
+/* ícones google e olho */
+.icons, .olho {
+  height: 30px;
+  width: 30px;
+}
+
+/* link para o cadastre-se */
+a:link,
+a:visited {
+  text-decoration: none;
   color: white;
+}
+
+/* PAGINA DE CADASTRO */
+
+/* container pai da pagina do login e do cadastro */
+.container-log, .container-div{
+  width: 100vw;
+  display: flex;
   flex-direction: column;
-  display: flex;
-  align-content: center;
-}
-.form {
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
   align-items: center;
- /* flex-wrap: wrap;*/
+  justify-content: center;
 }
+
+/* container filho da pagina de cadastro com inputs e botões */
 .register-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.register-page-bttns {
-  display: flex;
-  flex-direction: row;
+
+form {
+  /* padding: 0.5em; */
+  display: table-caption;
 }
-.btn-cad{
-margin: 20px;
-}
-.margin{
-  margin-right: 34px;
-}
-.input-li{
+
+/* inputs do li da página de cadastro */
+.input-li {
   align-items: center;
     position: relative;
     display: flex;
@@ -66,50 +97,35 @@ margin: 20px;
     text-align: center;
     background: white;
     width: 262px;
-    margin:20px;
-    margin:9px;
-  
+    margin:20px; 
 }
-.img-logo{
-  width: 206px;
+
+/* area que deixa os botões lado a lado na página cadastro */
+.register-page-bttns {
+  display: flex;
+  flex-direction: row;
 }
-/*.input-log{
-  justify-content: center;
-  border-radius: 10px;
+
+/* propriedade de cada botão */
+.bttn-style {
   border: 2px solid #e6b908;
+  color: white;
   font-size: 15px;
-  text-align: center;
-  background: white;
-  margin: 20px;
-  padding: 9px;
-}*/
-.container-log, .container-div{
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-/*.container-div {
-  width: 100vw;
-  display: flex;
-}*/
-/*.container-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}*/
-
-.form,
-.input {
-  padding: 0.5em;
-  margin: 1em 0;
+  padding: 5px;
 }
 
+/* margin do botão de cadastro */
+.margin{
+  margin-right: 34px;
+}
+
+/* padding e bordas dos inputs da pagina cadastro */
 .input {
+  padding: 12px;
   border: 0;
   text-align: center;
-  padding: 1px;
+  /* 0.5em; */
+  /* margin: 1em 0; */
 }
 
 .login-bttn,
@@ -124,33 +140,25 @@ margin: 20px;
   text-align: center;
   justify-content: center;
   margin: 20px;
-  padding: 9px;
+  
+  /* padding: 2%; */
 }
 
-.return-bttn {
-  /* display: flex;
-  width: max-content;
-  padding: 4%;*/
-}
-
-a:link,
-a:visited {
-  text-decoration: none;
+/* mensagens de erro da pagina de login e cadastro */
+.message, .login-cad{
   color: white;
+  flex-direction: column;
+  display: flex;
+  align-content: center;
 }
 
-/*a:hover,
-a:active {
-  color: #000;
-  background: hsl(48, 100%, 66%);
-}*/
+/* logo que não aparece da pagina de cadastro mobile */
+.logo-cad {
+  display: flex;
+  display:none;
+   }
 
-.icons {
-  height: 30px;
-  width: 30px;
-}
-
-.register-error {
+/* .register-error {
   text-decoration: none;
   color: #271b1b;
   width: 100px;
@@ -161,68 +169,48 @@ a:active {
   border-radius: 10px;
   display: flex;
   align-items: center;
-}
-
-/* .post-container {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
 } */
 
 
-
-.post-btn-area {
-  display: flex;
-  width: 100%;
-  background: turquoise;
-  align-items: center;
-  height: 40%;
-  justify-content: space-between;
-}
-
-.btn-style {
+@media only screen and (min-width: 768px) {
   
-  background-color: tomato;
-}
-
-.login-error {
-  margin-top: 8%;
-}
-.logo-cad{
-  display: flex;
-  display:none;
-   }
-/* .post-bttn-area {
-  background-color: #e6b908;
-  background-image: linear-gradient(3deg, #ffdc53, transparent);
-  border-radius: 8%;
-} */
-
-@media only screen and (min-width: 768px)/* and (min-height: 1024px)*/ {
-  .logo-cad{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-  .container-log, .container-div{
-    flex-direction: row;
-    padding: 24px; 
-  }
-.container-form {
-    justify-content: flex-end;
-    flex-direction: column;
-  }
-  .register-container{
-  justify-content: center;
-  flex-flow: column;
-  align-items: center;
-  }
-  .form{
-    border-color: hsl(48, 100%, 66%);
-    border: solid 2px;
-  }
   .img-logo{
     width: 400px;
   }
 
-}
+  /* containers pai das paginas de login e cadastro */
+  .container-log, 
+  .container-div {
+    flex-direction: row;
+    padding: 24px; 
+  }
+
+  /* container que recebe todos os inputs e botoes da pagina de login responsiva */
+  .container-form {
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  /* bordas do conteiner da pagina de login responsiva */
+  .form {
+    border: 2px solid hsl(48, 100%, 66%);
+    padding: 20px;
+  }
+
+/* PAGINAS DE CADASTRO */
+
+/* logo que aparece na pagina de cadastro responsiva */
+.logo-cad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  /* container que recebe os inputs e botoes da pag cadastro responsiva */
+  .register-container{
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    }
+  }
+  
