@@ -13,11 +13,14 @@ export const authLogin = () => {
     <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
       <ul>
-      <li>
-      <input type='email' class='input-log' id='e-mail' placeholder='Email'>
+      <li class='input-li'>
+      <input type='email' class='input' id='e-mail' placeholder='Email'>
       </li>
-      <li>
-      <input type='password' class='input-log' id='password' placeholder='Senha'>
+      <li class='input-li'>
+      <input type='password' class='input' id='password' placeholder='Senha'>
+      <label for ='password'>
+      <img id='viewPassword' class='olho'src = './imagens/olho.png'>
+      </label>
       </li>
       <li> 
       <a class='login-bttn input-log' id='login'>Entrar<a/> 
@@ -43,6 +46,7 @@ export const authLogin = () => {
   const loginButton = container.querySelector('#login');
   const registeredEmail = container.querySelector('#e-mail');
   const registeredPassword = container.querySelector('#password');
+ 
 
   const route = () => {
     window.location.href = '/#home';
@@ -81,6 +85,15 @@ const errorMessages = {
         console.log(errorMessage);
       });
   });
-
+  const bntView = container.querySelector('#viewPassword');
+  bntView.addEventListener('click', (event) => {
+    event.preventDefault();
+    const senha = container.querySelector('#password');
+    if (senha.type === 'password') {
+      senha.type = 'text';
+    } else {
+      senha.type = 'password';
+    }
+  });
   return container;
 };
