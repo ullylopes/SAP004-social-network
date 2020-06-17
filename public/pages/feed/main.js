@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts/*, deletePost,editPost*/} from './data.js';
+import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
 // import { authRegistration } from '../cadastro/cadastro.js';
 
 export const home = () => {
@@ -43,6 +43,7 @@ export const home = () => {
   <div class="post-btn-area" id='bttn-post>   
   <button class='btn-style'><img src='imagens/foto.png'></button>   
   <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>  
+  <button id='editar'>Editar</button></div><br>
   </div>
   </form>
   </section>
@@ -51,6 +52,7 @@ export const home = () => {
   <form >
   <ul>
   <li id='comentarios'></li>
+  
   </ul>
   </form>
   </section>
@@ -61,35 +63,32 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
+  /* const btnDel = container.querySelector('#deletar'); */
+  const btnEdit = container.querySelector('#editar');
 
-// const btnDel = container.querySelector('#deletar');
-// const btnEdit = container.querySelector('#editar');
 
-
- const postTemplate = (array) => {
+  const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
    <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
     </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
     <button class='btn-style input post-bttn' id='editar'>Editar</button></div><br>`).join('');
   };
-
+  readPosts(postTemplate);
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-    //postMessage.innerHTML = '';
-    readPosts(postTemplate);
-});
+  });
 
 /*  btnDel.addEventListener('click', (event) => {
     event.preventDefault();
     deletePost(post.value);
-});
+}); */
+
   btnEdit.addEventListener('click', (event) => {
     event.preventDefault();
-    editPost(post.value);
-});
-*/
+    editPost();
+  });
 
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();
