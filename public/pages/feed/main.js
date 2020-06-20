@@ -3,7 +3,7 @@ import { createPost, readPosts, /*deletePost*/ editPost } from './data.js';
 
 export const home = () => {
   const container = document.createElement('div');
-  container.className ='container-feed';
+  container.className = 'container-feed';
 
   container.innerHTML = `
   <section class='feed-container cor-menu'>
@@ -43,7 +43,6 @@ export const home = () => {
   </div>
   </form>
   </section>
-
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
   </section>
@@ -57,25 +56,27 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-  //const btnDel = container.querySelector('#deletar');
-  const btnEdit = container.querySelector('#editar');
+  /* const btnDel = container.querySelector('#deletar'); */
   const postUser = container.querySelector('#usuario');
   //const bntComentario = container.querySelector('#btn-comentario');
   //const Comentario = container.querySelector('#post-comentario');
 
-  const postTemplate = (array, nome) => {
-    postUser.innerHTML = nome;
-    postMessage.innerHTML = array.map(post => `<section class='posted-area'>
+  const postTemplate = (array, nomes) => {
+    postUser.innerHTML = nomes;
+    postMessage.innerHTML = '';
+    const containerDivNova = document.createElement('div');
+    containerDivNova.innerHTML = array.map(post => `<section class='posted-area'>
     <h1>${post.userName}</h1>
     <div class='post-box'>${post.text}</div>
     <div class='btn-area-posted'> 
     <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button> 
     <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button>
-    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button></div></section><br>`).join('');
-  };
-
-  //template para comentar post
+    <button class='feed-bttn' id='btn-comentar'>Comentar</button>
+    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br>`).join('');
+    postMessage.appendChild(containerDivNova);
+    editEvent();
+};
+ //template para comentar post
  /* const comentTemplate = () => {
     Comentario.innerHTML = `<div class='post-box'></div>
     <div class='btn-area-posted'> 
@@ -88,14 +89,25 @@ export const home = () => {
     </div>
     `;
   };*/
-
   readPosts(postTemplate);
+
+/*   const postID = (array) => {
+    let ids = array.map( post => post.idDoc);
+  };
+ */
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
   });
 
+  const editEvent = () => {
+    const btnEdit = container.querySelector('#editar');
+    btnEdit.addEventListener('click', (event) => {
+      event.preventDefault();
+      editPost(btnEdit.dataset.edit);
+    });
+  };
   /*bntComentario.addEventListener('click', (event) => {
 // function like (event) {
 //   const id = 
@@ -138,6 +150,10 @@ export const home = () => {
     });
   });
 
+  /*  btnDel.addEventListener('click', (event) => {
+    event.preventDefault();
+    deletePost(post.value);
+}); */
 
   return container;
 };

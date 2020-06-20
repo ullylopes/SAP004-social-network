@@ -16,4 +16,3 @@ export const firebaseRegistration = (registeredEmail, registeredPassword, route,
       printError(errorCode);
     });
 };
-;

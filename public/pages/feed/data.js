@@ -3,13 +3,16 @@ export const createPost = (textPost) => {
     text: textPost,
     like:0,
     id: firebase.auth().currentUser.uid,
-    userName: firebase.auth().currentUser.displayName,
-})
-.then(() => {
-})
-.catch(() => {
-});
+    user: firebase.auth().currentUser.displayName,
+  })
+    .then((docRef) => {
+      console.log(' Document written with ID id do id: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
 };
+
 
 export const readPosts = (callback) => {
   
@@ -21,8 +24,8 @@ export const readPosts = (callback) => {
       const posts = [];
       const nomes = profile.displayName;
       querySnapshot.forEach((doc) => {
-        posts.push(doc.data());
-      
+        posts.push({...doc.data(), idDoc: doc.id});
+        console.log(doc.data());
       });
       callback(posts, nomes);
     });
@@ -30,7 +33,15 @@ export const readPosts = (callback) => {
   };
 
 
-/*export const deletePost = (postid) => {
+export const editPost = (IDdopost) => {
+  const db = firebase.firestore();
+  db.collection('post').doc(IDdopost).update({
+    text: 'MUDOOU',
+  });
+};
+
+
+/* export const deletePost = (postid) => {
   firebase.firestore().collection('post').doc().delete({
     text:postid,
   })
@@ -39,19 +50,4 @@ export const readPosts = (callback) => {
 }).catch(function(error) {
     console.error("Error removing document: ", error);
 });
- };*/
-
-
-
- export const editPost = () => {
-   db.collection('post').update({
-     text: 'MUDOOU',
-    })
-    .then(function() {
-     console.log("Document successfully updated!");
-    })
-    .catch(function(error) {
-     // The document probably doesn't exist.
-     console.error("Error updating document: ", error);
-    });
-};
+ }; */
