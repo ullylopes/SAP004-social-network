@@ -47,7 +47,7 @@ export const home = () => {
 
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
-  </section>
+  </div>
   </div>
   </section>
 
@@ -63,7 +63,7 @@ export const home = () => {
 
   const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `<section class='posted-area'>
-   <button class='><i class="fas fa-ellipsis-h"></i></button><div class='post-box'>${post.text}</div>
+   <div class='post-box'>${post.text}</div>
    <div class='btn-area-posted'> <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button>
     </button> <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
     <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button></div></section><br>`).join('');
