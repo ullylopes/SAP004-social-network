@@ -1,39 +1,48 @@
 export const createPost = (textPost) => {
-  firebase.firestore().collection('post').add({
+  firebase.firestore().collection('allPost').add({
     text: textPost,
+    like:0,
     id: firebase.auth().currentUser.uid,
-    user: firebase.auth().currentUser.displayName,
-  })
-    .then((docRef) => {
-      console.log(' Document written with ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+    userName: firebase.auth().currentUser.displayName,
+})
+.then(() => {
+})
+.catch(() => {
+});
 };
 
 export const readPosts = (callback) => {
-  firebase.firestore().collection('post')
-    .onSnapshot((querySnapshot) => {
+  
+  firebase.firestore().collection('allPost')
+.onSnapshot((querySnapshot) => {
+  let user = firebase.auth().currentUser; 
+ user.providerData.forEach((profile) => {
+    console.log(profile.displayName);
       const posts = [];
+      const nomes = profile.displayName;
       querySnapshot.forEach((doc) => {
         posts.push(doc.data());
-        console.log(doc.data());
+      
       });
-      callback(posts);
+      callback(posts, nomes);
     });
-};
+    });
+  };
 
-/* export const deletePost = (postid) => {
+
+/*export const deletePost = (postid) => {
   firebase.firestore().collection('post').doc().delete({
-    text:text,
+    text:postid,
   })
   .then(function() {
     console.log("Document successfully deleted!");
 }).catch(function(error) {
     console.error("Error removing document: ", error);
 });
- }; */
+ };*/
+
+
+
  export const editPost = () => {
    db.collection('post').update({
      text: 'MUDOOU',
@@ -46,9 +55,3 @@ export const readPosts = (callback) => {
      console.error("Error updating document: ", error);
     });
 };
-
-/* export const editPost = (text)  => {
-  firebase.firestore().collection('post').doc(). set ({ 
-    text: true, 
-  }, {merge: true} );
- };*/

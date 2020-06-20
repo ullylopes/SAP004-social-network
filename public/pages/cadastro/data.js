@@ -3,7 +3,7 @@ export const firebaseRegistration = (registeredEmail, registeredPassword, route,
     .then(() => {
       const user = firebase.auth().currentUser;
       user.updateProfile({
-        displayName: userName,
+        displayName: `${userName}`,
       }).then(() => {
         console.log('Update successful');
       }).catch(() => {
@@ -16,3 +16,4 @@ export const firebaseRegistration = (registeredEmail, registeredPassword, route,
       printError(errorCode);
     });
 };
+;
