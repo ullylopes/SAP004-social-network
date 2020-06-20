@@ -1,10 +1,10 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
+import { createPost, readPosts /* deletePost, */, editPost } from './data.js';
 // import { authRegistration } from '../cadastro/cadastro.js';
 
 export const home = () => {
   const container = document.createElement('div');
-  container.className ='container-feed';
+  container.className = 'container-feed';
 
   container.innerHTML = `
   <section class='feed-container cor-menu'>
@@ -43,18 +43,14 @@ export const home = () => {
   <div class="post-btn-area" id='bttn-post>   
   <button class='btn-style'><img src='imagens/foto.png'></button>   
   <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>  
-  <button id='editar'>Editar</button></div><br>
   </div>
   </form>
   </section>
-
   <section class='newpost-container'>
-  <form >
   <ul>
   <li id='comentarios'></li>
-  
   </ul>
-  </form>
+ 
   </section>
   </div>
   `;
@@ -64,32 +60,38 @@ export const home = () => {
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
   /* const btnDel = container.querySelector('#deletar'); */
-  const btnEdit = container.querySelector('#editar');
-
+/*   const btnEdit = container.querySelector('#editar');
+ */
 
   const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
+    postMessage.innerHTML = '';
+    const containerDivNova = document.createElement('div')
+    containerDivNova.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
    <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
-    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
-    <button class='btn-style input post-bttn' id='editar'>Editar</button></div><br>`).join('');
-  };
+   </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
+   <button class='btn-style input post-bttn' data-edit = '${post.idDoc}' id='editar'>Editar</button></div><br>`).join('');
+    postMessage.appendChild(containerDivNova);
+   editEvent();
+};
   readPosts(postTemplate);
+
+/*   const postID = (array) => {
+    let ids = array.map( post => post.idDoc);
+  };
+ */
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
   });
 
-/*  btnDel.addEventListener('click', (event) => {
-    event.preventDefault();
-    deletePost(post.value);
-}); */
-
-  btnEdit.addEventListener('click', (event) => {
-    event.preventDefault();
-    editPost();
-  });
-
+  const editEvent = () => {
+    const btnEdit = container.querySelector('#editar');
+    btnEdit.addEventListener('click', (event) => {
+      event.preventDefault();
+      editPost(btnEdit.dataset.edit);
+    });
+  };
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();
     firebase.auth().signOut().then(() => {
@@ -98,7 +100,13 @@ export const home = () => {
     }).catch(() => {
     });
   });
+  
 
+
+  /*  btnDel.addEventListener('click', (event) => {
+    event.preventDefault();
+    deletePost(post.value);
+}); */
 
   return container;
 };
