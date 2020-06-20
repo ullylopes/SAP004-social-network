@@ -1,5 +1,5 @@
 // Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts/*, deletePost,editPost*/} from './data.js';
+import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
 // import { authRegistration } from '../cadastro/cadastro.js';
 
 export const home = () => {
@@ -46,11 +46,7 @@ export const home = () => {
   </section>
 
   <section class='newpost-container'>
-  <form >
-  <ul>
-  <li class='li-posted' id='comentarios'></li>
-  </ul>
-  </form>
+  <div class='li-posted' id='comentarios'></div>
   </section>
   </div>
   </section>
@@ -62,9 +58,8 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-
-// const btnDel = container.querySelector('#deletar');
-// const btnEdit = container.querySelector('#editar');
+  /* const btnDel = container.querySelector('#deletar'); */
+  const btnEdit = container.querySelector('#editar');
 
   const postTemplate = (array) => {
     postMessage.innerHTML = array.map(post => `<section class='posted-area'>
@@ -77,9 +72,7 @@ export const home = () => {
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-    //postMessage.innerHTML = '';
-    readPosts(postTemplate);
-});
+  });
 
 // function like (event) {
 //   const id = 
@@ -99,12 +92,12 @@ export const home = () => {
 /*  btnDel.addEventListener('click', (event) => {
     event.preventDefault();
     deletePost(post.value);
-});
-  btnEdit.addEventListener('click', (event) => {
-    event.preventDefault();
-    editPost(post.value);
-});
-*/
+}); */
+
+  // btnEdit.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   editPost();
+  // });
 
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();
