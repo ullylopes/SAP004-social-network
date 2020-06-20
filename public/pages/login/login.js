@@ -12,7 +12,7 @@ export const authLogin = () => {
     <div class='form'>
     <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
-      <ul>
+      <ul class='align-input'>
       <li class = 'input-li'>
       <input type='email' class='input' id='e-mail' placeholder='Email'>
       </li>

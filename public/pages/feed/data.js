@@ -30,7 +30,7 @@ export const readPosts = (callback) => {
   };
 
 
-export const deletePost = (postid) => {
+/*export const deletePost = (postid) => {
   firebase.firestore().collection('post').doc().delete({
     text:postid,
   })
@@ -39,7 +39,7 @@ export const deletePost = (postid) => {
 }).catch(function(error) {
     console.error("Error removing document: ", error);
 });
- };
+ };*/
 
 
 

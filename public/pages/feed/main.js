@@ -23,15 +23,13 @@ export const home = () => {
   </div>
   </section>
 
-  
+<section class='entire-container'>
  <div class='perfil-container'>
   <section class='perfil-style'>
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
-  </section>
-  <section class="bio-infos">
   <h1 id='usuario'class="text-style"></h1>
   <p class="text-style">Sou muito feliz!</p>
-</section>
+  </section>
 </div>
 
 <div class= 'post-and-coment'>
@@ -40,18 +38,20 @@ export const home = () => {
   <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
-  <button class='btn-style'><img src='imagens/foto.png'></button>   
-  <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>  
-  <button id='editar'>Editar</button></div><br>
+  <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
+  <button type='submit' id ='btn-comentar' class='feed-bttn'>Postar</button>  
   </div>
   </form>
   </section>
 
-  <section class='newpost-container' id='comentarios'>
-
+  <section class='newpost-container'>
+  <div class='li-posted' id='comentarios'></div>
 
   </section>
   </div>
+  </section>
+
+  <footer><p>&copy;Desenvolvido por Adélia, Sabrina e Ully</p></footer>
   `;
 
   const post = container.querySelector('#post-text');
@@ -61,24 +61,20 @@ export const home = () => {
   //const btnDel = container.querySelector('#deletar');
   const btnEdit = container.querySelector('#editar');
   const postUser = container.querySelector('#usuario');
-  const bntComentario = container.querySelector('#btn-comentario');
-  const Comentario = container.querySelector('#post-comentario');
+  //const bntComentario = container.querySelector('#btn-comentario');
+  //const Comentario = container.querySelector('#post-comentario');
 
   const postTemplate = (array, nome) => {
     postUser.innerHTML = nome;
-    postMessage.innerHTML = array.map(post => `<h1>${post.userName}</h1>
+    postMessage.innerHTML = array.map(post => `<section class='posted-area'>
+    <h1>${post.userName}</h1>
     <div class='post-box'>${post.text}</div>
     <div class='btn-area-posted'> 
-    <button id='like-btn'>
-    <img src = './imagens/brinde.jpg' width='25' height='25'>
-    </button>
-    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
-    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button>
-    <button class='btn-style input post-bttn' id='editar'>Editar</button>
-    </div>
-    <section id='post-comentario'></section>`).join('');
+    <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button> 
+    <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button>
+    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button></div></section><br>`).join('');
   };
-  readPosts(postTemplate);
 
   //template para comentar post
  /* const comentTemplate = () => {
@@ -94,20 +90,38 @@ export const home = () => {
     `;
   };*/
 
-  /*btnPost.addEventListener('click', (event) => {
+  readPosts(postTemplate);
+
+  btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-  });*/
+  });
 
   /*bntComentario.addEventListener('click', (event) => {
+// function like (event) {
+//   const id = 
+//   const likeBttn = document.querySelector('like-btn');
+//   firebase.firestore().collection('post').doc(id).get()
+//     .then((snap) => {
+//       const likeCount = snap.data().likes + 1;
+//       firebase.firestore().collection('post').doc(id).update({
+//         likes: likeCount,
+//       });
+//       likeBttn.innerText = likeCount;
+//     });
+// }
+
+
+
+/*  btnDel.addEventListener('click', (event) => {
     event.preventDefault();
     comentTemplate();
   });*/
 
-  btnEdit.addEventListener('click', (event) => {
-    event.preventDefault();
-    editPost();
-  });
+  // btnEdit.addEventListener('click', (event) => {
+  //   event.preventDefault();
+  //   editPost();
+  // });
 
 /*  const btnDel = container.querySelector('#deletar');
   btnDel.addEventListener('click', (event) => {
