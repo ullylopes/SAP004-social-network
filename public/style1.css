@@ -24,17 +24,18 @@ input[type="checkbox"]:checked ~ .nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  align-content: flex-start;
-  align-items: center;
+  /* align-content: flex-start;
+  align-items: center; */
 }
 
 .menu-inicial {
   padding: 1%;
   margin: 2%;
+  padding-bottom: 9%;
 }
 
 .cor-menu {
-  background-color: orangered;
+  background-color: #f1cb32;;
   align-self: stretch;
   width: 100vw;
 }
@@ -42,6 +43,7 @@ input[type="checkbox"]:checked ~ .nav {
 .title {
 	align-items: center;
 	margin: 2%;
+	padding-top: 2%;
   }
 
 .link {
@@ -71,7 +73,7 @@ input[type="checkbox"]:checked ~ .nav {
 
 .perfil-style {
   align-self: auto;
-  margin: 2%;
+  margin: 3%;
 }
 
 .foto-style {
@@ -80,32 +82,36 @@ input[type="checkbox"]:checked ~ .nav {
   box-sizing: border-box;
 }
 
-.bio-infos {
-  align-self: stretch;
-}
-
 .post-container,
 .newpost-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100vw; */
 }
 
-
+/* box que engloba toda a parte de post e comentários */
+.post-and-coment {
+	display: flex;
+    flex-direction: column;
+	justify-content: center;
+	margin: 4px;
+}
 
 
 .post-area {
-  margin-top: 20px;
-  border-radius: 2%;
-  background: #ffde59;
-  width: 92%;
+  margin-top: 4px;
+  /* border-radius: 2%; */
+  background: #f1cb32;
+  border: 2px solid lightyellow;
+  padding-top: 30px;
+  /* width: 92%; */
 }
 
 .textarea-style {
-  width: 250px;
+  width: 80%;
   border-radius: 3%;
   margin: 5px 10px;
-  height: 60px;
+  height: 90px;
   border: 1px solid #ffffff;
   border-bottom: 1px solid #4c3313;
   padding-left: 10px;
@@ -117,7 +123,7 @@ input[type="checkbox"]:checked ~ .nav {
 .post-btn-area {
   display: flex;
   width: 100%;
-  background: turquoise;
+  background: #c1beaf;
   align-items: center;
   justify-content: space-around;
   /* align-items: center;
@@ -126,39 +132,102 @@ input[type="checkbox"]:checked ~ .nav {
 
 .btn-area-posted {
 	display: flex;
-	width: 20px;
-	background: turquoise;
+    /* width: 20px; */
+    background: #c1beaf;
+    /* flex-direction: row; */
+    justify-content: space-around;
 }
 
-.btn-style {
-  background-color: tomato;
+.feed-bttn {
+  border-radius: 9px;
+  border: 1px solid #f1cb32;
+  background-color: #8c5818;
+  background-image: linear-gradient(23deg, #ffdc53, transparent);
+  color: white;
+  text-shadow: #4e4508 1px 1px;
+  padding:8px;
+  font-family: "Archivo Narrow", sans-serif;
+  font-weight: 800;
+  font-size: medium;
+}
+
+/* .btn-style {
+  color: white;
+  padding: 5px;
+    font-family: "Archivo Narrow", sans-serif;
+} */
+
+
+.posted-area {
+	margin-top: 5px;
+    border-radius: 2%;
+    background: #f1cb32;
+    border: 2px solid lightyellow;
 }
 
 .post-box {
-	align-self: center;
+	background: #f1cb32;
+    /* width: 250px; */
+   border-radius: 3%;
+    margin: 5px 10px;
+    height: 60px;
+    border-bottom: 1px solid #4c3313;
+    padding-left: 10px;
+    padding-top: 5px;
+	  font-size: 15px;
+	  color: black;
+	  text-align: initial;
+	/* align-self: center;
 	padding: 2%;
 	border-radius: 2%;
 	background: #ffde59;
-	width: 95%;
+	border-bottom: 1px solid #4c3313;
+	width: 300px;
 	color: black;
+	height: 80px;
+  padding-top: 3%; */
   }
 
-  .newpost-container {
-	list-style-type: none;
-	padding: 2%;
+  .li-posted {
 	display: flex;
-	/* width: 100vw; */
+  flex-direction: column;
 	justify-content: center;
+	margin-top: 5%;
   }
-
-/* .carregando {
-  align-self: center;
-} */
 
 @media only screen and (min-width: 768px) {
+	.menu-inicial {
+	padding: 0%;
+	margin: 23px;
+	padding-bottom: 20px;
+	}
+	
+	.title {
+		padding-top: 7px;
+	}
 
-.post-container {
+	.entire-container {
+	display: flex;
+	}
+
+	.perfil-style {
+	align-self: auto;
+    /* margin: 2%; */
+    border: 2px solid #f1cb32;
+    padding: 40px
+	}
+
+	.post-and-coment {
+	width: 80%;
+	padding: 2%;
+	/* display: flex;
+    flex-direction: column;
+	align-items: flex-end;
+	margin-right: 10%; */
+}
+
+/* .post-container {
 		display: flex;
 		justify-content: flex-end;
 		width: 45%;
-}
+} */

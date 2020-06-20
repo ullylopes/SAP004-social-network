@@ -24,12 +24,10 @@ export const home = () => {
   </div>
   </section>
 
-  
+<section class='entire-container'>
  <div class='perfil-container'>
   <section class='perfil-style'>
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
-  </section>
-  <section class="bio-infos">
   <h1 class="text-style">Ana maria</h1>
   <p class="text-style">Sou muito feliz!</p>
 </section>
@@ -41,8 +39,8 @@ export const home = () => {
   <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
-  <button class='btn-style'><img src='imagens/foto.png'></button>   
-  <button type="submit" id = 'btn-comentar' class="btn-style input post-bttn">Postar</button>  
+  <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
+  <button type='submit' id ='btn-comentar' class='feed-bttn'>Postar</button>  
   </div>
   </form>
   </section>
@@ -50,11 +48,14 @@ export const home = () => {
   <section class='newpost-container'>
   <form >
   <ul>
-  <li id='comentarios'></li>
+  <li class='li-posted' id='comentarios'></li>
   </ul>
   </form>
   </section>
   </div>
+  </section>
+
+  <footer><p>&copy;Desenvolvido por Adélia, Sabrina e Ully</p></footer>
   `;
 
   const post = container.querySelector('#post-text');
@@ -65,14 +66,13 @@ export const home = () => {
 // const btnDel = container.querySelector('#deletar');
 // const btnEdit = container.querySelector('#editar');
 
-
- const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
-   <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
-    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
-    <button class='btn-style input post-bttn' id='editar'>Editar</button></div><br>`).join('');
+  const postTemplate = (array) => {
+    postMessage.innerHTML = array.map(post => `<section class='posted-area'>
+   <button class='><i class="fas fa-ellipsis-h"></i></button><div class='post-box'>${post.text}</div>
+   <div class='btn-area-posted'> <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button>
+    </button> <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button></div></section><br>`).join('');
   };
-
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
@@ -80,6 +80,21 @@ export const home = () => {
     //postMessage.innerHTML = '';
     readPosts(postTemplate);
 });
+
+// function like (event) {
+//   const id = 
+//   const likeBttn = document.querySelector('like-btn');
+//   firebase.firestore().collection('post').doc(id).get()
+//     .then((snap) => {
+//       const likeCount = snap.data().likes + 1;
+//       firebase.firestore().collection('post').doc(id).update({
+//         likes: likeCount,
+//       });
+//       likeBttn.innerText = likeCount;
+//     });
+// }
+
+
 
 /*  btnDel.addEventListener('click', (event) => {
     event.preventDefault();
