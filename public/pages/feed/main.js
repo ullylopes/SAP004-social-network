@@ -1,6 +1,5 @@
-// Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
-// import { authRegistration } from '../cadastro/cadastro.js';
+import { createPost, readPosts, /*deletePost*/ editPost } from './data.js';
+
 
 export const home = () => {
   const container = document.createElement('div');
@@ -28,9 +27,9 @@ export const home = () => {
  <div class='perfil-container'>
   <section class='perfil-style'>
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
-  <h1 class="text-style">Ana maria</h1>
+  <h1 id='usuario'class="text-style"></h1>
   <p class="text-style">Sou muito feliz!</p>
-</section>
+  </section>
 </div>
 
 <div class= 'post-and-coment'>
@@ -47,6 +46,7 @@ export const home = () => {
 
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
+
   </section>
   </div>
   </section>
@@ -58,22 +58,46 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-  /* const btnDel = container.querySelector('#deletar'); */
+  //const btnDel = container.querySelector('#deletar');
   const btnEdit = container.querySelector('#editar');
+  const postUser = container.querySelector('#usuario');
+  //const bntComentario = container.querySelector('#btn-comentario');
+  //const Comentario = container.querySelector('#post-comentario');
 
-  const postTemplate = (array) => {
+  const postTemplate = (array, nome) => {
+    postUser.innerHTML = nome;
     postMessage.innerHTML = array.map(post => `<section class='posted-area'>
-   <button class='><i class="fas fa-ellipsis-h"></i></button><div class='post-box'>${post.text}</div>
-   <div class='btn-area-posted'> <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button>
-    </button> <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button></div></section><br>`).join('');
+    <h1>${post.userName}</h1>
+    <div class='post-box'>${post.text}</div>
+    <div class='btn-area-posted'> 
+    <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button> 
+    <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar'><i class="fas fa-edit"> </i></button>
+    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button></div></section><br>`).join('');
   };
+
+  //template para comentar post
+ /* const comentTemplate = () => {
+    Comentario.innerHTML = `<div class='post-box'></div>
+    <div class='btn-area-posted'> 
+    <button id='like-btn'>
+    <img src = './imagens/brinde.jpg' width='25' height='25'>
+    </button>
+    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
+    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button>
+    <button class='btn-style input post-bttn' id='editar'>Editar</button>
+    </div>
+    `;
+  };*/
+
+  readPosts(postTemplate);
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
   });
 
+  /*bntComentario.addEventListener('click', (event) => {
 // function like (event) {
 //   const id = 
 //   const likeBttn = document.querySelector('like-btn');
@@ -91,13 +115,20 @@ export const home = () => {
 
 /*  btnDel.addEventListener('click', (event) => {
     event.preventDefault();
-    deletePost(post.value);
-}); */
+    comentTemplate();
+  });*/
 
   // btnEdit.addEventListener('click', (event) => {
   //   event.preventDefault();
   //   editPost();
   // });
+
+/*  const btnDel = container.querySelector('#deletar');
+  btnDel.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('clicou');
+   // deletePost(post.value);
+  });*/
 
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();

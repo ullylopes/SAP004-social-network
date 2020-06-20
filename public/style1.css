@@ -8,16 +8,19 @@ input[type="checkbox"] {
 
 .nav {
   background-color: rgba(16, 16, 16, 0.74);
-  width: 300px;
-  height: 100%;
-  left: -300px;
+ /* width: 50%;*/
+/*  height: 100%;*/
+ /* left: -50%;*/
   position: absolute;
   /*top: 3px;*/
   transition: all 0.5s;
+  width: 103px;
+  left: -282px;
+  margin-top: 33px;
 }
 
 input[type="checkbox"]:checked ~ .nav {
-  transform: translateX(300px);
+  transform: translateX(282px);
 }
 
 .feed-container {
@@ -50,6 +53,8 @@ input[type="checkbox"]:checked ~ .nav {
   display: block;
   padding: 20px 5px;
   color: white;
+  border: 2px solid white;
+  margin: 8px;
 }
 
 .link:hover {
@@ -194,6 +199,15 @@ input[type="checkbox"]:checked ~ .nav {
 	justify-content: center;
 	margin-top: 5%;
   }
+
+/* .carregando {
+  align-self: center;
+} */
+.newpost-container{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
 
 @media only screen and (min-width: 768px) {
 	.menu-inicial {

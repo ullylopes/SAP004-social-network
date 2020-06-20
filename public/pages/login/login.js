@@ -46,6 +46,7 @@ export const authLogin = () => {
   const loginButton = container.querySelector('#login');
   const registeredEmail = container.querySelector('#e-mail');
   const registeredPassword = container.querySelector('#password');
+ 
 
   const route = () => {
     window.location.href = '/#home';
