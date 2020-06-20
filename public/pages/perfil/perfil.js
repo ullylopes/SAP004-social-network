@@ -1,4 +1,4 @@
-//socorroooooooooooooooooooooooooooo
+
 export const profile = () => {
 	const container = document.createElement('div');
   

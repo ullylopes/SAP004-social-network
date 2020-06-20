@@ -1,6 +1,5 @@
-// Aqui serão criados os eventos de Manipulação de DOM e templates
-import { createPost, readPosts, /* deletePost, */ editPost } from './data.js';
-// import { authRegistration } from '../cadastro/cadastro.js';
+import { createPost, readPosts, /*deletePost*/ editPost } from './data.js';
+
 
 export const home = () => {
   const container = document.createElement('div');
@@ -30,7 +29,7 @@ export const home = () => {
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
   </section>
   <section class="bio-infos">
-  <h1 class="text-style">Ana maria</h1>
+  <h1 id='usuario'class="text-style"></h1>
   <p class="text-style">Sou muito feliz!</p>
 </section>
 </div>
@@ -48,13 +47,9 @@ export const home = () => {
   </form>
   </section>
 
-  <section class='newpost-container'>
-  <form >
-  <ul>
-  <li id='comentarios'></li>
-  
-  </ul>
-  </form>
+  <section class='newpost-container' id='comentarios'>
+
+
   </section>
   </div>
   `;
@@ -63,32 +58,63 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-  /* const btnDel = container.querySelector('#deletar'); */
+  //const btnDel = container.querySelector('#deletar');
   const btnEdit = container.querySelector('#editar');
+  const postUser = container.querySelector('#usuario');
+  const bntComentario = container.querySelector('#btn-comentario');
+  const Comentario = container.querySelector('#post-comentario');
 
-
-  const postTemplate = (array) => {
-    postMessage.innerHTML = array.map(post => `<div class='post-box'>${post.text}</div>
-   <div class='btn-area-posted'> <button id='like-btn'><img src = './imagens/brinde.jpg' width='25' height='25'></button>
+  const postTemplate = (array, nome) => {
+    postUser.innerHTML = nome;
+    postMessage.innerHTML = array.map(post => `<h1>${post.userName}</h1>
+    <div class='post-box'>${post.text}</div>
+    <div class='btn-area-posted'> 
+    <button id='like-btn'>
+    <img src = './imagens/brinde.jpg' width='25' height='25'>
+    </button>
     </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
-    <button class='btn-style input post-bttn' id='editar'>Editar</button></div><br>`).join('');
+    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button>
+    <button class='btn-style input post-bttn' id='editar'>Editar</button>
+    </div>
+    <section id='post-comentario'></section>`).join('');
   };
   readPosts(postTemplate);
 
-  btnPost.addEventListener('click', (event) => {
+  //template para comentar post
+ /* const comentTemplate = () => {
+    Comentario.innerHTML = `<div class='post-box'></div>
+    <div class='btn-area-posted'> 
+    <button id='like-btn'>
+    <img src = './imagens/brinde.jpg' width='25' height='25'>
+    </button>
+    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
+    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button>
+    <button class='btn-style input post-bttn' id='editar'>Editar</button>
+    </div>
+    `;
+  };*/
+
+  /*btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
-  });
+  });*/
 
-/*  btnDel.addEventListener('click', (event) => {
+  /*bntComentario.addEventListener('click', (event) => {
     event.preventDefault();
-    deletePost(post.value);
-}); */
+    comentTemplate();
+  });*/
 
   btnEdit.addEventListener('click', (event) => {
     event.preventDefault();
     editPost();
   });
+
+/*  const btnDel = container.querySelector('#deletar');
+  btnDel.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('clicou');
+   // deletePost(post.value);
+  });*/
 
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();
