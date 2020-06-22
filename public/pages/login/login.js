@@ -50,6 +50,7 @@ export const authLogin = () => {
 
   const route = () => {
     window.location.href = '/#home';
+    window.location.reload(true);
   };
 const errorMessages = {
   'auth/user-not-found': 'Usuário não cadastrado.',
@@ -74,6 +75,7 @@ const errorMessages = {
       .then((result) => {
         console.log('deu certo');
         window.location.href ='/#home';
+        window.location.reload(true);
         const token = result.credential.accessToken;
         const user = result.user;
       })

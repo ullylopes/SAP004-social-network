@@ -1,8 +1,7 @@
 
-  import { createPost, readPosts,editPost, deletePost, likePost
+  import { createPost, readPosts, editPost, deletePost, likePost
     /*, creatNewComent, readComent*/ } from './data.js';
-
-
+ 
 export const home = () => {
   const container = document.createElement('div');
   container.className = 'container-feed';
@@ -60,21 +59,18 @@ export const home = () => {
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
   const postUser = container.querySelector('#usuario');
- 
-  
 
+ 
   const postTemplate = (array, nome) => { 
-    
-    
-   
     postUser.innerHTML = nome;
     postMessage.innerHTML = '';
     const containerDivNova = document.createElement('div');
-    postMessage.innerHTML = array.map( post =>
+    postMessage.innerHTML = array.map( post => 
     `<section class='posted-area'>
-    <h1>${post.user}</h1>
-    <span>${new Date().toLocaleDateString()}</span>
-    <span>${new Date().getTime()}</span>
+      <h1>${post.user}</h1>
+    <span>${post.date}</span>
+  
+    <span>${post.time}</span>
     <div class='post-box'>${post.text}</div>
     <div class='btn-area-posted'> 
     <button class='feed-bttn' id='like-btn' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
@@ -88,28 +84,30 @@ export const home = () => {
    
 // <div id='post-comentario" ></div><br>
     const editEvent = () => {
-      //const btnEdit = containerDivNova.querySelector(`#editar[data-edit= '${post.idDoc}']`);
-     
-      const btnEdit = container.querySelector('#editar');
-      btnEdit.addEventListener('click', (event) => {
+      const btnEdit = container.querySelectorAll('#editar');
+      btnEdit.forEach(element => {
+        element.addEventListener('click', (event) => {
         event.preventDefault();
-        editPost(btnEdit.dataset.edit);
+        editPost(element.dataset.edit);
       });
-    };
+    });
+  };
     const deletEvent = () => {
-      //const btnDel = postMessage.querySelector(`#deletar[data-delete = '${post.idDoc}']`);
-      const btnDel = container.querySelector('#deletar');
-      btnDel.addEventListener('click', (event) => {
-        event.preventDefault();
-        deletePost(btnDel.dataset.delete);
+      const btnDel = container.querySelectorAll('#deletar');
+      btnDel.forEach(element => {
+        element.addEventListener('click', (event) => {
+          event.preventDefault();
+          deletePost(element.dataset.delete);
+        });
       });
     };
     const likeEvent = () => {
-      const likeBttn = container.querySelector('#like-btn');
-      likeBttn.addEventListener('click', (event) => {
+      const likeBttn = container.querySelectorAll('#like-btn');
+      likeBttn.forEach(element => {
+      element.addEventListener('click', (event) => {
        event.preventDefault();
-       likePost(likeBttn.dataset.like);
-   
+       likePost(element.dataset.like);
+      });
       });
      } ;
 
@@ -142,9 +140,6 @@ export const home = () => {
     editEvent();
     deletEvent();
     likeEvent();
-  
-    /*comentEvent();
-    readComent(comentTemplate);*/
   };
 
   readPosts(postTemplate);

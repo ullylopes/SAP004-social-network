@@ -2,10 +2,10 @@ export const createPost = (textPost) => {
   firebase.firestore().collection('allPost').add({
     text: textPost,
     like:0,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
     id: firebase.auth().currentUser.uid,
     user: firebase.auth().currentUser.displayName,
-    date: new Date(),
-   
   })
     .then((docRef) => {
       console.log(' Document written with ID id do id: ', docRef.id);
@@ -17,32 +17,24 @@ export const createPost = (textPost) => {
 
 
 export const readPosts = (callback) => {
-  firebase.firestore().collection('allPost')
-  .orderBy("date", "desc")
+  firebase.firestore().collection('allPost').orderBy("time","desc")
 .onSnapshot((querySnapshot) => {
-  let user = firebase.auth().currentUser; 
+  const user = firebase.auth().currentUser; 
    user.providerData.forEach((profile) => {
       const posts = [];
       const nomes = profile.displayName;
-      /*const timestamp = profile.date;*/
        querySnapshot.forEach((doc) => {
-        posts.push({...doc.data(), idDoc: doc.id});
+        posts.push({...doc.data(), idDoc: doc.id });
         console.log(doc.data());
-       /* console.log(new Date(timestamp*1000));
-        console.log(timestamp);*/
       });
       callback(posts, nomes);
     });
-    });
-  };
+     });
+    };
+  
 
 
 export const editPost = (IDdoallPost) => {
- /* const user = firebase.auth().currentUser.email;
-  if (user !== firebase.auth().currentUser.email) {
-    postBox.querySelector('.delete-btn').classList.add('visibility');
-    postBox.querySelector('.edit-btn').classList.add('visibility');
-  }*/
     firebase.firestore().collection('allPost').doc(IDdoallPost).update({
       text: 'MUDOUUUU',
     })
