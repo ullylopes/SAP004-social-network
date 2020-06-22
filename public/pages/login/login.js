@@ -13,10 +13,10 @@ export const authLogin = () => {
     <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
       <ul class='align-input'>
-      <li class = 'input-li'>
+      <li class = 'input-li center'>
       <input type='email' class='input' id='e-mail' placeholder='Email'>
       </li>
-      <li class= 'input-li'>
+      <li class= 'input-li center'>
       <input type='password' class= 'input' id='password' placeholder='Senha'>
       <label for= 'password'>
       <img id= 'view-password' class= 'olho' src= './imagens/olho.png'>
@@ -31,11 +31,11 @@ export const authLogin = () => {
       <p class ='login-error' id ='login-error'>
       </p> 
       </div>
-      <div class='login-cad'>
-    <h3>Ou conecte-se com</h3></br>
+     <br><div class='login-cad'>
+    <h3>Ou conecte-se com</h3>
     <img class='icons' id='google' src='imagens/go.png'>
     <p> Você ainda não é cadastrado?
-    Cadastre-se <a href='/#cadastro'>aqui!</a>
+    Cadastre-se <a href='/#cadastro'>aqui!</a></br>
     </p>
 </div>
 </div>
@@ -52,9 +52,9 @@ export const authLogin = () => {
     window.location.href = '/#home';
   };
 const errorMessages = {
-  'auth/user-not-found': 'Usuário não cadastrado.',
-  'auth/wrong-password':'Senha incorreta',
-  'auth/invalid-email': 'E-mail inválido',
+  'auth/user-not-found': 'Usuário não cadastrado <i class="fas fa-exclamation-triangle"></i>',
+  'auth/wrong-password':'Senha incorreta <i class="fas fa-exclamation-triangle"></i>',
+  'auth/invalid-email': 'E-mail inválido <i class="fas fa-exclamation-triangle"></i>',
 
 }
   const printError = (error) => {
