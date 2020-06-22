@@ -1,4 +1,6 @@
-import { createPost, readPosts, /*deletePost*/ editPost } from './data.js';
+
+  import { createPost, readPosts,editPost, deletePost, likePost
+    /*, creatNewComent, readComent*/ } from './data.js';
 
 
 export const home = () => {
@@ -35,7 +37,7 @@ export const home = () => {
 <div class= 'post-and-coment'>
 <section class='post-container'>
   <form class='post-area'>
-  <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
+  <textarea id='post-text' class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
   <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
@@ -43,6 +45,7 @@ export const home = () => {
   </div>
   </form>
   </section>
+
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
   </section>
@@ -56,90 +59,105 @@ export const home = () => {
   const btnPost = container.querySelector('#btn-comentar');
   const postMessage = container.querySelector('#comentarios');
   const btnSair = container.querySelector('#sair');
-  /* const btnDel = container.querySelector('#deletar'); */
   const postUser = container.querySelector('#usuario');
-  //const bntComentario = container.querySelector('#btn-comentario');
-  //const Comentario = container.querySelector('#post-comentario');
+ 
+  
 
-  const postTemplate = (array, nomes) => {
-    postUser.innerHTML = nomes;
+  const postTemplate = (array, nome) => { 
+    
+    
+   
+    postUser.innerHTML = nome;
     postMessage.innerHTML = '';
     const containerDivNova = document.createElement('div');
-    containerDivNova.innerHTML = array.map(post => `<section class='posted-area'>
-    <h1>${post.userName}</h1>
+    postMessage.innerHTML = array.map( post =>
+    `<section class='posted-area'>
+    <h1>${post.user}</h1>
+    <span>${new Date().toLocaleDateString()}</span>
+    <span>${new Date().getTime()}</span>
     <div class='post-box'>${post.text}</div>
     <div class='btn-area-posted'> 
-    <button class='feed-bttn' id='like-btn'><i class="fas fa-glass-cheers"> </i></button> 
-    <button class='feed-bttn' id='deletar'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='btn-comentar'>Comentar</button>
-    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br>`).join('');
+    <button class='feed-bttn' id='like-btn' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
+    <p id='numbers-like'>${post.like}<p>
+    <button class='feed-bttn' id='deletar'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
+    <button class='feed-bttn' id='comentar' data-post = '${post.idDoc}'>Comentar</button>
+    </div></section><br>
+    `).join('');
     postMessage.appendChild(containerDivNova);
-    editEvent();
-};
- //template para comentar post
- /* const comentTemplate = () => {
-    Comentario.innerHTML = `<div class='post-box'></div>
+   
+// <div id='post-comentario" ></div><br>
+    const editEvent = () => {
+      //const btnEdit = containerDivNova.querySelector(`#editar[data-edit= '${post.idDoc}']`);
+     
+      const btnEdit = container.querySelector('#editar');
+      btnEdit.addEventListener('click', (event) => {
+        event.preventDefault();
+        editPost(btnEdit.dataset.edit);
+      });
+    };
+    const deletEvent = () => {
+      //const btnDel = postMessage.querySelector(`#deletar[data-delete = '${post.idDoc}']`);
+      const btnDel = container.querySelector('#deletar');
+      btnDel.addEventListener('click', (event) => {
+        event.preventDefault();
+        deletePost(btnDel.dataset.delete);
+      });
+    };
+    const likeEvent = () => {
+      const likeBttn = container.querySelector('#like-btn');
+      likeBttn.addEventListener('click', (event) => {
+       event.preventDefault();
+       likePost(likeBttn.dataset.like);
+   
+      });
+     } ;
+
+    /* template para comentar post
+    const comentario = container.querySelector('#post-comentario');
+    const comentTemplate = (array) => {
+    comentario.innerHTML = '';
+    const containerComent = document.createElement('div');
+    comentario.innerHTML = array.map( post => `<section class='posted-area'>
+    <h1>${post.user}</h1>
+    <textarea class='post-box'>${post.text}</textarea>
     <div class='btn-area-posted'> 
-    <button id='like-btn'>
-    <img src = './imagens/brinde.jpg' width='25' height='25'>
-    </button>
-    </button> <button class='btn-style input post-bttn' id='deletar'>Deletar</button>
-    <button class='btn-style input post-bttn' id='btn-comentar'>Comentar</button>
-    <button class='btn-style input post-bttn' id='editar'>Editar</button>
-    </div>
-    `;
-  };*/
+    <button class='feed-bttn' id='like-btn' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
+    <p id='numbers-like'>${post.like}<p>
+    <button class='feed-bttn' id='deletar'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
+    </div></section><br>`).join('');
+      postMessage.appendChild(containerComent);
+    };*/
+    /*const comentEvent = () => {
+      const bntComent = container.querySelector('#comentar');
+      bntComent.addEventListener('click', (event) => {
+        event.preventDefault();
+        comentario.innerHTML = comentTemplate;
+
+      });
+    };*/
+
+
+    editEvent();
+    deletEvent();
+    likeEvent();
+  
+    /*comentEvent();
+    readComent(comentTemplate);*/
+  };
+
   readPosts(postTemplate);
 
-/*   const postID = (array) => {
-    let ids = array.map( post => post.idDoc);
-  };
- */
 
   btnPost.addEventListener('click', (event) => {
     event.preventDefault();
     createPost(post.value);
+    post.value = '';
   });
 
-  const editEvent = () => {
-    const btnEdit = container.querySelector('#editar');
-    btnEdit.addEventListener('click', (event) => {
-      event.preventDefault();
-      editPost(btnEdit.dataset.edit);
-    });
-  };
-  /*bntComentario.addEventListener('click', (event) => {
-// function like (event) {
-//   const id = 
-//   const likeBttn = document.querySelector('like-btn');
-//   firebase.firestore().collection('post').doc(id).get()
-//     .then((snap) => {
-//       const likeCount = snap.data().likes + 1;
-//       firebase.firestore().collection('post').doc(id).update({
-//         likes: likeCount,
-//       });
-//       likeBttn.innerText = likeCount;
-//     });
-// }
-
-
-
-/*  btnDel.addEventListener('click', (event) => {
-    event.preventDefault();
-    comentTemplate();
-  });*/
-
-  // btnEdit.addEventListener('click', (event) => {
-  //   event.preventDefault();
-  //   editPost();
-  // });
-
-/*  const btnDel = container.querySelector('#deletar');
-  btnDel.addEventListener('click', (event) => {
-    event.preventDefault();
-    console.log('clicou');
-   // deletePost(post.value);
-  });*/
+ 
+  
 
   btnSair.addEventListener('click', (event) => {
     event.preventDefault();
@@ -150,10 +168,5 @@ export const home = () => {
     });
   });
 
-  /*  btnDel.addEventListener('click', (event) => {
-    event.preventDefault();
-    deletePost(post.value);
-}); */
-
-  return container;
+return container;
 };

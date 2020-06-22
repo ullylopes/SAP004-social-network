@@ -1,6 +1,7 @@
 main {
   width: 100vw;
   display: flex;
+  overflow: auto;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
   background: url(imagens/mad.png) center/ 100% no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  
 }
 
 /* logo */
@@ -99,11 +101,14 @@ form {
     width: 262px;
     margin:20px; 
 }
-
-.align-input {
-  /* align-self: center;
+.center{
+  align-self: center;
     display: flex;
-    flex-direction: column; */
+}
+.align-input {
+ align-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* area que deixa os botões lado a lado na página cadastro */

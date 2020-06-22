@@ -13,10 +13,10 @@ export const authLogin = () => {
     <form>
     <p class='welcome'>Encontre amigos para o seu happy hour e compartilhe seus bares favoritos</p>
       <ul class='align-input'>
-      <li class = 'input-li'>
+      <li class = 'input-li center'>
       <input type='email' class='input' id='e-mail' placeholder='Email'>
       </li>
-      <li class= 'input-li'>
+      <li class= 'input-li center'>
       <input type='password' class= 'input' id='password' placeholder='Senha'>
       <label for= 'password'>
       <img id= 'view-password' class= 'olho' src= './imagens/olho.png'>

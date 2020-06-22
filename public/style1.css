@@ -27,6 +27,7 @@ input[type="checkbox"]:checked ~ .nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  overflow:auto;
   /* align-content: flex-start;
   align-items: center; */
 }
@@ -41,6 +42,7 @@ input[type="checkbox"]:checked ~ .nav {
   background-color: #f1cb32;;
   align-self: stretch;
   width: 100vw;
+ 
 }
 
 .title {

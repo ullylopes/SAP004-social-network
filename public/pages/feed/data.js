@@ -4,6 +4,8 @@ export const createPost = (textPost) => {
     like:0,
     id: firebase.auth().currentUser.uid,
     user: firebase.auth().currentUser.displayName,
+    date: new Date(),
+   
   })
     .then((docRef) => {
       console.log(' Document written with ID id do id: ', docRef.id);
@@ -15,17 +17,19 @@ export const createPost = (textPost) => {
 
 
 export const readPosts = (callback) => {
-  
   firebase.firestore().collection('allPost')
+  .orderBy("date", "desc")
 .onSnapshot((querySnapshot) => {
   let user = firebase.auth().currentUser; 
- user.providerData.forEach((profile) => {
-    console.log(profile.displayName);
+   user.providerData.forEach((profile) => {
       const posts = [];
       const nomes = profile.displayName;
-      querySnapshot.forEach((doc) => {
+      /*const timestamp = profile.date;*/
+       querySnapshot.forEach((doc) => {
         posts.push({...doc.data(), idDoc: doc.id});
         console.log(doc.data());
+       /* console.log(new Date(timestamp*1000));
+        console.log(timestamp);*/
       });
       callback(posts, nomes);
     });
@@ -33,21 +37,69 @@ export const readPosts = (callback) => {
   };
 
 
-export const editPost = (IDdopost) => {
-  const db = firebase.firestore();
-  db.collection('post').doc(IDdopost).update({
-    text: 'MUDOOU',
+export const editPost = (IDdoallPost) => {
+ /* const user = firebase.auth().currentUser.email;
+  if (user !== firebase.auth().currentUser.email) {
+    postBox.querySelector('.delete-btn').classList.add('visibility');
+    postBox.querySelector('.edit-btn').classList.add('visibility');
+  }*/
+    firebase.firestore().collection('allPost').doc(IDdoallPost).update({
+      text: 'MUDOUUUU',
+    })
+    .then(() => {console.log('Postagem editada com sucesso')
+  }).catch(() => { console.log('Ops!Postagem não editada')
   });
-};
+  };
 
 
-/* export const deletePost = (postid) => {
-  firebase.firestore().collection('post').doc().delete({
-    text:postid,
-  })
+export const deletePost = (IDdoallPost) => {
+ 
+  firebase.firestore().collection('allPost').doc(IDdoallPost).delete()
   .then(function() {
-    console.log("Document successfully deleted!");
 }).catch(function(error) {
-    console.error("Error removing document: ", error);
 });
- }; */
+}; 
+
+export const likePost = (IDdoallPost)=>{
+firebase.firestore().collection('allPost').doc(IDdoallPost).get()
+.then((snap) => {
+  const likeCount = snap.data().like + 1;
+  firebase.firestore().collection('allPost').doc(IDdoallPost).update({
+    like: likeCount,
+  });
+  likeBttn.innerText = likeCount;
+});
+}
+
+/*export const creatNewComent = (textPost,IDdoallPost) => {
+  firebase.firestore().collection('allPost').doc(IDdoallPost)
+  .collection("comentario").add({
+    text: textPost,
+    like:0,
+    id: firebase.auth().currentUser.uid,
+    user: firebase.auth().currentUser.displayName,
+  })
+    .then((docRef) => {
+      console.log(' Document written with ID id do id: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+};
+export const readComent = (callback) => {
+  firebase.firestore().collection('allPost').doc()
+  .collection("comentario")
+.onSnapshot((querySnapshot) => {
+  let user = firebase.auth().currentUser; 
+   user.providerData.forEach((profile) => {
+    console.log(profile.displayName);
+      const posts = [];
+      const nomes = profile.displayName;
+       querySnapshot.forEach((doc) => {
+        posts.push({...doc.data(), idDoc: doc.id});
+        console.log(doc.data());
+      });
+      callback(posts, nomes);
+    });
+    });
+  };*/
