@@ -19,7 +19,7 @@ input[type="checkbox"] {
   margin-top: 33px;
 }
 
-input[type="checkbox"]:checked ~ .nav {
+input[type="checkbox"]:checked~.nav {
   transform: translateX(282px);
 }
 
@@ -27,6 +27,7 @@ input[type="checkbox"]:checked ~ .nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  overflow: auto;
   /* align-content: flex-start;
   align-items: center; */
 }
@@ -95,14 +96,14 @@ input[type="checkbox"]:checked ~ .nav {
   box-sizing: border-box;
 }
 
-.post-container,
-.newpost-container {
+.post-container, .newpost-container {
   /* display: flex;
   justify-content: center;
   width: 100vw; */
 }
 
 /* box que engloba toda a parte de post e comentários */
+
 .post-and-coment {
   display: flex;
   flex-direction: column;
@@ -219,9 +220,11 @@ input[type="checkbox"]:checked ~ .nav {
 .hide {
   display: none;
 }
+
 /* .carregando {
   align-self: center;
 } */
+
 .newpost-container {
   display: flex;
   justify-content: flex-end;
@@ -234,15 +237,12 @@ input[type="checkbox"]:checked ~ .nav {
     margin: 23px;
     padding-bottom: 20px;
   }
-
   .title {
     padding-top: 7px;
   }
-
   .entire-container {
     display: flex;
   }
-
   .perfil-container {
     padding-top: 1.5%;
     padding-left: 10px;
@@ -270,6 +270,7 @@ input[type="checkbox"]:checked ~ .nav {
 .hide {
   display: none;
 }
+
 /* .post-container {
 		display: flex;
 		justify-content: flex-end;
@@ -280,24 +281,19 @@ input[type="checkbox"]:checked ~ .nav {
   .cor-menu {
     height: 12%;
   }
-
   .feed-container {
     height: 105px;
   }
-
   .img-menu {
     height: 43px;
   }
-
   .title {
     padding-top: 22px;
     font-size: xx-large;
   }
-
-  input[type="checkbox"]:checked ~ .nav {
+  input[type="checkbox"]:checked~.nav {
     transform: translateX(324px);
   }
-
   .link {
     display: block;
     padding: 28px 5px;
@@ -307,27 +303,22 @@ input[type="checkbox"]:checked ~ .nav {
     margin: 8px;
     font-size: xx-large;
   }
-
   .entire-container {
     display: flex;
   }
-
   .perfil-style {
     font-size: xx-large;
   }
-
   .post-and-coment {
     padding-top: 32px;
     width: 60%;
     margin: 8px;
   }
-  
   .textarea-style {
     margin: 24px;
     padding: 18px;
     font-size: xx-large;
   }
-
   .perfil-container {
     padding-left: 30px;
     margin-top: -4.5%;
@@ -336,16 +327,11 @@ input[type="checkbox"]:checked ~ .nav {
     padding: 15px;
     font-size: x-large;
   }
-
   .post-box {
     padding: 20px;
     font-size: x-large;
-
   }
-
   .btn-area-posted {
     margin-top: 12px;
   }
-
-
-  }
+}

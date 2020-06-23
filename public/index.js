@@ -8,7 +8,7 @@ const renderPage = () => {
  console.log("renderpage");
   main.innerHTML = '';
   const page = validateHash(window.location.hash);
-  main.appendChild(routes[page]);
+  main.appendChild(routes[page]());
 };
 
 const init = () => {

@@ -1,14 +1,12 @@
 export const createPost = (textPost) => {
-  firebase
-    .firestore()
-    .collection("allPost")
-    .add({
-      text: textPost,
-      like: 0,
-      id: firebase.auth().currentUser.uid,
-      user: firebase.auth().currentUser.displayName,
-      date: new Date(),
-    })
+  firebase.firestore().collection('allPost').add({
+    text: textPost,
+    like:0,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+    id: firebase.auth().currentUser.uid,
+    user: firebase.auth().currentUser.displayName,
+  })
     .then((docRef) => {
       console.log(" Document written with ID id do id: ", docRef.id);
     })
@@ -17,29 +15,14 @@ export const createPost = (textPost) => {
     });
 };
 
-export const likePost = (IDdoallPost) => {
-  firebase
-    .firestore()
-    .collection("allPost")
-    .doc(IDdoallPost)
-    .get()
-    .then((snap) => {
-      const likeCount = snap.data().like + 1;
-      firebase.firestore().collection("allPost").doc(IDdoallPost).update({
-        like: likeCount,
-      });
-      likeBtn.innerText = likeCount;
-    });
-};
-
 export const readPosts = (callback) => {
   console.log("entrou em readposts");
   firebase
     .firestore()
     .collection("allPost")
-    .orderBy("date", "desc")
+    .orderBy("time", "desc")
     .onSnapshot((querySnapshot) => {
-      let user = firebase.auth().currentUser;
+      const user = firebase.auth().currentUser;
       user.providerData.forEach((profile) => {
         const posts = [];
         const nomes = profile.displayName;
@@ -57,18 +40,57 @@ export const editPost = (IDdopost, parametro) => {
   db.collection("allPost").doc(IDdopost).update({
     text: parametro,
   });
-};
+  };
+
 
 export const deletePost = (IDdoallPost) => {
-  firebase
-    .firestore()
-    .collection("allPost")
-    .doc(IDdoallPost)
-    .delete()
-    .then(function () {
-      console.log("Document successfully deleted!");
+ 
+  firebase.firestore().collection('allPost').doc(IDdoallPost).delete()
+  .then(function() {
+}).catch(function(error) {
+});
+}; 
+
+export const likePost = (IDdoallPost)=>{
+firebase.firestore().collection('allPost').doc(IDdoallPost).get()
+.then((snap) => {
+  const likeCount = snap.data().like + 1;
+  firebase.firestore().collection('allPost').doc(IDdoallPost).update({
+    like: likeCount,
+  });
+  likeBttn.innerText = likeCount;
+});
+}
+
+/*export const creatNewComent = (textPost,IDdoallPost) => {
+  firebase.firestore().collection('allPost').doc(IDdoallPost)
+  .collection("comentario").add({
+    text: textPost,
+    like:0,
+    id: firebase.auth().currentUser.uid,
+    user: firebase.auth().currentUser.displayName,
+  })
+    .then((docRef) => {
+      console.log(' Document written with ID id do id: ', docRef.id);
     })
-    .catch(function (error) {
-      console.error("Error removing document: ", error);
+    .catch((error) => {
+      console.error('Error adding document: ', error);
     });
 };
+export const readComent = (callback) => {
+  firebase.firestore().collection('allPost').doc()
+  .collection("comentario")
+.onSnapshot((querySnapshot) => {
+  let user = firebase.auth().currentUser; 
+   user.providerData.forEach((profile) => {
+    console.log(profile.displayName);
+      const posts = [];
+      const nomes = profile.displayName;
+       querySnapshot.forEach((doc) => {
+        posts.push({...doc.data(), idDoc: doc.id});
+        console.log(doc.data());
+      });
+      callback(posts, nomes);
+    });
+    });
+  };*/

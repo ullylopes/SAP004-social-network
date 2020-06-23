@@ -1,12 +1,9 @@
 import {
-  createPost,
-  readPosts,
-  deletePost,
-  editPost,
-  likePost,
-} from "./data.js";
+  createPost, readPosts, editPost, deletePost, likePost
+  /*, creatNewComent, readComent*/
+} from './data.js';
 
-export const home = () => {
+export const feed = () => {
   const container = document.createElement("div");
   container.className = "container-feed";
 
@@ -40,7 +37,7 @@ export const home = () => {
 <div class= 'post-and-coment'>
 <section class='post-container'>
   <form class='post-area'>
-  <textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
+  <textarea id='post-text' class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
   <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
@@ -48,6 +45,7 @@ export const home = () => {
   </div>
   </form>
   </section>
+
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
   </section>
@@ -57,92 +55,116 @@ export const home = () => {
   <footer><p>&copy;Desenvolvido por Adélia, Sabrina e Ully</p></footer>
   `;
 
-  const post = container.querySelector("#post-text");
-  const btnPost = container.querySelector("#btn-comentar");
-  const postMessage = container.querySelector("#comentarios");
-  const btnSair = container.querySelector("#sair");
-  const postUser = container.querySelector("#usuario");
-  //const bntComentario = container.querySelector('#btn-comentario');
-  //const Comentario = container.querySelector('#post-comentario');
+  const post = container.querySelector('#post-text');
+  const btnPost = container.querySelector('#btn-comentar');
+  const postMessage = container.querySelector('#comentarios');
+  const btnSair = container.querySelector('#sair');
+  const postUser = container.querySelector('#usuario');
 
   const postTemplate = (array, nome) => {
     postUser.innerHTML = nome;
-    postMessage.innerHTML = "";
-    const containerDivNova = document.createElement("div");
-    postMessage.innerHTML = array
-      .map(
-        (post) =>
-          `<section class='posted-area'>
-    <h1 class='name'>Postado por: ${post.user}</h1>
-    <span>${new Date().toLocaleDateString()}</span>
-    <span>${new Date().getTime()}</span>
+    postMessage.innerHTML = '';
+    const containerDivNova = document.createElement('div');
+    postMessage.innerHTML = array.map(post =>
+      `<section class='posted-area'>
+      <h1>${post.user}</h1>
+    <span>${post.date}</span>
+    <span>${post.time}</span>
     <textarea class='post-box' value="Not editable" disabled="disabled" 
     contenteditable="false">${post.text}</textarea>
     <div class='btn-area-posted'> 
-    <button class='feed-bttn' id='like-btn' data-like = '${
-      post.idDoc
-    }'><i class="fas fa-glass-cheers"> ${post.like} </i></button> 
-    <button class='feed-bttn' id='deletar' data-delete='${
-      post.idDoc
-    }'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='like-btn' data-like = '${post.idDoc}'><i class="fas fa-glass-cheers"> ${post.like} </i></button> 
+    <button class='feed-bttn' id='deletar' data-delete='${post.idDoc}'><i class="far fa-trash-alt"></i></button>
     <button class='feed-bttn' id='btn-comentar'>Comentar</button>
-    <button class='feed-bttn hide' id='btn-salvar' data-edit = '${
-      post.idDoc
-    }'>Salvar</button>
-    <button class='feed-bttn ed1' id='editar' data-edit = '${
-      post.idDoc
-    }'> <i class="fas fa-edit"></i></button></div></section><br>`
-      )
-      .join("");
+    <button class='feed-bttn hide' id='btn-salvar' data-edit = '${post.idDoc}'>salvar</button>
+    <button class='feed-bttn ed1 ' id='editar' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br>`
+    ).join("");
     postMessage.appendChild(containerDivNova);
-    const texto = container.querySelector(".post-box");
-    const btnSalvar = container.querySelector("#btn-salvar");
-    const btnEdit = container.querySelector("#editar");
-    const btnDel = container.querySelector("#deletar");
 
-    const editEvent = (texto, btnSalvar, btnEdit) => {
-      btnEdit.addEventListener("click", (event) => {
-        event.preventDefault();
-        texto.disabled = false;
-        btnEdit.classList.add("hide"); // Oculta o botão editar
-        btnSalvar.classList.remove("hide"); // Mostra o botão salvar
-      });
-    };
+    // <div id='post-comentario" ></div><br>
 
-    const saveEditedEvent = (texto, btnSalvar, btnEdit) => {
-      btnSalvar.addEventListener("click", (event) => {
-        event.preventDefault();
-        btnEdit.classList.remove("hide"); // Mostra o botão editar
-        btnSalvar.classList.add("hide"); // Oculta o botão salvar
-        editPost(btnSalvar.dataset.edit, texto.value);
-      });
-    };
-
-    const likeEvent = () => {
-      const likeBtn = container.querySelectorAll("#like-btn");
-      likeBtn.forEach((element) => {
+    const editEvent = () => {
+      const btnEdit = container.querySelectorAll("#editar");
+      const btnSalvar = container.querySelectorAll("#btn-salvar");
+      const texto = container.querySelectorAll(".post-box");
+      btnEdit.forEach(element => {
         element.addEventListener("click", (event) => {
+          event.preventDefault();
+          texto.forEach(element => {
+            element.disabled = false;
+          });
+          element.classList.add("hide"); // Oculta o botão editar
+          btnSalvar.forEach(element=> {
+            element.classList.remove("hide"); // Mostra o botão salvar
+          });
+      });
+    });
+  };
+    const saveEditedEvent = () => {
+      const btnEdit = container.querySelector("#editar");
+      const texto = container.querySelector(".post-box");
+      const btnSalvar = container.querySelectorAll("#btn-salvar");
+      btnSalvar.forEach(element => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          btnEdit.classList.remove("hide"); // Mostra o botão editar
+          element.classList.add("hide"); // Oculta o botão salvar
+          editPost(element.dataset.edit, texto.value);
+        });
+      })
+    };
+    const deletEvent = () => {
+      const btnDel = container.querySelectorAll('#deletar');
+      btnDel.forEach(element => {
+        element.addEventListener('click', (event) => {
+          event.preventDefault();
+          deletePost(element.dataset.delete);
+        });
+      });
+    };
+    const likeEvent = () => {
+      const likeBttn = container.querySelectorAll('#like-btn');
+      likeBttn.forEach(element => {
+        element.addEventListener('click', (event) => {
           event.preventDefault();
           likePost(element.dataset.like);
         });
       });
     };
 
-    const deleteEvent = () => {
-      const btnDel = container.querySelectorAll("#deletar");
-      btnDel.forEach((element) => {
-        element.addEventListener("click", (event) => {
-          event.preventDefault();
-          deletePost(element.dataset.delete);
-        });
+    /* template para comentar post
+    const comentario = container.querySelector('#post-comentario');
+    const comentTemplate = (array) => {
+    comentario.innerHTML = '';
+    const containerComent = document.createElement('div');
+    comentario.innerHTML = array.map( post => `<section class='posted-area'>
+    <h1>${post.user}</h1>
+    <textarea class='post-box'>${post.text}</textarea>
+    <div class='btn-area-posted'> 
+    <button class='feed-bttn' id='like-btn' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
+    <p id='numbers-like'>${post.like}<p>
+    <button class='feed-bttn' id='deletar'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
+    </div></section><br>`).join('');
+      postMessage.appendChild(containerComent);
+    };*/
+    /*const comentEvent = () => {
+      const bntComent = container.querySelector('#comentar');
+      bntComent.addEventListener('click', (event) => {
+        event.preventDefault();
+        comentario.innerHTML = comentTemplate;
+
       });
-    };
+    };*/
+
 
     likeEvent();
-    editEvent(texto, btnSalvar, btnEdit);
-    deleteEvent(btnDel);
-    saveEditedEvent(texto, btnSalvar, btnEdit);
+    deletEvent();
+    editEvent();
+    saveEditedEvent();
   };
+
+
 
   readPosts(postTemplate);
   console.log("carregando o feed");
@@ -161,9 +183,9 @@ export const home = () => {
       .signOut()
       .then(() => {
         window.location.href = "/#login";
-        window.location.reload(true);
+      
       })
-      .catch(() => {});
+      .catch(() => { });
   });
 
   return container;

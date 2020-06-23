@@ -15,6 +15,7 @@ body {
   background: url(imagens/mad.png) center/ 100% no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  
 }
 
 /* logo */
@@ -119,7 +120,10 @@ a:visited {
 .center {
   align-self: center;
 }
-
+.center{
+  align-self: center;
+    display: flex;
+}
 .align-input {
   display: flex;
   align-self: center;
