@@ -179,18 +179,23 @@ input[type="checkbox"]:checked~.nav {
   border: 2px solid lightyellow;
 }
 
+.header-postedarea {
+  padding: 8px 30px 5px 0px;
+}
+
 .post-box {
   background: white;
-  /* width: 250px; */
   border-radius: 4px;
   margin: 5px 10px;
-  height: 60px;
   border-bottom: 1px solid #4c3313;
   padding-left: 10px;
   padding-top: 5px;
-  font-size: 15px;
   color: black;
   text-align: initial;
+  font-size: larger;
+  width: 80%;
+  resize: none;
+  height: 80px;
   /* align-self: center;
 	padding: 2%;
 	border-radius: 2%;
@@ -257,6 +262,10 @@ input[type="checkbox"]:checked~.nav {
   background: #f1cb32a1;
 }
 
+.feed-bttn {
+  font-size: larger;
+}
+
 .post-and-coment {
   /* padding: 2%; */
 }
@@ -283,19 +292,28 @@ input[type="checkbox"]:checked~.nav {
   .cor-menu {
     height: 12%;
   }
+
   .feed-container {
     height: 105px;
   }
+
+  .feed-bttn {
+    font-size: larger;
+  }
+
   .img-menu {
     height: 43px;
   }
+
   .title {
     padding-top: 22px;
     font-size: xx-large;
   }
+
   input[type="checkbox"]:checked~.nav {
     transform: translateX(324px);
   }
+
   .link {
     display: block;
     padding: 28px 5px;
@@ -305,34 +323,42 @@ input[type="checkbox"]:checked~.nav {
     margin: 8px;
     font-size: xx-large;
   }
+
   .entire-container {
     display: flex;
   }
+
   .perfil-style {
     font-size: xx-large;
   }
+
   .post-and-coment {
     padding-top: 32px;
     width: 60%;
     margin: 8px;
   }
+
   .textarea-style {
     margin: 24px;
     padding: 18px;
     font-size: xx-large;
   }
+
   .perfil-container {
     padding-left: 30px;
     margin-top: -4.5%;
   }
+
   .name {
     padding: 15px;
     font-size: x-large;
   }
+
   .post-box {
     padding: 20px;
     font-size: x-large;
   }
+
   .btn-area-posted {
     margin-top: 12px;
   }

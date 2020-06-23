@@ -16,7 +16,6 @@ export const createPost = (textPost) => {
 };
 
 export const readPosts = (callback) => {
-  console.log("entrou em readposts");
   firebase
     .firestore()
     .collection("allPost")
