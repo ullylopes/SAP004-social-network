@@ -221,9 +221,11 @@ input[type="checkbox"]:checked~.nav {
   display: none;
 }
 
-/* .carregando {
-  align-self: center;
-} */
+.carregando {
+  margin-top: 200px;
+
+}
+
 
 .newpost-container {
   display: flex;

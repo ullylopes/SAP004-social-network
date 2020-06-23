@@ -3,11 +3,10 @@
 export const table = () => {
   const container = document.createElement('div');
   const template = `
-  <div>
-  <header >
+  <div class='carregando'>
+
   <h1>Página em construção</h1>
-  </header>
-  <nav><a href='/#home'>voltar<a/></nav>
+  <button class='return-bttn'><a href='/#home'>Voltar<a/></button>
   </div>`;
 
   container.innerHTML = template;

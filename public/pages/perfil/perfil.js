@@ -30,11 +30,12 @@ export const profile = () => {
 	<div class="bio-infos">
 	<h1 class="text-style">Ana maria</h1>
 	</div>
-	<textarea id='post-text' name="post" class="textarea-style" rows="5" cols="10"
+	<textarea id='post-text'  class="textarea-style" rows="5" cols="10"
 	>Eu sou muito feliz! Amo o Carnaval!</textarea>
 	<div class="post-btn-area">    
-	<button type="submit" class="btn-style">Editar</button> 
-	<button class='btn-style'><a href='/#home'>Voltar<a/></button>    
+	<button class='feed-bttn hide' id='btn-salvar' >salvar</button>
+    <button class='feed-bttn ed1 ' id='editar'> <i class="fas fa-edit"></i></button>
+	<button class='btn-style feed-bttn'><a href='/#home'>Voltar<a/></button>  
 	</div>
 	</form>
 	</section>
@@ -48,6 +49,35 @@ export const profile = () => {
 	</form>
 	</section>
 	`;
+	
+	
+	const editEvent = () => {
+		const btnEdit = container.querySelector("#editar");
+		const btnSalvar = container.querySelector("#btn-salvar");
+		const texto = container.querySelector(".post-text");
+			btnEdit.addEventListener("click", (event) => {
+			event.preventDefault();
+			  texto.disabled = false;
+			});
+			btnEdit.classList.add("hide"); // Oculta o botão editar
+			btnSalvar.classList.remove("hide"); // Mostra o botão salvar
+		};
+	
+	  const saveEditedEvent = () => {
+		const btnEdit = container.querySelector("#editar");
+		const texto = container.querySelector(".post-text");
+		const btnSalvar = container.querySelector("#btn-salvar");
+			btnSalvar.addEventListener("click", (event) => {
+			event.preventDefault();
+			btnEdit.classList.remove("hide"); // Mostra o botão editar
+			btnSalvar.classList.add("hide"); // Oculta o botão salvar
+			//editPost(btnSalvar.dataset.edit, texto.value);
+		  });
+	  };
+
+	  editEvent();
+	  saveEditedEvent();
+
 
 	return container;
 };
