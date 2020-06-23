@@ -1,7 +1,7 @@
 main {
   width: 100vw;
-  display: flex;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -10,7 +10,6 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
   color: white;
   font-family: "Archivo Narrow", sans-serif;
   background: url(imagens/mad.png) center/ 100% no-repeat;
@@ -34,6 +33,10 @@ body {
   font-size: larger;
 }
 
+.text-style {
+  text-shadow: 0 0 0.2em #c6a02a;
+}
+
 /* inputs da página login */
 .input-log {
   justify-content: center;
@@ -47,13 +50,23 @@ body {
 
 /* espaço da mensagem de erro da pagina login */
 .login-error {
-  margin-top: 8%;
-} 
+  width: 60%;
+  margin-left: 18%;
+  padding: 6px;
+  font-size: large;
+  padding-top: 26px;
+  text-shadow: 0 0 0.2em #e6b908;
+}
 
 /* ícones google e olho */
-.icons, .olho {
+.icons,
+.olho {
   height: 30px;
   width: 30px;
+}
+
+.icons {
+  margin: 6px;
 }
 
 /* link para o cadastre-se */
@@ -66,8 +79,10 @@ a:visited {
 /* PAGINA DE CADASTRO */
 
 /* container pai da pagina do login e do cadastro */
-.container-log, .container-div{
+.container-log,
+.container-div {
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,35 +95,39 @@ a:visited {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-form {
-  /* padding: 0.5em; */
-  /* display: table-caption; */
+  border: 2px solid hsl(48, 100%, 66%);
+  padding: 20px;
+  background: #f1cb32a1;
+  border-radius: 6px;
+  width: 80%;
 }
 
 /* inputs do li da página de cadastro */
 .input-li {
   align-items: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    border-radius: 10px;
-    border: 2px solid #e6b908;
-    font-size: 15px;
-    text-align: center;
-    background: white;
-    width: 262px;
-    margin:20px; 
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid #e6b908;
+  font-size: 15px;
+  text-align: center;
+  background: white;
+  width: 262px;
+  margin: 20px;
+}
+
+.center {
+  align-self: center;
 }
 .center{
   align-self: center;
     display: flex;
 }
 .align-input {
- align-self: center;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
 }
 
 /* area que deixa os botões lado a lado na página cadastro */
@@ -126,7 +145,7 @@ form {
 }
 
 /* margin do botão de cadastro */
-.margin{
+.margin {
   margin-right: 34px;
 }
 
@@ -143,57 +162,48 @@ form {
 .register-bttn,
 .return-bttn,
 .post-bttn {
-  background-color: #8c5818;
-  background-image: linear-gradient(23deg, #ffdc53, transparent);
+  background-color: #e6b908;
+  background-image: linear-gradient(-2deg, #8c5818, transparent);
   border-radius: 10px;
   border: 2px solid #e6b908;
   font-size: 15px;
   text-align: center;
   justify-content: center;
-  /* margin: 20px; */
-  
-  /* padding: 2%; */
-}
-
-/* mensagens de erro da pagina de login e cadastro */
-.message, .login-cad{
-  color: white;
-  flex-direction: column;
-  display: flex;
-  align-content: center;
 }
 
 /* logo que não aparece da pagina de cadastro mobile */
 .logo-cad {
   display: flex;
-  display:none;
-   }
+  display: none;
+}
 
-/* .register-error {
-  text-decoration: none;
-  color: #271b1b;
-  width: 100px;
-  background-color: #e6b908;
-  height: 100px;
-  margin-top: 16px;
-  margin-left: 60px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-} */
+.register-error {
+  border: 2px solid #f4f4f4;
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #ca9b266b;
+  font-size: medium;
+  text-shadow: 0 0 0.2em #e6b908;
+}
 
+.register-done{
+  padding: 20px;
+  font-size: larger;
+  background: #e6b908bd;
+  border-radius: 6px;
+  text-shadow: 0 0 0.2em #e6b908;
+  width: 70%;
+}
 
-@media only screen and (min-width: 768px) {
-  
-  .img-logo{
+@media (min-width: 768px) {
+  .img-logo {
     width: 400px;
   }
 
   /* containers pai das paginas de login e cadastro */
-  .container-log, 
+  .container-log,
   .container-div {
     flex-direction: row;
-    padding: 24px; 
   }
 
   /* container que recebe todos os inputs e botoes da pagina de login responsiva */
@@ -206,22 +216,31 @@ form {
   .form {
     border: 2px solid hsl(48, 100%, 66%);
     padding: 20px;
+    background: #f1cb32a1;
+    border-radius: 6px;
+    width: 83%;;
   }
 
-/* PAGINAS DE CADASTRO */
+  /* PAGINAS DE CADASTRO */
 
-/* logo que aparece na pagina de cadastro responsiva */
-.logo-cad {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* logo que aparece na pagina de cadastro responsiva */
+  .logo-cad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   /* container que recebe os inputs e botoes da pag cadastro responsiva */
-  .register-container{
+  .register-container {
     justify-content: center;
     flex-flow: column;
     align-items: center;
-    }
+    width: 34%;
+    margin-right: 36px;
   }
-  
+
+  .register-done {
+    width: 34%;
+    font-size: x-large;
+  }
+}

@@ -1,16 +1,17 @@
+import {
+  createPost, readPosts, editPost, deletePost, likePost
+  /*, creatNewComent, readComent*/
+} from './data.js';
 
-  import { createPost, readPosts, editPost, deletePost, likePost
-    /*, creatNewComent, readComent*/ } from './data.js';
- 
-export const home = () => {
-  const container = document.createElement('div');
-  container.className = 'container-feed';
+export const feed = () => {
+  const container = document.createElement("div");
+  container.className = "container-feed";
 
   container.innerHTML = `
   <section class='feed-container cor-menu'>
   <div class= 'menu-inicial'>
   <input type ='checkbox' id ='check'>
-  <label for ='check' class='icone'><img src = './imagens/icone.png'></label>
+  <label for ='check' class='icone img-menu'><img src = './imagens/icone.png'></label>
     <nav class='nav'>
     <a href='/#home'><div class='link'>Home</div></a>
     <a href='/#perfil'><div class='link'>Perfil</div></a>
@@ -26,11 +27,11 @@ export const home = () => {
 
 <section class='entire-container'>
  <div class='perfil-container'>
-  <section class='perfil-style'>
+  <div class='perfil-style'>
   <img class="foto-style" src="./imagens/fotodeperfil.jpg">
   <h1 id='usuario'class="text-style"></h1>
   <p class="text-style">Sou muito feliz!</p>
-  </section>
+  </div>
 </div>
 
 <div class= 'post-and-coment'>
@@ -60,38 +61,58 @@ export const home = () => {
   const btnSair = container.querySelector('#sair');
   const postUser = container.querySelector('#usuario');
 
- 
-  const postTemplate = (array, nome) => { 
+  const postTemplate = (array, nome) => {
     postUser.innerHTML = nome;
     postMessage.innerHTML = '';
     const containerDivNova = document.createElement('div');
-    postMessage.innerHTML = array.map( post => 
-    `<section class='posted-area'>
+    postMessage.innerHTML = array.map(post =>
+      `<section class='posted-area'>
       <h1>${post.user}</h1>
     <span>${post.date}</span>
-  
     <span>${post.time}</span>
-    <div class='post-box'>${post.text}</div>
+    <textarea class='post-box' value="Not editable" disabled="disabled" 
+    contenteditable="false">${post.text}</textarea>
     <div class='btn-area-posted'> 
-    <button class='feed-bttn' id='like-btn' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
-    <p id='numbers-like'>${post.like}<p>
-    <button class='feed-bttn' id='deletar'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='editar' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
-    <button class='feed-bttn' id='comentar' data-post = '${post.idDoc}'>Comentar</button>
-    </div></section><br>
-    `).join('');
+    <button class='feed-bttn' id='like-btn' data-like = '${post.idDoc}'><i class="fas fa-glass-cheers"> ${post.like} </i></button> 
+    <button class='feed-bttn' id='deletar' data-delete='${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='btn-comentar'>Comentar</button>
+    <button class='feed-bttn hide' id='btn-salvar' data-edit = '${post.idDoc}'>salvar</button>
+    <button class='feed-bttn ed1 ' id='editar' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br>`
+    ).join("");
     postMessage.appendChild(containerDivNova);
-   
-// <div id='post-comentario" ></div><br>
+
+    // <div id='post-comentario" ></div><br>
+
     const editEvent = () => {
-      const btnEdit = container.querySelectorAll('#editar');
+      const btnEdit = container.querySelectorAll("#editar");
+      const btnSalvar = container.querySelectorAll("#btn-salvar");
+      const texto = container.querySelectorAll(".post-box");
       btnEdit.forEach(element => {
-        element.addEventListener('click', (event) => {
-        event.preventDefault();
-        editPost(element.dataset.edit);
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          texto.forEach(element => {
+            element.disabled = false;
+          });
+          element.classList.add("hide"); // Oculta o botão editar
+          btnSalvar.forEach(element=> {
+            element.classList.remove("hide"); // Mostra o botão salvar
+          });
       });
     });
   };
+    const saveEditedEvent = () => {
+      const btnEdit = container.querySelector("#editar");
+      const texto = container.querySelector(".post-box");
+      const btnSalvar = container.querySelectorAll("#btn-salvar");
+      btnSalvar.forEach(element => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          btnEdit.classList.remove("hide"); // Mostra o botão editar
+          element.classList.add("hide"); // Oculta o botão salvar
+          editPost(element.dataset.edit, texto.value);
+        });
+      })
+    };
     const deletEvent = () => {
       const btnDel = container.querySelectorAll('#deletar');
       btnDel.forEach(element => {
@@ -104,12 +125,12 @@ export const home = () => {
     const likeEvent = () => {
       const likeBttn = container.querySelectorAll('#like-btn');
       likeBttn.forEach(element => {
-      element.addEventListener('click', (event) => {
-       event.preventDefault();
-       likePost(element.dataset.like);
+        element.addEventListener('click', (event) => {
+          event.preventDefault();
+          likePost(element.dataset.like);
+        });
       });
-      });
-     } ;
+    };
 
     /* template para comentar post
     const comentario = container.querySelector('#post-comentario');
@@ -137,31 +158,35 @@ export const home = () => {
     };*/
 
 
-    editEvent();
-    deletEvent();
     likeEvent();
+    deletEvent();
+    editEvent();
+    saveEditedEvent();
   };
 
+
+
   readPosts(postTemplate);
+  console.log("carregando o feed");
 
-
-  btnPost.addEventListener('click', (event) => {
+  btnPost.addEventListener("click", (event) => {
     event.preventDefault();
+    post.innerHTML = "";
     createPost(post.value);
-    post.value = '';
+    post.value = "";
   });
 
- 
-  
-
-  btnSair.addEventListener('click', (event) => {
+  btnSair.addEventListener("click", (event) => {
     event.preventDefault();
-    firebase.auth().signOut().then(() => {
-      window.location.href = '/#login';
-      window.location.reload(true);
-    }).catch(() => {
-    });
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        window.location.href = "/#login";
+      
+      })
+      .catch(() => { });
   });
 
-return container;
+  return container;
 };

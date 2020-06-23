@@ -5,9 +5,10 @@ const main = document.querySelector('#root');
 const validateHash = hash => (hash === '' ? 'login' : hash.replace('#', ''));
 
 const renderPage = () => {
+ console.log("renderpage");
   main.innerHTML = '';
   const page = validateHash(window.location.hash);
-  main.appendChild(routes[page]);
+  main.appendChild(routes[page]());
 };
 
 const init = () => {
