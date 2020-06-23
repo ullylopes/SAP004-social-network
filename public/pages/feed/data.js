@@ -16,7 +16,6 @@ export const createPost = (textPost) => {
 };
 
 export const readPosts = (callback) => {
-  console.log("entrou em readposts");
   firebase
     .firestore()
     .collection("allPost")
@@ -61,6 +60,7 @@ firebase.firestore().collection('allPost').doc(IDdoallPost).get()
   likeBttn.innerText = likeCount;
 });
 }
+
 
 /*export const creatNewComent = (textPost,IDdoallPost) => {
   firebase.firestore().collection('allPost').doc(IDdoallPost)
