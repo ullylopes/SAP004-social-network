@@ -1,11 +1,6 @@
 import {
-  createPost,
-  readPosts,
-  editPost,
-  deletePost,
-  likePost,
-  /*, creatNewComent, readComent*/
-} from "./data.js";
+  createPost, readPosts, editPost, deletePost, likePost
+  , creatNewComent, readComent} from './data.js';
 
 export const feed = () => {
   const container = document.createElement("div");
@@ -53,6 +48,9 @@ export const feed = () => {
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
   </section>
+
+  
+
   </div>
   </section>
 
@@ -80,14 +78,15 @@ export const feed = () => {
     <div class='btn-area-posted'> 
     <button class='feed-bttn' id='like-btn' data-like = '${post.idDoc}'><i class="fas fa-glass-cheers"> ${post.like} </i></button> 
     <button class='feed-bttn' id='deletar' data-id ='${post.id}' data-delete='${post.idDoc}'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='btn-comentar'>Comentar</button>
+    <button class='feed-bttn'  id='btn-comentar' data-comentar='${post.idDoc}'>Ver Comentários</button>
     <button class='feed-bttn hide' id='btn-salvar' data-idsave='${post.id}' data-save='${post.idDoc}' data-edit ='${post.idDoc}'>Salvar</button>
-    <button class='feed-bttn ed1 ' id='editar' data-idedit= '${post.id}' data-editar= '${post.idDoc}' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br>`
+    <button class='feed-bttn ed1 ' id='editar' data-idedit= '${post.id}' data-editar= '${post.idDoc}' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br> <section class='newpost-container'>
+    <div class='li-posted' id='post-coment'>
+    </div>
+    </section><br>`
       )
       .join("");
     postMessage.appendChild(containerDivNova);
-
-    // <div id='post-comentario" ></div><br>
 
     const loginEvent = () => {
       const usuarioAtual = firebase.auth().currentUser.uid;
@@ -180,12 +179,72 @@ export const feed = () => {
         });
       });
     };
-    loginEvent();
+
+    const comentEvent = () => {
+      const bntComent = container.querySelectorAll('#btn-comentar');
+      const comentario = container.querySelector('#post-coment');
+      bntComent.forEach(element => {
+        comentario.innerHTML = '';
+        element.addEventListener('click', (event) => {
+          event.preventDefault();
+          console.log('clicou');
+          console.log(event.target.dataset.comentar);
+          const containerComent = document.createElement('div');
+        comentario.innerHTML = `
+    <textarea id='post-text-coment' class="textarea-style">Comente aqui</textarea>
+    <button class='feed-bttn' id='btnn-coment' >Comentar</button>
+    
+  <section class='newpost-container'>
+  <div class='li-posted' id='new-coment'></div>
+  </section>`;
+    comentario.appendChild(containerComent);
+    
+  });
+  });
+     
+  const btnnComent = containerComent.querySelector('#btnn-coment');
+  console.log(btnnComent);
+  //const coment = containerDivNova.querySelector('#post-text-coment');
+      btnnComent.addEventListener("click", (event) => {
+        event.preventDefault();
+       // coment.innerHTML = "";
+        console.log('eita porra');
+        /*creatNewComent(coment.value);
+        coment.value = "";*/
+      });
+
+    //template para comentar post
+
+    const newCont = containerDivNova.querySelector('#new-coment');
+    const comentTemplate = (array) => {
+      newCont.innerHTML = '';
+    const containerComent = document.createElement('div');
+    newCont.innerHTML = array.map( post => 
+    `<section class='posted-area'>
+    <h1>${post.user}</h1>
+    <span>${post.date}</span>
+    <span>${post.time}</span>
+    <textarea class='post-box'>${post.text}</textarea>
+    <div class='btn-area-posted'> 
+    <button class='feed-bttn' id='like-btn-coment' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
+    <p id='numbers-like-coment'>${post.like}<p>
+    <button class='feed-bttn' id='deletar-coment'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='editar-coment' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
+    </div></section><br>`).join('');
+    newCont.appendChild(containerComent);
+    };
+    
+ 
+  readComent(comentTemplate);  
+};
+
     likeEvent();
     deletEvent();
     editEvent();
+    loginEvent();
     saveEditedEvent();
     loginEventEdit();
+    comentEvent();
   };
 
   readPosts(postTemplate);

@@ -61,12 +61,12 @@ firebase.firestore().collection('allPost').doc(IDdoallPost).get()
 });
 }
 
-
-/*export const creatNewComent = (textPost,IDdoallPost) => {
-  firebase.firestore().collection('allPost').doc(IDdoallPost)
-  .collection("comentario").add({
+export const creatNewComent = (textPost,IDdoallPost) => {
+  firebase.firestore().collection('allPost').doc(IDdoallPost).collection("comentario").add({
     text: textPost,
     like:0,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
     id: firebase.auth().currentUser.uid,
     user: firebase.auth().currentUser.displayName,
   })
@@ -77,20 +77,22 @@ firebase.firestore().collection('allPost').doc(IDdoallPost).get()
       console.error('Error adding document: ', error);
     });
 };
-export const readComent = (callback) => {
-  firebase.firestore().collection('allPost').doc()
-  .collection("comentario")
-.onSnapshot((querySnapshot) => {
-  let user = firebase.auth().currentUser; 
-   user.providerData.forEach((profile) => {
-    console.log(profile.displayName);
-      const posts = [];
-      const nomes = profile.displayName;
-       querySnapshot.forEach((doc) => {
-        posts.push({...doc.data(), idDoc: doc.id});
-        console.log(doc.data());
-      });
-      callback(posts, nomes);
+
+export const readComent = (callback,IDdoallPost) => {
+  firebase.firestore()
+    .collection("allPost").doc(IDdoallPost).collection("comentario").doc()
+    .orderBy("time", "desc")
+    .onSnapshot((querySnapshot) => {
+      const user = firebase.auth().currentUser;
+      user.providerData.forEach((profile) => {
+        console.log(profile.displayName);
+        const posts = [];
+        const nomes = profile.displayName;
+        querySnapshot.forEach((doc) => {
+          posts.push({ ...doc.data(), idDoc: doc.id });
+          console.log(doc.data());
+        });
+        callback(posts, nomes);
     });
     });
-  };*/
+  };

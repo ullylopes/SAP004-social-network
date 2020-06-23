@@ -6,7 +6,7 @@ export const pub = () => {
   <div class='carregando'>
 
 <h1>Página em construção</h1>
-<button class='return-bttn'><a href='/#home'>voltar<a/></button>
+<button class='return-bttn'><a href='/#home'>Voltar<a/></button>
 </div>
 `;
   container.innerHTML = template;
