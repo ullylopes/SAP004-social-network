@@ -1,6 +1,6 @@
 import {
   createPost, readPosts, editPost, deletePost, likePost
-  , creatNewComent, readComent} from './data.js';
+ /* creatNewComent, readComent*/} from './data.js';
 
 export const feed = () => {
   const container = document.createElement("div");
@@ -202,20 +202,20 @@ export const feed = () => {
   });
   });
      
-  const btnnComent = containerComent.querySelector('#btnn-coment');
-  console.log(btnnComent);
+  //const btnnComent = containerComent.querySelector('#btnn-coment');
+ // console.log(btnnComent);
   //const coment = containerDivNova.querySelector('#post-text-coment');
-      btnnComent.addEventListener("click", (event) => {
-        event.preventDefault();
+     /* btnnComent.addEventListener("click", (event) => {
+        event.preventDefault();*/
        // coment.innerHTML = "";
-        console.log('eita porra');
+        //console.log('eita porra');
         /*creatNewComent(coment.value);
         coment.value = "";*/
-      });
+     // });
 
     //template para comentar post
 
-    const newCont = containerDivNova.querySelector('#new-coment');
+    /*const newCont = containerDivNova.querySelector('#new-coment');
     const comentTemplate = (array) => {
       newCont.innerHTML = '';
     const containerComent = document.createElement('div');
@@ -232,11 +232,11 @@ export const feed = () => {
     <button class='feed-bttn' id='editar-coment' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
     </div></section><br>`).join('');
     newCont.appendChild(containerComent);
-    };
+    };*/
     
  
-  readComent(comentTemplate);  
-};
+  //readComent(comentTemplate);  
+//};
 
     likeEvent();
     deletEvent();
