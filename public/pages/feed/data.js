@@ -17,7 +17,7 @@ export const readPosts = (callback) => {
   firebase
     .firestore()
     .collection("allPost")
-    .orderBy("time", "asc")
+    .orderBy("date", "desc").orderBy("time", "desc")
     .onSnapshot((querySnapshot) => {
       const user = firebase.auth().currentUser;
       user.providerData.forEach((profile) => {
@@ -26,6 +26,7 @@ export const readPosts = (callback) => {
         querySnapshot.forEach((doc) => {
           posts.push({ ...doc.data(), idDoc: doc.id });
           console.log(doc.data());
+          console.log(doc.id);
         });
         callback(posts, nomes);
       });
@@ -59,7 +60,7 @@ export const likePost = (IDdoallPost) => {
     });
 }
 
-/*export const creatNewComent = (textPost, IDdoallPost) => {
+export const creatNewComent = (textPost, IDdoallPost) => {
   firebase.firestore().collection('allPost').doc(IDdoallPost).collection("comentario").add({
     text: textPost,
     like: 0,
@@ -67,20 +68,22 @@ export const likePost = (IDdoallPost) => {
     time: new Date().toLocaleTimeString(),
     id: firebase.auth().currentUser.uid,
     user: firebase.auth().currentUser.displayName,
+    
   })
+ 
     .then(() => {
-     
+     console.log('deu , foi!');
     })
-    .catch(() => {
-      
+    .catch((error) => {
+      console.log('deu ruim', error);
     });
+    
 };
-*/
-/*export const readComent = (callback, IDdoallPost) => {
+export const readComent = (callback, IDdoallPost) => {
   firebase.firestore()
-    .collection("allPost").doc(IDdoallPost).collection("comentario").doc()
-    .orderBy("time", "desc")
-    .onSnapshot((querySnapshot) => {
+    .collection("allPost").doc(IDdoallPost).collection("comentario")
+    .orderBy("date", "desc").orderBy("time", "desc")
+    .get().then((querySnapshot) => {
       const user = firebase.auth().currentUser;
       user.providerData.forEach((profile) => {
        // console.log(profile.displayName);
@@ -88,10 +91,20 @@ export const likePost = (IDdoallPost) => {
         const nomes = profile.displayName;
         querySnapshot.forEach((doc) => {
           posts.push({ ...doc.data(), idDoc: doc.id });
-         // console.log(doc.data());
+         console.log(doc.data());
+         console.log(doc.id);
         });
         callback(posts, nomes);
       });
     });
 };
-*/
+export const deletePostComent = (IDdoallPost, idComent) => {
+console.log(IDdoallPost, idComent);
+  firebase.firestore().colletion('allpost').doc(IDdoallPost).colletion('comentario')
+.doc(idComent)
+.delete()
+    .then(function () {
+    }).catch(function (error) { 
+      console.log(error);
+    });
+};

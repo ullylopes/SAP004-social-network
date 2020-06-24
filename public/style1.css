@@ -1,6 +1,9 @@
 a {
   text-decoration: none;
 }
+.posted-area-coment{
+  background-color: blue;
+}
 
 input[type="checkbox"] {
   display: none;
@@ -18,6 +21,7 @@ input[type="checkbox"] {
   left: -282px;
   margin-top: 33px;
 }
+
 
 input[type="checkbox"]:checked~.nav {
   transform: translateX(282px);

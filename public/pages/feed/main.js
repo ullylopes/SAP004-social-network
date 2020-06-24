@@ -1,6 +1,7 @@
 import {
-  createPost, readPosts, editPost, deletePost, likePost
- /* creatNewComent, readComent*/} from './data.js';
+  createPost, readPosts, editPost, deletePost, likePost, creatNewComent, deletePostComent,
+  readComent
+} from './data.js';
 
 export const feed = () => {
   const container = document.createElement("div");
@@ -48,7 +49,7 @@ export const feed = () => {
   <section class='newpost-container'>
   <div class='li-posted' id='comentarios'></div>
   </section>
-
+<button id='testar'></button>
   
 
   </div>
@@ -78,15 +79,19 @@ export const feed = () => {
     <div class='btn-area-posted'> 
     <button class='feed-bttn' id='like-btn' data-like = '${post.idDoc}'><i class="fas fa-glass-cheers"> ${post.like} </i></button> 
     <button class='feed-bttn' id='deletar' data-id ='${post.id}' data-delete='${post.idDoc}'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn'  id='btn-comentar' data-comentar='${post.idDoc}'>Ver Comentários</button>
+    <button class='feed-bttn'  id='btn-comentar' data-comentario='${post.id}' data-comentar='${post.idDoc}'>Ver Comentários</button>
     <button class='feed-bttn hide' id='btn-salvar' data-idsave='${post.id}' data-save='${post.idDoc}' data-edit ='${post.idDoc}'>Salvar</button>
     <button class='feed-bttn ed1 ' id='editar' data-idedit= '${post.id}' data-editar= '${post.idDoc}' data-edit = '${post.idDoc}'> <i class="fas fa-edit"></i></button></div></section><br> <section class='newpost-container'>
-    <div class='li-posted' id='post-coment'>
-    </div>
-    </section><br>`
+    </section>
+    
+    <section class='li-posted' id='post-coment' data-comtpost='${post.idDoc}'>
+    </section>
+    `
       )
       .join("");
     postMessage.appendChild(containerDivNova);
+   
+  
 
     const loginEvent = () => {
       const usuarioAtual = firebase.auth().currentUser.uid;
@@ -120,6 +125,7 @@ export const feed = () => {
         element.addEventListener("click", (event) => {
           event.preventDefault();
           const postId = element.dataset.edit;
+          console.log(postId);
           const btnSalvar = container.querySelector(
             `button[data-save='${postId}']`
           );
@@ -132,6 +138,9 @@ export const feed = () => {
             `button[data-editar='${postId}']`
           );
           btnEdit1.classList.add("hide");
+          console.log(event.target.dataset.idedit);
+          console.log(event.target.dataset.editart);
+          
         });
       });
     };
@@ -179,48 +188,14 @@ export const feed = () => {
         });
       });
     };
-
-    const comentEvent = () => {
-      const bntComent = container.querySelectorAll('#btn-comentar');
-      const comentario = container.querySelector('#post-coment');
-      bntComent.forEach(element => {
-        comentario.innerHTML = '';
-        element.addEventListener('click', (event) => {
-          event.preventDefault();
-          console.log('clicou');
-          console.log(event.target.dataset.comentar);
-          const containerComent = document.createElement('div');
-        comentario.innerHTML = `
-    <textarea id='post-text-coment' class="textarea-style">Comente aqui</textarea>
-    <button class='feed-bttn' id='btnn-coment' >Comentar</button>
     
-  <section class='newpost-container'>
-  <div class='li-posted' id='new-coment'></div>
-  </section>`;
-    comentario.appendChild(containerComent);
-    
-  });
-  });
-     
-  //const btnnComent = containerComent.querySelector('#btnn-coment');
- // console.log(btnnComent);
-  //const coment = containerDivNova.querySelector('#post-text-coment');
-     /* btnnComent.addEventListener("click", (event) => {
-        event.preventDefault();*/
-       // coment.innerHTML = "";
-        //console.log('eita porra');
-        /*creatNewComent(coment.value);
-        coment.value = "";*/
-     // });
 
-    //template para comentar post
-
-    /*const newCont = containerDivNova.querySelector('#new-coment');
     const comentTemplate = (array) => {
-      newCont.innerHTML = '';
+      const postComentario = container.querySelector("#new-coment");
+      postComentario.innerHTML = '';
     const containerComent = document.createElement('div');
-    newCont.innerHTML = array.map( post => 
-    `<section class='posted-area'>
+    postComentario.innerHTML = array.map( post => 
+    `<section class='posted-area-coment'>
     <h1>${post.user}</h1>
     <span>${post.date}</span>
     <span>${post.time}</span>
@@ -228,15 +203,80 @@ export const feed = () => {
     <div class='btn-area-posted'> 
     <button class='feed-bttn' id='like-btn-coment' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
     <p id='numbers-like-coment'>${post.like}<p>
-    <button class='feed-bttn' id='deletar-coment'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+    <button class='feed-bttn' id='deletar-coment' data-id='${post.id}' data-delcoment = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
     <button class='feed-bttn' id='editar-coment' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
     </div></section><br>`).join('');
-    newCont.appendChild(containerComent);
-    };*/
+    postComentario.appendChild(containerComent);
+
     
+    const deletEventComent = () => {
+      const btnDel = container.querySelectorAll("#deletar-coment");
+    
+      btnDel.forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          const idDoPost = event.target.dataset.id;
+          console.log(idDoPost);
+          const usuarioAtual = firebase.auth().currentUser.uid;
+          if (element.dataset.id === usuarioAtual) {
+            deletePostComent(idDoPost,element.dataset.delcoment);
+          } else {
+            console.log("deu ruim");
+            console.log(element.dataset.id);
+            console.log(usuarioAtual);
+          }
+        });
+      });
+    };
+   deletEventComent();
+    };
+    //comtpost  button[data-save='${postId}'
+    const comentEvent = () => {
+      const bntComent = container.querySelectorAll('#btn-comentar');
+      //const comentario = container.querySelector('#post-coment');
+      bntComent.forEach(element => {
+       
+        element.addEventListener('click', (event) => {
+          event.preventDefault();
+          const postId = event.target.dataset.comentar;
+          const comentario = container.querySelector(`section[data-comtpost='${postId}']`);
+          comentario.innerHTML = '';
+          console.log('clicou');
+          console.log(event.target.dataset.comentar);
+          
+          const containerComent = document.createElement('div');
+        comentario.innerHTML = `
+    <section><textarea id='post-text-coment' class="textarea-style">Comente aqui</textarea>
+    <button class='feed-bttn' id='btnn-coment' >Comentar</button></section>
+    
+  <section class='newpost-container'>
+  <div class='li-posted' id='new-coment'></div>
+  </section>`;
+    comentario.appendChild(containerComent);
+    
+
+const coment = container.querySelector("#post-text-coment");
+const btnnComent = container.querySelector('#btnn-coment');
+const ids = event.target.dataset.comentar;
+
+    
+      btnnComent.addEventListener("click", (event) => {
+        event.preventDefault();
+       
+        console.log('eita, fuincoou o botão comentar!');
+        console.log(coment.value);
+        console.log(ids);
+        creatNewComent(coment.value, ids);
+        readComent(comentTemplate, ids);
+        coment.value = "";
+        coment.innerHTML = "";
+      });
+   
  
-  //readComent(comentTemplate);  
-//};
+
+  });
+});
+};
 
     likeEvent();
     deletEvent();
@@ -245,7 +285,9 @@ export const feed = () => {
     saveEditedEvent();
     loginEventEdit();
     comentEvent();
-  };
+    creatNewComent();
+    
+};
 
   readPosts(postTemplate);
 
