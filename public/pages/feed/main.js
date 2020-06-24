@@ -21,7 +21,7 @@ export const feed = () => {
     </nav>
   </div>
   <div class='title'>
-  <h1>Stay Home Bar</h1>
+  <h1>Happy Hour Home</h1>
   </div>
   </section>
 
@@ -40,7 +40,7 @@ export const feed = () => {
   <textarea id='post-text' class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
-  <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
+  <button type='button' id='add-photo' class='feed-bttn'><i class="fas fa-camera"></i></button>   
   <button type='submit' id ='btn-comentar' class='feed-bttn'>Postar</button>  
   </div>
   </form>
@@ -55,7 +55,7 @@ export const feed = () => {
   </div>
   </section>
 
-  <footer><p>&copy;Desenvolvido por Adélia, Sabrina e Ully</p></footer>
+  
   `;
 
   const post = container.querySelector("#post-text");

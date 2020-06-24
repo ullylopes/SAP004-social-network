@@ -36,7 +36,7 @@ export const authRegistration = () => {
     </section>`;
   const templateSucess = ` 
       <section class='logo-cad'>
-        <img src='./imagens/logo2.png' />
+        <img src='./imagens/logo oficial2.png' />
       </section>
       <div class ='register-done' >
         <p id='escrita'>Você se cadastrou com sucesso <i class="fas fa-check-circle"></i></p><br>

@@ -6,7 +6,7 @@ export const authLogin = () => {
 
   const template = `
     <section class='logo'> 
-    <img class='img-logo'src='./imagens/logo2.png' />
+    <img class='img-logo'src='./imagens/logo oficial2.png' />
     </section>
     <section class='container-form'>
     <div class='form'>
