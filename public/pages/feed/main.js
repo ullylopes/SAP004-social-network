@@ -1,6 +1,6 @@
 import {
   createPost, readPosts, editPost, deletePost, likePost
-  , creatNewComent, readComent} from './data.js';
+ /* , creatNewComent, readComent*/} from './data.js';
 
 export const feed = () => {
   const container = document.createElement("div");
@@ -20,14 +20,14 @@ export const feed = () => {
     </nav>
   </div>
   <div class='title'>
-  <h1>Stay Home Bar</h1>
+  <h1>Happy Hour Home</h1>
   </div>
   </section>
 
 <section class='entire-container'>
  <div class='perfil-container'>
   <div class='perfil-style'>
-  <img class="foto-style" src="./imagens/fotodeperfil.jpg">
+  <img class="foto-style" src="./imagens/perfil.jpg">
   <h1 id='usuario'class="text-style"></h1>
   <p class="text-style">Sou muito feliz!</p>
   </div>
@@ -39,7 +39,7 @@ export const feed = () => {
   <textarea id='post-text' class="textarea-style" rows="5" cols="10"
   placeholder="Escreva uma mensagem."></textarea>
   <div class="post-btn-area" id='bttn-post>   
-  <button type='' class='feed-bttn'><i class='fas fa-images'></i></button>   
+  <button type='button' id='add-photo' class='feed-bttn'><i class="fas fa-camera"></i></button>   
   <button type='submit' id ='btn-comentar' class='feed-bttn'>Postar</button>  
   </div>
   </form>
@@ -49,12 +49,8 @@ export const feed = () => {
   <div class='li-posted' id='comentarios'></div>
   </section>
 
-  
-
   </div>
   </section>
-
-  <footer><p>&copy;Desenvolvido por Adélia, Sabrina e Ully</p></footer>
   `;
 
   const post = container.querySelector("#post-text");
@@ -180,63 +176,98 @@ export const feed = () => {
       });
     };
 
-    const comentEvent = () => {
-      const bntComent = container.querySelectorAll('#btn-comentar');
-      const comentario = container.querySelector('#post-coment');
-      bntComent.forEach(element => {
-        comentario.innerHTML = '';
-        element.addEventListener('click', (event) => {
-          event.preventDefault();
-          console.log('clicou');
-          console.log(event.target.dataset.comentar);
-          const containerComent = document.createElement('div');
-        comentario.innerHTML = `
-    <textarea id='post-text-coment' class="textarea-style">Comente aqui</textarea>
-    <button class='feed-bttn' id='btnn-coment' >Comentar</button>
-    
-  <section class='newpost-container'>
-  <div class='li-posted' id='new-coment'></div>
-  </section>`;
-    comentario.appendChild(containerComent);
-    
-  });
-  });
-     
-  const btnnComent = containerComent.querySelector('#btnn-coment');
-  console.log(btnnComent);
-  //const coment = containerDivNova.querySelector('#post-text-coment');
-      btnnComent.addEventListener("click", (event) => {
-        event.preventDefault();
-       // coment.innerHTML = "";
-        console.log('eita porra');
-        /*creatNewComent(coment.value);
-        coment.value = "";*/
+    function loadImage() {
+      const addPhoto = container.getElementById('add-photo');
+      addPhoto.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        const storage = firebase.storage().ref(`post_images/${file.name}`);
+        const task = storage.put(file);
+        task.on('state_changed',
+          (snapshot) => {
+            document.getElementById('uploader').style.display = 'block';
+            const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            document.querySelector('.upload-bar').value = percentage;
+          },
+          () => {
+            const errorMessage = document.getElementById('messageImage');
+            errorMessage.textContent = 'Não foi possível carregar a imagem.';
+            setTimeout(() => {
+              errorMessage.textContent = '';
+            }, 3000);
+          },
+          () => {
+            const errorMessage = document.getElementById('messageImage');
+            errorMessage.textContent = 'Imagem carregada! ';
+            setTimeout(() => {
+              document.getElementById('uploader').style.display = 'none';
+            }, 3000);
+            task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              document.getElementById('image-preview-container').innerHTML += `
+              <img id='image-preview' class='image-preview' src="${downloadURL}">
+              `;
+            });
+          });
       });
+    }
+    
 
-    //template para comentar post
+//     const comentEvent = () => {
+//       const bntComent = container.querySelectorAll('#btn-comentar');
+//       const comentario = container.querySelector('#post-coment');
+//       bntComent.forEach(element => {
+//         comentario.innerHTML = '';
+//         element.addEventListener('click', (event) => {
+//           event.preventDefault();
+//           console.log('clicou');
+//           console.log(event.target.dataset.comentar);
+//           const containerComent = document.createElement('div');
+//         comentario.innerHTML = `
+//     <textarea id='post-text-coment' class="textarea-style">Comente aqui</textarea>
+//     <button class='feed-bttn' id='btnn-coment' >Comentar</button>
+    
+//   <section class='newpost-container'>
+//   <div class='li-posted' id='new-coment'></div>
+//   </section>`;
+//     comentario.appendChild(containerComent);
+    
+//   });
+//   });
+     
+//   const btnnComent = containerComent.querySelector('#btnn-coment');
+//   console.log(btnnComent);
+//   //const coment = containerDivNova.querySelector('#post-text-coment');
+//       btnnComent.addEventListener("click", (event) => {
+//         event.preventDefault();
+//        // coment.innerHTML = "";
+//         console.log('eita porra');
+//         /*creatNewComent(coment.value);
+//         coment.value = "";*/
+//       });
 
-    const newCont = containerDivNova.querySelector('#new-coment');
-    const comentTemplate = (array) => {
-      newCont.innerHTML = '';
-    const containerComent = document.createElement('div');
-    newCont.innerHTML = array.map( post => 
-    `<section class='posted-area'>
-    <h1>${post.user}</h1>
-    <span>${post.date}</span>
-    <span>${post.time}</span>
-    <textarea class='post-box'>${post.text}</textarea>
-    <div class='btn-area-posted'> 
-    <button class='feed-bttn' id='like-btn-coment' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
-    <p id='numbers-like-coment'>${post.like}<p>
-    <button class='feed-bttn' id='deletar-coment'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
-    <button class='feed-bttn' id='editar-coment' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
-    </div></section><br>`).join('');
-    newCont.appendChild(containerComent);
-    };
+//     //template para comentar post
+
+//     const newCont = containerDivNova.querySelector('#new-coment');
+//     const comentTemplate = (array) => {
+//       newCont.innerHTML = '';
+//     const containerComent = document.createElement('div');
+//     newCont.innerHTML = array.map( post => 
+//     `<section class='posted-area'>
+//     <h1>${post.user}</h1>
+//     <span>${post.date}</span>
+//     <span>${post.time}</span>
+//     <textarea class='post-box'>${post.text}</textarea>
+//     <div class='btn-area-posted'> 
+//     <button class='feed-bttn' id='like-btn-coment' data-like ='${post.idDoc}'><i class="fas fa-glass-cheers"> </i></button> 
+//     <p id='numbers-like-coment'>${post.like}<p>
+//     <button class='feed-bttn' id='deletar-coment'  data-delete = '${post.idDoc}'><i class="far fa-trash-alt"></i></button>
+//     <button class='feed-bttn' id='editar-coment' data-edit = '${post.idDoc}'><i class="fas fa-edit"></i></button>
+//     </div></section><br>`).join('');
+//     newCont.appendChild(containerComent);
+//     };
     
  
-  readComent(comentTemplate);  
-};
+//   readComent(comentTemplate);  
+// };
 
     likeEvent();
     deletEvent();
@@ -244,7 +275,7 @@ export const feed = () => {
     loginEvent();
     saveEditedEvent();
     loginEventEdit();
-    comentEvent();
+    // comentEvent();
   };
 
   readPosts(postTemplate);

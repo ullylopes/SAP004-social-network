@@ -69,7 +69,6 @@ input[type="checkbox"]:checked~.nav {
 .icone {
   position: absolute;
   z-index: 1;
-  /*cursor:pointer;*/
 }
 
 .perfil-container {
@@ -95,14 +94,6 @@ input[type="checkbox"]:checked~.nav {
   border-radius: 50%;
   box-sizing: border-box;
 }
-
-.post-container, .newpost-container {
-  /* display: flex;
-  justify-content: center;
-  width: 100vw; */
-}
-
-/* box que engloba toda a parte de post e comentários */
 
 .post-and-coment {
   display: flex;
@@ -166,12 +157,6 @@ input[type="checkbox"]:checked~.nav {
   margin: 4px;
 }
 
-/* .btn-style {
-  color: white;
-  padding: 5px;
-    font-family: "Archivo Narrow", sans-serif;
-} */
-
 .posted-area {
   margin-top: 5px;
   border-radius: 2%;
@@ -196,15 +181,6 @@ input[type="checkbox"]:checked~.nav {
   width: 80%;
   resize: none;
   height: 80px;
-  /* align-self: center;
-	padding: 2%;
-	border-radius: 2%;
-	background: #ffde59;
-	border-bottom: 1px solid #4c3313;
-	width: 300px;
-	color: black;
-	height: 80px;
-  padding-top: 3%; */
 }
 
 .name {
@@ -282,11 +258,6 @@ input[type="checkbox"]:checked~.nav {
   display: none;
 }
 
-/* .post-container {
-		display: flex;
-		justify-content: flex-end;
-		width: 45%;
-} */
 
 @media only screen and (min-width: 1500px) {
   .cor-menu {

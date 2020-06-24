@@ -97,7 +97,7 @@ a:visited {
   align-items: center;
   border: 2px solid hsl(48, 100%, 66%);
   padding: 20px;
-  background: #f1cb32a1;
+  background: #f1cb3257;
   border-radius: 6px;
   width: 80%;
 }
@@ -151,7 +151,7 @@ a:visited {
 
 /* padding e bordas dos inputs da pagina cadastro */
 .input {
-  padding: 12px;
+  padding: 10px;
   border: 0;
   text-align: center;
   /* 0.5em; */
@@ -216,7 +216,7 @@ a:visited {
   .form {
     border: 2px solid hsl(48, 100%, 66%);
     padding: 20px;
-    background: #f1cb32a1;
+    background: #f1cb3257;
     border-radius: 6px;
     width: 83%;;
   }
