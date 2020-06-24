@@ -176,40 +176,7 @@ export const feed = () => {
       });
     };
 
-    function loadImage() {
-      const addPhoto = container.getElementById('add-photo');
-      addPhoto.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        const storage = firebase.storage().ref(`post_images/${file.name}`);
-        const task = storage.put(file);
-        task.on('state_changed',
-          (snapshot) => {
-            document.getElementById('uploader').style.display = 'block';
-            const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            document.querySelector('.upload-bar').value = percentage;
-          },
-          () => {
-            const errorMessage = document.getElementById('messageImage');
-            errorMessage.textContent = 'Não foi possível carregar a imagem.';
-            setTimeout(() => {
-              errorMessage.textContent = '';
-            }, 3000);
-          },
-          () => {
-            const errorMessage = document.getElementById('messageImage');
-            errorMessage.textContent = 'Imagem carregada! ';
-            setTimeout(() => {
-              document.getElementById('uploader').style.display = 'none';
-            }, 3000);
-            task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              document.getElementById('image-preview-container').innerHTML += `
-              <img id='image-preview' class='image-preview' src="${downloadURL}">
-              `;
-            });
-          });
-      });
-    }
-    
+  
 
 //     const comentEvent = () => {
 //       const bntComent = container.querySelectorAll('#btn-comentar');
