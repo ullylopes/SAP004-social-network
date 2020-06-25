@@ -26,9 +26,9 @@ Nosso público-alvo são jovens frequentadores
  
 Como base do nosso planejamento criamos um fluxograma simples para começarmos a dar os nossos primeiros passos e para organização e visualização das etapas usamos o trello. Dividimos o trabalho dentro da equipe por sub história e realizamos pair programming durante todo o projeto.
 
-![](/src/imagens/fluxograma.jpeg)
+![](/public/imagens/fluxograma.jpeg)
 
-![](/src/imagens/trello.jpeg)
+![](/public/imagens/trello.jpeg)
 
   *
   
@@ -54,10 +54,10 @@ Como base do nosso planejamento criamos um fluxograma simples para começarmos a
 **Link do console do firebase:**
 https://console.firebase.google.com/project/social-network-lab1/overview
 
-![](/src/imagens/feed-mobile.jpeg)
-![](/src/imagens/feed-web.jpeg)
-![](/src/imagens/inicial-mobile.jpeg)
-![](/src/imagens/inicial-web.jpeg)
+![](/public/imagens/feed-mobile.jpeg)
+![](/public/imagens/feed-web.jpeg)
+![](/public/imagens/inicial-mobile.jpeg)
+![](/public/imagens/inicial-web.jpeg)
 
 *
 
